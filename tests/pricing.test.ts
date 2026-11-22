@@ -1,0 +1,12 @@
+import { test } from 'node:test';
+import assert from 'node:assert/strict';
+import { calculatePrice } from '../lib/pricing.ts';
+const discounts={comboTwo:10,comboThree:20,comboAll:25};
+test('single module has no combo discount',()=>assert.deepEqual(calculatePrice([39],discounts,6),{subtotal:39,discount:0,discountPercent:0,total:39}));
+test('two modules receive 10% once',()=>assert.equal(calculatePrice([39,39],discounts,6).total,70.2));
+test('three modules receive 20%',()=>assert.equal(calculatePrice([39,39,39],discounts,6).total,93.6));
+test('all six school modules receive 25%, without stacking',()=>assert.deepEqual(calculatePrice(Array(6).fill(39),discounts,6),{subtotal:234,discount:58.5,discountPercent:25,total:175.5}));
+test('all four university modules receive 25%',()=>assert.equal(calculatePrice(Array(4).fill(59),discounts,4).total,177));
+test('amounts round at currency precision',()=>assert.equal(calculatePrice([39.95,59.99],discounts,6).total,89.95));
+test('one available module never receives an all-modules discount',()=>assert.equal(calculatePrice([39],discounts,1).discountPercent,0));
+test('empty selection is zero',()=>assert.equal(calculatePrice([],discounts,0).total,0));

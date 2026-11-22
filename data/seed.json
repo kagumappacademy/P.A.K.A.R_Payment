@@ -1,0 +1,274 @@
+{
+  "settings": {
+    "eventName": "P.A.K.A.R",
+    "eyebrow": "PROGRAM CUTI SEKOLAH AKHIR TAHUN 2026",
+    "heroTitle": "Cuti sekolah.",
+    "heroHighlight": "Misi luar biasa.",
+    "heroDescription": "Isi cuti akhir tahun dengan kemahiran baharu. Bina game, hasilkan visual dan terokai AI bersama P.A.K.A.R — program praktikal untuk pelajar sekolah menengah. Pilih modul mengikut minat dan mulakan misi kreatif anda.",
+    "aboutTitle": "Cuti yang seronok. Kemahiran yang berguna.",
+    "aboutDescription": "Jadikan cuti sekolah akhir tahun ini ruang untuk mencuba, berkarya dan membina keyakinan. Bersama P.A.K.A.R, pelajar sekolah menengah boleh meneroka AI melalui projek permainan, visual, video dan kemahiran digital harian. Program Asas Kemahiran AI Remaja ini dibawakan oleh Kagum Academy dan Kagum Digital, dengan pilihan modul yang boleh disesuaikan mengikut minat peserta.",
+    "dateLabel": "5–31 Disember 2026",
+    "startDate": "2026-12-05",
+    "endDate": "2026-12-31",
+    "location": "Maklumat lokasi akan dimaklumkan oleh penganjur",
+    "delivery": "Fizikal & Online",
+    "organizer": "Kagum Academy × Kagum Digital",
+    "contactEmail": "",
+    "whatsapp": "",
+    "heroImage": "/images/pakar-team.webp",
+    "eventPoster": "/images/pakar-poster.webp",
+    "registrationOpen": true,
+    "tracks": {
+      "menengah": {
+        "name": "Sekolah Menengah",
+        "audience": "Pelajar sekolah menengah",
+        "description": "Misi khas untuk cuti sekolah akhir tahun! Pilih daripada enam modul kreatif, terokai AI dari asas dan cuba hasilkan projek anda sendiri."
+      },
+      "universiti": {
+        "name": "Universiti",
+        "audience": "Pelajar universiti & kolej",
+        "description": "Naik taraf kemahiran untuk dunia sebenar. Dari penyelidikan akademik hingga portfolio profesional anda."
+      }
+    },
+    "comboTwo": 10,
+    "comboThree": 20,
+    "comboAll": 25,
+    "paymentName": "",
+    "bankName": "",
+    "bankAccount": "",
+    "paymentQr": "",
+    "paymentInstructions": "Imbas QR DuitNow menggunakan aplikasi bank atau e-dompet anda. Masukkan jumlah tepat dan gunakan nombor pendaftaran sebagai rujukan. Muat naik resit selepas pembayaran.",
+    "privacyText": "Maklumat anda digunakan untuk urusan pendaftaran, pembayaran dan komunikasi program P.A.K.A.R. Resit hanya boleh diakses oleh pentadbir yang dibenarkan.",
+    "benefits": [
+      {
+        "title": "Cuti diisi dengan kreativiti",
+        "description": "Terokai minat baharu melalui aktiviti AI dan digital yang praktikal serta menyeronokkan.",
+        "icon": "sparkles"
+      },
+      {
+        "title": "Bina hasil kerja sendiri",
+        "description": "Cuba bina permainan, reka visual atau rancang video melalui modul pilihan anda.",
+        "icon": "code"
+      },
+      {
+        "title": "Sijil penyertaan disediakan",
+        "description": "Raikan pengalaman belajar dan kemahiran baharu sepanjang misi cuti sekolah anda.",
+        "icon": "award"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Program cuti sekolah ini sesuai untuk siapa?",
+        "answer": "Edisi cuti akhir tahun ini memberi tumpuan kepada pelajar sekolah menengah yang ingin mencuba AI dan kemahiran digital. Tidak perlu pengalaman AI. Bagi pelajar universiti atau kolej, pilihan track Universiti turut tersedia."
+      },
+      {
+        "question": "Bolehkah ibu bapa atau penjaga mendaftarkan anak?",
+        "answer": "Ya. Isi borang menggunakan maklumat peserta yang akan menyertai program. Nama dan nombor telefon ibu bapa atau penjaga diperlukan untuk peserta bawah 18 tahun. Pastikan alamat e-mel dan nombor telefon boleh dihubungi."
+      },
+      {
+        "question": "Perlu pilih semua modul sepanjang cuti sekolah?",
+        "answer": "Tidak. Peserta boleh memilih satu modul atau menggabungkan beberapa modul mengikut minat. Diskaun kombo yang berkenaan dipaparkan secara automatik sebelum pendaftaran disimpan."
+      },
+      {
+        "question": "Bilakah program dan sesi setiap modul berlangsung?",
+        "answer": "Tempoh program ialah 5–31 Disember 2026 seperti dalam poster. Jadual sesi setiap modul, lokasi dan maklumat penyertaan fizikal atau online akan dimaklumkan oleh penganjur. Semak butiran modul sebelum membuat pendaftaran."
+      },
+      {
+        "question": "Bagaimanakah pembayaran disahkan?",
+        "answer": "Selepas mendaftar, bayar menggunakan QR DuitNow rasmi dan muat naik resit. Admin akan menyemak pembayaran anda. Gunakan nombor pendaftaran dan e-mel untuk menyemak status; jika resit memerlukan pembetulan, nota admin akan dipaparkan."
+      }
+    ]
+  },
+  "modules": [
+    {
+      "id": "ai-game-builder",
+      "track": "menengah",
+      "title": "AI Game Builder",
+      "subtitle": "Cuti ini, bina game sendiri.",
+      "description": "Mulakan misi cuti sekolah sebagai pencipta permainan. Terokai idea, logik dan reka bentuk game dengan bantuan AI, kemudian cuba bina prototaip interaktif anda.",
+      "price": 39,
+      "accent": "#a3e635",
+      "icon": "gamepad",
+      "duration": "Bengkel praktikal",
+      "schedule": "Jadual akan diumumkan",
+      "active": true,
+      "sortOrder": 1,
+      "outcomes": [
+        "Asas reka bentuk permainan",
+        "Bina prototaip interaktif",
+        "Eksperimen dengan bantuan AI"
+      ]
+    },
+    {
+      "id": "creative-visual",
+      "track": "menengah",
+      "title": "Creative Visual",
+      "subtitle": "Warna baharu untuk idea cuti anda.",
+      "description": "Lepaskan kreativiti sepanjang cuti sekolah. Terokai konsep, warna dan prompt AI untuk menghasilkan visual yang mencerminkan idea anda sendiri.",
+      "price": 39,
+      "accent": "#f472b6",
+      "icon": "palette",
+      "duration": "Bengkel praktikal",
+      "schedule": "Jadual akan diumumkan",
+      "active": true,
+      "sortOrder": 2,
+      "outcomes": [
+        "Asas komposisi dan warna",
+        "Prompt untuk idea visual",
+        "Hasilkan rekaan sendiri"
+      ]
+    },
+    {
+      "id": "smart-ulangkaji",
+      "track": "menengah",
+      "title": "Smart Ulangkaji AI",
+      "subtitle": "Susun ilmu. Bersedia untuk langkah baharu.",
+      "description": "Gunakan sebahagian waktu cuti untuk membina cara belajar yang lebih terancang. Cuba susun nota, cipta latihan dan semak jawapan AI dengan pemikiran kritikal.",
+      "price": 39,
+      "accent": "#38bdf8",
+      "icon": "book",
+      "duration": "Bengkel praktikal",
+      "schedule": "Jadual akan diumumkan",
+      "active": true,
+      "sortOrder": 3,
+      "outcomes": [
+        "Susun nota pembelajaran",
+        "Bina latihan ulang kaji",
+        "Semak ketepatan jawapan AI"
+      ]
+    },
+    {
+      "id": "video-basic",
+      "track": "menengah",
+      "title": "Video Claude AI",
+      "subtitle": "Basic · Rakamkan idea cuti anda.",
+      "description": "Bawa cerita dan idea cuti sekolah ke dalam perancangan video. Pelajari asas skrip, papan cerita dan penceritaan kreatif dengan bantuan Claude AI.",
+      "price": 39,
+      "accent": "#fb923c",
+      "icon": "video",
+      "duration": "Bengkel praktikal",
+      "schedule": "Jadual akan diumumkan",
+      "active": true,
+      "sortOrder": 4,
+      "outcomes": [
+        "Tulis skrip dengan AI",
+        "Rancang papan cerita",
+        "Bina konsep video ringkas"
+      ]
+    },
+    {
+      "id": "produktiviti",
+      "track": "menengah",
+      "title": "Asas Produktiviti",
+      "subtitle": "MS Office & Google Workspace",
+      "description": "Tambah kemahiran digital semasa cuti sekolah. Belajar menyediakan dokumen, mengenali hamparan elektronik dan bekerjasama dalam talian menggunakan alat harian.",
+      "price": 39,
+      "accent": "#facc15",
+      "icon": "layers",
+      "duration": "Bengkel praktikal",
+      "schedule": "Jadual akan diumumkan",
+      "active": true,
+      "sortOrder": 5,
+      "outcomes": [
+        "Dokumen lebih kemas",
+        "Asas hamparan elektronik",
+        "Kolaborasi dalam talian"
+      ]
+    },
+    {
+      "id": "slaid",
+      "track": "menengah",
+      "title": "Slaid Pembentangan",
+      "subtitle": "Google Slides × Gemini",
+      "description": "Sampaikan idea dengan lebih yakin selepas cuti. Terokai struktur pembentangan, reka bentuk slaid dan bantuan Gemini untuk menghasilkan pembentangan yang jelas.",
+      "price": 39,
+      "accent": "#2dd4bf",
+      "icon": "presentation",
+      "duration": "Bengkel praktikal",
+      "schedule": "Jadual akan diumumkan",
+      "active": true,
+      "sortOrder": 6,
+      "outcomes": [
+        "Struktur pembentangan",
+        "Reka bentuk slaid",
+        "Teroka idea dengan Gemini"
+      ]
+    },
+    {
+      "id": "research",
+      "track": "universiti",
+      "title": "Academic Research",
+      "subtitle": "Perplexity AI",
+      "description": "Terokai aliran penyelidikan yang lebih tersusun, carian sumber dan penilaian maklumat secara kritikal dengan AI.",
+      "price": 59,
+      "accent": "#a78bfa",
+      "icon": "search",
+      "duration": "Bengkel praktikal",
+      "schedule": "Jadual akan diumumkan",
+      "active": true,
+      "sortOrder": 1,
+      "outcomes": [
+        "Strategi carian akademik",
+        "Penilaian sumber",
+        "Etika penggunaan AI"
+      ]
+    },
+    {
+      "id": "portfolio",
+      "track": "universiti",
+      "title": "Digital Resume & Web Portfolio",
+      "subtitle": "Tunjukkan potensi sebenar anda.",
+      "description": "Susun pengalaman, kemahiran dan hasil kerja dalam resume digital dan portfolio yang mencerminkan diri anda.",
+      "price": 59,
+      "accent": "#fbbf24",
+      "icon": "briefcase",
+      "duration": "Bengkel praktikal",
+      "schedule": "Jadual akan diumumkan",
+      "active": true,
+      "sortOrder": 2,
+      "outcomes": [
+        "Struktur resume profesional",
+        "Susun hasil kerja",
+        "Rancang portfolio digital"
+      ]
+    },
+    {
+      "id": "video-advanced",
+      "track": "universiti",
+      "title": "Video Claude AI",
+      "subtitle": "Advanced · Cerita dengan impak.",
+      "description": "Perhalusi idea kandungan, strategi skrip dan aliran produksi video menggunakan Claude AI.",
+      "price": 59,
+      "accent": "#f472b6",
+      "icon": "video",
+      "duration": "Bengkel praktikal",
+      "schedule": "Jadual akan diumumkan",
+      "active": true,
+      "sortOrder": 3,
+      "outcomes": [
+        "Skrip dan naratif lanjutan",
+        "Rancang kandungan berstrategi",
+        "Aliran produksi dengan AI"
+      ]
+    },
+    {
+      "id": "website",
+      "track": "universiti",
+      "title": "Pembangunan Website",
+      "subtitle": "Bina. Uji. Lancarkan.",
+      "description": "Kenali asas pembangunan web dan bawa idea anda menjadi pengalaman digital yang boleh diterokai.",
+      "price": 59,
+      "accent": "#22d3ee",
+      "icon": "code",
+      "duration": "Bengkel praktikal",
+      "schedule": "Jadual akan diumumkan",
+      "active": true,
+      "sortOrder": 4,
+      "outcomes": [
+        "Asas struktur laman web",
+        "Reka bentuk responsif",
+        "Bina projek website"
+      ]
+    }
+  ]
+}

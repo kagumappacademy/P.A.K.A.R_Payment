@@ -100,4 +100,3 @@ node --env-file=.env.local scripts/apply-school-holiday-campaign.mjs
 ```
 
 Skrip hanya mengemas kini ayat kempen, manfaat, FAQ dan penerangan modul sekolah. Harga, diskaun, tetapan pembayaran, jadual, poster muat naik dan pendaftaran sedia ada dikekalkan. Salinan sebelum perubahan disimpan di `.local/` yang diabaikan Git. Jangan menjalankan skrip ini semula selepas menyunting ayat kempen melalui admin kecuali anda mahu menggunakan semula ayat seed.
-

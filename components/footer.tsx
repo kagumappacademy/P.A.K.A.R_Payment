@@ -1,0 +1,3 @@
+import Link from 'next/link';
+import { Brand } from './header';
+export function Footer({organizer='Kagum Academy × Kagum Digital'}:{organizer?:string}) {return <footer className="site-footer"><div className="container footer-top"><Brand/><p>Misi kecil hari ini.<br/><span>Impak besar untuk masa depan.</span></p><div className="footer-links"><Link href="/#program">Terokai program</Link><Link href="/semak">Semak pendaftaran</Link><Link href="/admin">Portal admin</Link></div></div><div className="container footer-bottom"><span>© {new Date().getFullYear()} {organizer}. Hak cipta terpelihara.</span><span>Dibina untuk generasi pencipta.</span></div></footer>;}
