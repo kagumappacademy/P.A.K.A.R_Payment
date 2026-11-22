@@ -1,7 +1,7 @@
 export type Track = 'menengah' | 'universiti';
 export type Module = {
   id: string; track: Track; title: string; subtitle: string; description: string;
-  price: number; accent: string; icon: string; poster: string; duration: string;
+  price: number; accent: string; icon: string; cover: string; poster: string; duration: string;
   schedule: string; active: boolean; sortOrder: number; outcomes: string[];
 };
 export type Settings = {

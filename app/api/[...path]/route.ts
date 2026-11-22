@@ -109,7 +109,7 @@ async function handle(request:NextRequest,context:Context) {
   }
   if(route==='registrations/payment-receipt' && method==='POST') {
     await rateLimit(request,'document',60);
-    const input=z.object({id:z.uuid(),accessToken:z.string().length(64).optional(),format:z.enum(['json','pdf']).default('json')}).parse(await request.json());
+    const input=z.object({id:z.uuid(),accessToken:z.string().length(64).optional(),format:z.enum(['json','pdf']).default('json'),language:z.enum(['bm','en']).default('bm')}).parse(await request.json());
     const row=(await rows('SELECT * FROM registrations WHERE id=?',[input.id]))[0];
     const admin=await getAdmin();
     if(!row || (!admin && (!input.accessToken || !timingSafeEqual(Buffer.from(row.access_hash),Buffer.from(hash(input.accessToken))))))throw new HttpError(403,'Akses resit pendaftaran tidak sah.');
@@ -119,7 +119,7 @@ async function handle(request:NextRequest,context:Context) {
     const receipt=receiptSnapshot(registration,settings);
     if(input.format==='pdf') {
       const {createPaymentReceiptPdf}=await import('@/lib/receipt-pdf');
-      const pdf=await createPaymentReceiptPdf(registration,settings);
+      const pdf=await createPaymentReceiptPdf(registration,settings,input.language);
       return new NextResponse(new Uint8Array(pdf),{headers:{'Content-Type':'application/pdf','Content-Disposition':`attachment; filename="${receipt.number}.pdf"`,'Cache-Control':'private, no-store','X-Content-Type-Options':'nosniff'}});
     }
     return reply({receipt,whatsappGroupUrl:participantGroup(registration,settings)});

@@ -1,4 +1,5 @@
 'use client';
+import { Localized } from './preferences';
 import { useState } from 'react';
 import { Check, CheckCircle2, Copy, FileCheck2, FileUp, LoaderCircle, RefreshCw, ShieldCheck } from 'lucide-react';
 import Link from 'next/link';
@@ -25,13 +26,13 @@ export function Payment({registration:r,accessToken,settings:s,onUpdate}:{regist
     try{const data=await api<{registration:Registration}>('/api/registrations/lookup',{method:'POST',body:JSON.stringify({email:r.email,reference:r.reference})});onUpdate(data.registration);setRevision(n=>n+1);}
     catch(e){setError((e as Error).message);}finally{setBusy(false);}
   }
-  return <div className="payment-content">
+  return <Localized><div className="payment-content">
     <div className={`payment-state ${sent?'is-sent':''}`}><span className="payment-state-icon">{sent?<CheckCircle2 size={32}/>:<FileCheck2 size={32}/>}</span><div>
       <h2>{r.status==='approved'?'Misi anda telah disahkan!':r.status==='pending'?'Resit diterima. Terima kasih!':r.status==='rejected'?'Resit memerlukan perhatian.':'Pendaftaran anda telah disimpan.'}</h2>
       <p>{r.status==='approved'?'Muat turun resit pembayaran anda dan sertai kumpulan WhatsApp rasmi untuk maklumat program.':r.status==='pending'?'Resit pendaftaran anda dijana secara automatik. Muat turun salinan anda dan sertai kumpulan WhatsApp sementara admin menyemak pembayaran.':'Lengkapkan pembayaran dan hantar resit untuk pengesahan penyertaan.'}</p>
     </div></div>
     <div className="reference-box"><div><span>NOMBOR PENDAFTARAN</span><strong>{r.reference}</strong></div><button className="icon-button" aria-label="Salin nombor pendaftaran" onClick={async()=>{try{await navigator.clipboard.writeText(r.reference);setCopied(true);}catch{setError('Salin nombor pendaftaran secara manual.');}}}>{copied?<Check size={18}/>:<Copy size={18}/>}</button></div>
-    <div className="payment-status-row"><Status status={r.status}/><span>{r.email}</span></div>
+    <div className="payment-status-row"><Status status={r.status}/><span><span data-no-translate="true">{r.email}</span></span></div>
     {r.adminNote&&<Notice error={r.status==='rejected'}><strong>Nota admin:</strong> {r.adminNote}</Notice>}
     {sent?<>
       <GeneratedReceipt registration={r} accessToken={accessToken} revision={revision}/>
@@ -50,5 +51,5 @@ export function Payment({registration:r,accessToken,settings:s,onUpdate}:{regist
       </form>
     </div>}
     {error&&<Notice error>{error}</Notice>}
-  </div>;
+  </div></Localized>;
 }

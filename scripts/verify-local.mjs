@@ -43,7 +43,8 @@ try{
  await request('/api/admin/settings',{method:'PUT',body:{...temporarySettings,whatsappGroups:{menengah:'https://evil.example/group',universiti:''}},auth:true,expected:400});
  await request('/api/admin/settings',{method:'PUT',body:temporarySettings,auth:true});assert.equal((await(await request('/api/config')).json()).settings.paymentName,temporarySettings.paymentName);
  const publicConfig=await(await request('/api/config')).text();assert.ok(!publicConfig.includes(schoolGroup));assert.ok(!publicConfig.includes(universityGroup));
- const publicPage=await(await request('/')).text();assert.ok(!publicPage.includes(schoolGroup));
+ const publicPage=await(await request('/')).text();assert.ok(!publicPage.includes(schoolGroup));assert.match(publicPage,/<html[^>]*lang="ms"[^>]*data-theme="light"/);
+ const englishPage=await(await request('/',{headers:{cookie:'pakar-language=en; pakar-theme=dark'}})).text();assert.match(englishPage,/<html[^>]*lang="en"[^>]*data-theme="dark"/);assert.ok(englishPage.includes('School holidays.'));
  const receipt=()=>{const form=new FormData();form.set('registrationId',created.registration.id);form.set('accessToken',created.accessToken);form.set('file',new Blob([tinyPng],{type:'image/png'}),'local-test-receipt.png');return form;};
  const invalidReceipt=receipt();invalidReceipt.set('accessToken','0'.repeat(64));await request('/api/registrations/receipt',{method:'POST',body:invalidReceipt,expected:403});
  const submitted=await (await request('/api/registrations/receipt',{method:'POST',body:receipt()})).json();fileIds.push(submitted.registration.receiptId);assert.equal(submitted.registration.status,'pending');
@@ -53,6 +54,8 @@ try{
  const pendingPdf=await request('/api/registrations/payment-receipt',{method:'POST',body:{...documentBody,format:'pdf'}});assert.equal(pendingPdf.headers.get('content-type'),'application/pdf');assert.match(pendingPdf.headers.get('cache-control'),/no-store/);
  const pendingBytes=Buffer.from(await pendingPdf.arrayBuffer());assert.equal(pendingBytes.subarray(0,5).toString(),'%PDF-');assert.equal((await PDFDocument.load(pendingBytes)).getPageCount(),1);
  await mkdir('.local',{recursive:true});await writeFile('.local/receipt-pending.pdf',pendingBytes);
+ const englishPdf=await request('/api/registrations/payment-receipt',{method:'POST',body:{...documentBody,format:'pdf',language:'en'}});
+ const englishBytes=Buffer.from(await englishPdf.arrayBuffer()),englishDocument=await PDFDocument.load(englishBytes);assert.equal(englishDocument.getPageCount(),1);assert.equal(englishDocument.getSubject(),'Programme registration receipt');await writeFile('.local/receipt-english.pdf',englishBytes);
  await request('/api/admin/settings',{method:'PUT',body:{...temporarySettings,whatsappGroups:{menengah:'',universiti:universityGroup}},auth:true});
  const noGroup=await(await request('/api/registrations/payment-receipt',{method:'POST',body:documentBody})).json();assert.equal(noGroup.whatsappGroupUrl,'');
  await request('/api/admin/settings',{method:'PUT',body:temporarySettings,auth:true});
@@ -72,7 +75,7 @@ try{
  await request('/api/registrations/receipt',{method:'POST',body:receipt(),expected:409});
  const final=await (await request('/api/registrations/lookup',{method:'POST',body:{reference:created.registration.reference,email:input.email}})).json();assert.equal(final.registration.status,'approved');assert.ok(final.registration.paymentApprovedAt);
  const approvedPdf=await request('/api/registrations/payment-receipt',{method:'POST',body:{id:created.registration.id,format:'pdf'},auth:true});await writeFile('.local/receipt-approved.pdf',Buffer.from(await approvedPdf.arrayBuffer()));
- await request('/api/admin/modules',{method:'PUT',body:{...originalModule,price:42.5},auth:true});assert.equal((await(await request('/api/config')).json()).modules.find(m=>m.id===originalModule.id).price,42.5);
+ await request('/api/admin/modules',{method:'PUT',body:{...originalModule,price:42.5,cover:uploaded.url},auth:true});const editedModule=(await(await request('/api/config')).json()).modules.find(m=>m.id===originalModule.id);assert.equal(editedModule.price,42.5);assert.equal(editedModule.cover,uploaded.url);assert.equal(editedModule.poster,originalModule.poster);
  const csv=await (await request('/api/admin/export',{auth:true})).text();assert.ok(csv.includes(created.registration.reference));
  console.log(`PASS: ${checks} API checks, MySQL persistence, combo pricing, idempotency, private receipts, rejection/resubmission, approval, module editing and CSV export.`);
 }finally{

@@ -1,4 +1,5 @@
 import type { PaymentReceiptSnapshot, Registration, Settings } from './types.ts';
+import type { Language } from './i18n.ts';
 
 export function receiptSnapshot(registration: Registration, settings: Settings): PaymentReceiptSnapshot {
   return registration.paymentReceipt ?? {
@@ -20,8 +21,8 @@ export function participantGroup(registration: Registration, settings: Settings)
   return settings.whatsappGroups?.[registration.track] || '';
 }
 
-export function receiptDate(value: string) {
-  return new Intl.DateTimeFormat('ms-MY',{dateStyle:'long',timeStyle:'short',timeZone:'Asia/Kuala_Lumpur'}).format(new Date(value));
+export function receiptDate(value: string,language:Language='bm') {
+  return new Intl.DateTimeFormat(language==='en'?'en-GB':'ms-MY',{dateStyle:'long',timeStyle:'short',timeZone:'Asia/Kuala_Lumpur'}).format(new Date(value));
 }
 
 export type ReceiptResponse = {

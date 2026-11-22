@@ -1,0 +1,11 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {translateText} from '../lib/i18n.ts';
+test('BM preserves original content',()=>assert.equal(translateText('Cuti sekolah.','bm'),'Cuti sekolah.'));
+test('English translates the main school holiday campaign',()=>assert.equal(translateText('Cuti sekolah.','en'),'School holidays.'));
+test('English translates payment actions',()=>assert.equal(translateText('Muat turun PDF','en'),'Download PDF'));
+test('English translates full-poster admin controls',()=>assert.equal(translateText('Poster penuh modul','en'),'Full module poster'));
+test('English preserves surrounding whitespace in mixed React content',()=>assert.equal(translateText(' / modul ','en'),' / module '));
+test('English handles module-count singular and plural',()=>{assert.equal(translateText('1 modul','en'),'1 module');assert.equal(translateText('6 modul','en'),'6 modules');});
+test('unknown participant content is preserved',()=>assert.equal(translateText('Nur Aisyah binti Abdullah','en'),'Nur Aisyah binti Abdullah'));
+test('case-insensitive labels preserve uppercase headings',()=>assert.equal(translateText('NAMA PESERTA','en'),'PARTICIPANT NAME'));

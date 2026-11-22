@@ -24,7 +24,7 @@ export const moduleSchema = z.object({
   id: text(80).regex(/^[a-z0-9-]+$/), track: z.enum(['menengah','universiti']),
   title: text(150), subtitle: optionalText(200), description: text(2000),
   price: z.number().min(1).max(10000), accent: z.string().regex(/^#[a-fA-F0-9]{6}$/),
-  icon: text(30), poster: asset, duration: text(150), schedule: text(250), active: z.boolean(),
+  icon: text(30), cover: asset.default(''), poster: asset, duration: text(150), schedule: text(250), active: z.boolean(),
   sortOrder: z.number().int().min(0).max(1000), outcomes: z.array(text(250)).min(1).max(10)
 });
 const track = z.object({name:text(100),audience:text(150),description:text(1000)});

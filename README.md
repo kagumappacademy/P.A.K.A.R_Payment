@@ -29,7 +29,13 @@ Maklumat track, nama modul dan tempoh **5–31 Disember 2026** diambil daripada 
 2. **Admin → Modul & harga:** semak harga awal RM39/modul sekolah dan RM59/modul universiti. Harga universiti ialah cadangan permulaan, bukan harga yang dinyatakan poster.
 3. Diskaun awal: 2 modul **10%**, 3 atau lebih **20%**, semua modul aktif dalam track **25%**. Diskaun terbaik dikenakan sekali; harga dibekukan semasa pendaftaran. Semua kadar boleh diubah. Semak juga teks promosi dalam FAQ selepas menukar kadar.
 4. Semak jadual setiap modul, lokasi, telefon WhatsApp, e-mel, hasil pembelajaran dan maklumat fizikal/online. Jadual serta lokasi sebenar belum dibekalkan, jadi tiada jadual rekaan digunakan.
-5. Poster setiap modul telah disediakan sebagai SVG bertema warna berbeza. Ganti dengan poster sebenar melalui editor modul jika diperlukan.
+5. Setiap modul mempunyai gambar kad dan poster penuh yang berasingan, dengan tema warna tersendiri. Di **Admin → Modul & harga → Edit**, muat naik kedua-dua gambar melalui medan masing-masing. Peserta boleh membuka poster penuh bersama penerangan, hasil pembelajaran dan harga melalui butang **Lihat modul**.
+
+## Tema dan bahasa
+
+Pelawat baharu bermula dalam **light mode** dan Bahasa Melayu. Switch di header menukar light/dark mode; butang **BM / ENG** menukar bahasa antara muka termasuk pendaftaran, pembayaran, resit dan admin. Pilihan disimpan dalam cookie pada pelayar. Teks lalai program mempunyai terjemahan English; kandungan tersuai yang ditulis admin dikekalkan seperti yang dimasukkan, dan terjemahannya boleh ditambah dalam `data/en.json`.
+
+Latar teknologi menggunakan litar, grid, orbit HUD, partikel dan cahaya mengikut penunjuk. Animasi masuk, hover dan scroll disediakan dengan sokongan `prefers-reduced-motion` untuk mematikan pergerakan apabila tetapan aksesibiliti pelayar memintanya.
 
 ## Aliran peserta
 
@@ -45,7 +51,7 @@ Pembayaran **disemak secara manual** oleh admin. Tiada transaksi bank, debit aut
 
 - Dashboard jumlah pendaftaran, resit menunggu semakan, penyertaan disahkan dan jumlah bayaran yang disahkan.
 - Carian, penapisan status, butiran penuh peserta dan penjaga, paparan resit, pengesahan/penolakan dengan nota, eksport CSV.
-- Tambah / edit modul, harga, warna, poster, jadual, hasil pembelajaran dan status aktif.
+- Tambah / edit modul, harga, warna, gambar kad, poster penuh, jadual, hasil pembelajaran dan status aktif.
 - Edit landing page, maklumat program, track, FAQ, notis privasi, imej utama serta poster rasmi. Editor JSON penuh turut tersedia untuk manfaat dan semua medan kandungan.
 - Edit DuitNow QR, nama penerima, kadar kombo dan pautan jemputan kumpulan WhatsApp berasingan untuk Sekolah Menengah / Universiti; tukar kata laluan admin.
 

@@ -24,7 +24,7 @@ export async function getConfiguration(includeInactive = false, includePrivate =
   if (!s[0]) throw new Error('Jalankan npm run db:setup dahulu.');
   const settings = JSON.parse(s[0].content) as Settings;
   settings.whatsappGroups=includePrivate?{menengah:settings.whatsappGroups?.menengah||'',universiti:settings.whatsappGroups?.universiti||''}:{menengah:'',universiti:''};
-  const modules = mods.map(r => JSON.parse(r.content) as Module).filter(m => includeInactive || m.active).sort((a,b) => a.sortOrder-b.sortOrder);
+  const modules = mods.map(r => {const m=JSON.parse(r.content) as Module;return {...m,cover:m.cover||m.poster};}).filter(m => includeInactive || m.active).sort((a,b) => a.sortOrder-b.sortOrder);
   return { settings, modules };
 }
 export function parseRegistration(row: RowDataPacket): Registration {

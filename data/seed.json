@@ -101,7 +101,8 @@
         "Asas reka bentuk permainan",
         "Bina prototaip interaktif",
         "Eksperimen dengan bantuan AI"
-      ]
+      ],
+      "cover": "/images/modules/ai-game-builder-cover.svg"
     },
     {
       "id": "creative-visual",
@@ -120,7 +121,8 @@
         "Asas komposisi dan warna",
         "Prompt untuk idea visual",
         "Hasilkan rekaan sendiri"
-      ]
+      ],
+      "cover": "/images/modules/creative-visual-cover.svg"
     },
     {
       "id": "smart-ulangkaji",
@@ -139,7 +141,8 @@
         "Susun nota pembelajaran",
         "Bina latihan ulang kaji",
         "Semak ketepatan jawapan AI"
-      ]
+      ],
+      "cover": "/images/modules/smart-ulangkaji-cover.svg"
     },
     {
       "id": "video-basic",
@@ -158,7 +161,8 @@
         "Tulis skrip dengan AI",
         "Rancang papan cerita",
         "Bina konsep video ringkas"
-      ]
+      ],
+      "cover": "/images/modules/video-basic-cover.svg"
     },
     {
       "id": "produktiviti",
@@ -177,7 +181,8 @@
         "Dokumen lebih kemas",
         "Asas hamparan elektronik",
         "Kolaborasi dalam talian"
-      ]
+      ],
+      "cover": "/images/modules/produktiviti-cover.svg"
     },
     {
       "id": "slaid",
@@ -196,7 +201,8 @@
         "Struktur pembentangan",
         "Reka bentuk slaid",
         "Teroka idea dengan Gemini"
-      ]
+      ],
+      "cover": "/images/modules/slaid-cover.svg"
     },
     {
       "id": "research",
@@ -215,7 +221,8 @@
         "Strategi carian akademik",
         "Penilaian sumber",
         "Etika penggunaan AI"
-      ]
+      ],
+      "cover": "/images/modules/research-cover.svg"
     },
     {
       "id": "portfolio",
@@ -234,7 +241,8 @@
         "Struktur resume profesional",
         "Susun hasil kerja",
         "Rancang portfolio digital"
-      ]
+      ],
+      "cover": "/images/modules/portfolio-cover.svg"
     },
     {
       "id": "video-advanced",
@@ -253,7 +261,8 @@
         "Skrip dan naratif lanjutan",
         "Rancang kandungan berstrategi",
         "Aliran produksi dengan AI"
-      ]
+      ],
+      "cover": "/images/modules/video-advanced-cover.svg"
     },
     {
       "id": "website",
@@ -272,7 +281,8 @@
         "Asas struktur laman web",
         "Reka bentuk responsif",
         "Bina projek website"
-      ]
+      ],
+      "cover": "/images/modules/website-cover.svg"
     }
   ]
 }
