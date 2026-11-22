@@ -19,7 +19,7 @@ const reply = (data:unknown,status=200) => NextResponse.json(data,{status,header
 async function rateLimit(request:NextRequest,scope:string,limit:number,windowMs=15*60*1000) {
   const ip=request.headers.get('x-forwarded-for')?.split(',')[0].trim() || 'local';
   const id=hash(`${scope}:${ip}`), now=Date.now();
-  await db().execute('INSERT INTO rate_limits (id,hits,expires) VALUES (?,1,?) ON DUPLICATE KEY UPDATE hits=IF(expires<?,1,hits+1), expires=IF(expires<?,?,expires)',[id,now+windowMs,now,now,now+windowMs]);
+  await db().execute('INSERT INTO rate_limits (id,hits,expires) VALUES (?,1,?) ON CONFLICT(id) DO UPDATE SET hits=CASE WHEN expires<? THEN 1 ELSE hits+1 END, expires=CASE WHEN expires<? THEN ? ELSE expires END',[id,now+windowMs,now,now,now+windowMs]);
   if(Number((await rows('SELECT hits FROM rate_limits WHERE id=?',[id]))[0]?.hits)>limit) throw new HttpError(429,'Terlalu banyak cubaan. Sila cuba semula selepas 15 minit.');
 }
 async function requireAdmin() { const admin=await getAdmin(); if(!admin)throw new HttpError(401,'Sila log masuk sebagai admin.');return admin; }
@@ -74,7 +74,7 @@ async function handle(request:NextRequest,context:Context) {
     const registration={...details,id,reference,modules:selected.map(m=>({id:m.id,title:m.title,price:m.price})),...price,status:'awaiting_payment',receiptId:null,receiptName:null,adminNote:'',createdAt:new Date().toISOString(),updatedAt:new Date().toISOString()};
     try { await db().execute('INSERT INTO registrations (id,reference,access_hash,email,status,content) VALUES (?,?,?,?,?,?)',[id,reference,hash(token),input.email,'awaiting_payment',JSON.stringify(registration)]); }
     catch(error) {
-      if((error as {code?:string}).code!=='ER_DUP_ENTRY') throw error;
+      if(!String((error as {code?:string}).code).startsWith('SQLITE_CONSTRAINT')) throw error;
       const row=(await rows('SELECT * FROM registrations WHERE id=?',[id]))[0];
       if(!row || row.email!==input.email)throw new HttpError(409,'Sila cuba semula.');
       return reply({registration:parseRegistration(row),accessToken:token});
@@ -103,8 +103,8 @@ async function handle(request:NextRequest,context:Context) {
     const submittedAt=new Date().toISOString();
     const paymentReceipt=receiptSnapshot({...registration,paymentSubmittedAt:submittedAt},settings);
     const updated={...registration,receiptId:uploaded.id,receiptName:uploaded.name,receiptMime:uploaded.mime,paymentReceipt,paymentSubmittedAt:submittedAt,paymentApprovedAt:undefined,updatedAt:submittedAt,adminNote:'',status:'pending'};
-    const [result]=await db().execute<import('mysql2').ResultSetHeader>('UPDATE registrations SET content=?,status=? WHERE id=? AND status IN (?,?)',[JSON.stringify(updated),'pending',id,'awaiting_payment','rejected']);
-    if(!result.affectedRows) { await db().execute('DELETE FROM files WHERE id=?',[uploaded.id]);throw new HttpError(409,'Status telah berubah. Sila semak semula pendaftaran.'); }
+    const result=await db().execute('UPDATE registrations SET content=?,status=? WHERE id=? AND status IN (?,?)',[JSON.stringify(updated),'pending',id,'awaiting_payment','rejected']);
+    if(!result.rowsAffected) { await db().execute('DELETE FROM files WHERE id=?',[uploaded.id]);throw new HttpError(409,'Status telah berubah. Sila semak semula pendaftaran.'); }
     return reply({registration:updated});
   }
   if(route==='registrations/payment-receipt' && method==='POST') {
@@ -139,17 +139,16 @@ async function handle(request:NextRequest,context:Context) {
     if(route==='admin/review' && method==='POST') {
       const input=z.object({id:z.uuid(),status:z.enum(['approved','rejected']),note:z.string().trim().max(2000)}).parse(await request.json());
       if(input.status==='rejected' && !input.note)throw new HttpError(400,'Sila nyatakan sebab resit ditolak.');
-      const connection=await db().getConnection();
+      const connection=await db().transaction('write');
       try {
-        await connection.beginTransaction();
-        const [matches]=await connection.execute<import('mysql2').RowDataPacket[]>('SELECT * FROM registrations WHERE id=? FOR UPDATE',[input.id]);
+        const {rows:matches}=await connection.execute({sql:'SELECT * FROM registrations WHERE id=?',args:[input.id]});
         const row=matches[0];if(!row)throw new HttpError(404,'Pendaftaran tidak ditemui.');
         const registration=parseRegistration(row);
         if(!registration.receiptId || row.status!=='pending')throw new HttpError(409,'Hanya resit yang menunggu semakan boleh disahkan atau ditolak.');
-        await connection.execute('UPDATE registrations SET status=?,content=? WHERE id=?',[input.status,JSON.stringify({...registration,status:input.status,adminNote:input.note,paymentApprovedAt:input.status==='approved'?new Date().toISOString():undefined}),input.id]);
-        await connection.execute('INSERT INTO audit_logs (id,admin_id,action,target) VALUES (?,?,?,?)',[randomUUID(),admin.id,`receipt.${input.status}`,input.id]);
+        await connection.execute({sql:'UPDATE registrations SET status=?,content=? WHERE id=?',args:[input.status,JSON.stringify({...registration,status:input.status,adminNote:input.note,paymentApprovedAt:input.status==='approved'?new Date().toISOString():undefined}),input.id]});
+        await connection.execute({sql:'INSERT INTO audit_logs (id,admin_id,action,target) VALUES (?,?,?,?)',args:[randomUUID(),admin.id,`receipt.${input.status}`,input.id]});
         await connection.commit();
-      } catch(error) {await connection.rollback();throw error;} finally {connection.release();}
+      } catch(error) {if(!connection.closed)await connection.rollback();throw error;} finally {connection.close();}
       return reply({ok:true});
     }
     if(route==='admin/settings' && method==='PUT') {
@@ -160,7 +159,7 @@ async function handle(request:NextRequest,context:Context) {
     }
     if(route==='admin/modules' && method==='PUT') {
       const mod=moduleSchema.parse(await request.json());
-      await db().execute('INSERT INTO modules (id,content) VALUES (?,?) ON DUPLICATE KEY UPDATE content=VALUES(content)',[mod.id,JSON.stringify(mod)]);
+      await db().execute('INSERT INTO modules (id,content) VALUES (?,?) ON CONFLICT(id) DO UPDATE SET content=excluded.content',[mod.id,JSON.stringify(mod)]);
       await audit(admin.id,'module.update',mod.id);return reply({ok:true});
     }
     if(route==='admin/upload' && method==='POST') {

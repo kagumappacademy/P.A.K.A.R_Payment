@@ -3,11 +3,11 @@ import { Children, cloneElement, createContext, isValidElement, useContext, useS
 import { Moon, Sun } from 'lucide-react';
 import { translateText, type Language, type Theme } from '@/lib/i18n';
 type Preferences={theme:Theme;language:Language;setTheme:(value:Theme)=>void;setLanguage:(value:Language)=>void;t:(value:string)=>string};
-const Context=createContext<Preferences>({theme:'light',language:'bm',setTheme:()=>{},setLanguage:()=>{},t:value=>value});
+const Context=createContext<Preferences>({theme:'dark',language:'bm',setTheme:()=>{},setLanguage:()=>{},t:value=>value});
 function savePreference(key:string,value:string){
   document.cookie=`${key}=${value}; Path=/; Max-Age=31536000; SameSite=Lax${location.protocol==='https:'?'; Secure':''}`;
 }
-export function PreferencesProvider({initialTheme='light',initialLanguage='bm',children}:{initialTheme?:Theme;initialLanguage?:Language;children:ReactNode}) {
+export function PreferencesProvider({initialTheme='dark',initialLanguage='bm',children}:{initialTheme?:Theme;initialLanguage?:Language;children:ReactNode}) {
   const [theme,setThemeState]=useState<Theme>(initialTheme),[language,setLanguageState]=useState<Language>(initialLanguage);
   const setTheme=(value:Theme)=>{setThemeState(value);document.documentElement.dataset.theme=value;savePreference('pakar-theme',value);};
   const setLanguage=(value:Language)=>{setLanguageState(value);document.documentElement.lang=value==='en'?'en':'ms';savePreference('pakar-language',value);};

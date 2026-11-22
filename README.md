@@ -1,6 +1,6 @@
 # P.A.K.A.R — Portal Pendaftaran & Pembayaran
 
-Website bertema **Misi Cuti Sekolah Akhir Tahun 2026**, berfokus kepada pelajar sekolah menengah. Mengandungi landing page, dua track, 10 modul, kombo automatik, pendaftaran tiga langkah, DuitNow QR manual, resit persendirian dan portal admin. Dibina menggunakan Next.js App Router, React, TypeScript dan `mysql2`.
+Website bertema **Misi Cuti Sekolah Akhir Tahun 2026**, berfokus kepada pelajar sekolah menengah. Mengandungi landing page, dua track, 10 modul, kombo automatik, pendaftaran tiga langkah, DuitNow QR manual, resit persendirian dan portal admin. Dibina menggunakan Next.js App Router, React, TypeScript dan **Turso/libSQL** melalui `@libsql/client`.
 
 ## Buka localhost yang telah disediakan
 
@@ -13,13 +13,7 @@ Website bertema **Misi Cuti Sekolah Akhir Tahun 2026**, berfokus kepada pelajar 
 .\Start-Local.ps1
 ```
 
-Skrip ini menjalankan database terasing di port **3307** menggunakan binari MariaDB XAMPP (`C:\xampp\mysql`). Data projek disimpan dalam `.local\mysql-data`. MariaDB ialah database yang serasi dengan protokol MySQL; aplikasi dan skema juga menggunakan SQL yang serasi dengan MySQL. Database XAMPP sedia ada pada port 3306 mempunyai jadual sistem rosak ketika persediaan, jadi ia tidak digunakan untuk aplikasi ini. Tiada pembaikan atau pemadaman data projek lain dilakukan.
-
-Hentikan website dengan `Ctrl+C` pada terminal. Database tempatan kekal berjalan untuk kegunaan semula; untuk menghentikannya dengan kemas:
-
-```powershell
-& 'C:\xampp\mysql\bin\mysqladmin.exe' --host=127.0.0.1 --port=3307 --user=root shutdown
-```
+Skrip ini menyediakan skema secara idempoten, kemudian menjalankan website yang bersambung terus ke **Turso Cloud** menggunakan `.env.local`. XAMPP/MySQL tidak diperlukan untuk menjalankan aplikasi. Hentikan website dengan `Ctrl+C` pada terminal. Data MySQL lama dikekalkan sebagai sumber asal selepas migrasi.
 
 ## Tetapan awal yang perlu disemak
 
@@ -33,7 +27,7 @@ Maklumat track, nama modul dan tempoh **5–31 Disember 2026** diambil daripada 
 
 ## Tema dan bahasa
 
-Pelawat baharu bermula dalam **light mode** dan Bahasa Melayu. Switch di header menukar light/dark mode; butang **BM / ENG** menukar bahasa antara muka termasuk pendaftaran, pembayaran, resit dan admin. Pilihan disimpan dalam cookie pada pelayar. Teks lalai program mempunyai terjemahan English; kandungan tersuai yang ditulis admin dikekalkan seperti yang dimasukkan, dan terjemahannya boleh ditambah dalam `data/en.json`.
+Pelawat baharu bermula dalam **dark mode** dan Bahasa Melayu. Switch di header menukar light/dark mode; butang **BM / ENG** menukar bahasa antara muka termasuk pendaftaran, pembayaran, resit dan admin. Pilihan disimpan dalam cookie pada pelayar. Teks lalai program mempunyai terjemahan English; kandungan tersuai yang ditulis admin dikekalkan seperti yang dimasukkan, dan terjemahannya boleh ditambah dalam `data/en.json`.
 
 Latar teknologi menggunakan litar, grid, orbit HUD, partikel dan cahaya mengikut penunjuk. Animasi masuk, hover dan scroll disediakan dengan sokongan `prefers-reduced-motion` untuk mematikan pergerakan apabila tetapan aksesibiliti pelayar memintanya.
 
@@ -65,9 +59,15 @@ npm.cmd run db:setup
 npm.cmd run dev
 ```
 
-Untuk mesin baharu: buat database kosong serta pengguna MySQL yang mempunyai hak pada database itu, salin `.env.example` kepada `.env.local`, kemudian jalankan arahan di atas. Node.js **24 LTS** disyorkan; aplikasi Next.js memerlukan sekurang-kurangnya Node.js 20.9.
+Untuk mesin baharu: salin `.env.example` kepada `.env.local`, isi `TURSO_DATABASE_URL`, `TURSO_AUTH_TOKEN`, `SESSION_SECRET` dan maklumat admin, kemudian jalankan arahan di atas. Node.js **24 LTS** digunakan untuk skrip TypeScript dan pembangunan projek ini.
 
-Jadual: `settings`, `modules`, `admins`, `registrations`, `files`, `file_chunks`, `rate_limits`, `audit_logs`. Resit dan imej yang dimuat naik disimpan dalam database, bukan filesystem sementara Vercel. Kandungan fail dipecah kepada cebisan 256KB supaya serasi dengan had paket MySQL kecil. Backup database merangkumi resit dan poster yang dimuat naik. Tetapkan had storan/backup pada penyedia MySQL mengikut jumlah peserta; storan objek boleh ditambah untuk skala yang lebih besar.
+Untuk pembangunan offline sahaja, gunakan `TURSO_DATABASE_URL=file:.local/pakar.db` dan cipta folder `.local` terlebih dahulu. Fail ini tidak disegerakkan secara automatik dengan cloud. Vercel mesti menggunakan URL Turso remote.
+
+Jadual: `settings`, `modules`, `admins`, `registrations`, `files`, `file_chunks`, `rate_limits`, `audit_logs`. Resit dan imej yang dimuat naik disimpan dalam Turso, bukan filesystem sementara Vercel. Kandungan fail dipecah kepada cebisan 256KB dan disimpan dalam satu transaksi atomik. Semakan bayaran menggunakan transaksi tulis; tarikh database menggunakan UTC ISO 8601. Backup database merangkumi resit dan poster yang dimuat naik.
+
+### Migrasi daripada MySQL
+
+Migrasi sekali sahaja tersedia melalui `node --env-file=.env.local scripts/migrate-mysql-to-turso.mjs`. Isi pemboleh ubah `MYSQL_*` sumber lama serta `TURSO_DATABASE_URL` / `TURSO_AUTH_TOKEN` sasaran dalam `.env.local`. Jalankan pada **database Turso kosong sebelum `db:setup`**. Skrip menolak sasaran berisi, menyimpan backup sulit di `.local`, menyalin semua jadual dalam transaksi, dan membandingkan setiap nilai selepas salinan. Data MySQL tidak diubah. Dependency `mysql2` hanya digunakan oleh alat migrasi ini, bukan runtime website.
 
 Kawalan yang disediakan: kata laluan bcrypt, sesi bertandatangan 8 jam dalam cookie HttpOnly, Secure pada production, semakan asal permintaan, validasi server, pertanyaan berparameter, kadar cubaan berasaskan database, semakan format sebenar fail, resit terhad kepada admin, harga disahkan server, idempotensi pendaftaran dan log tindakan admin. Pelanggan tidak boleh mengesahkan bayaran sendiri. Jangan kongsi `.env.local` atau `.local-admin.txt`.
 
@@ -77,7 +77,7 @@ Kawalan yang disediakan: kata laluan bcrypt, sesi bertandatangan 8 jam dalam coo
 npm.cmd run typecheck
 npm.cmd test
 npm.cmd run build
-# Dengan localhost sedang berjalan dan database tempatan tersedia:
+# Dengan localhost sedang berjalan dan database Turso tersedia:
 node --env-file=.env.local scripts/verify-local.mjs
 ```
 
@@ -85,16 +85,16 @@ Ujian unit meliputi harga, pembundaran, kadar kombo dan validasi. Skrip integras
 
 ## Persediaan Vercel — belum diterbitkan
 
-1. Sediakan **MySQL terurus yang boleh dicapai Vercel melalui rangkaian**. Database localhost komputer anda tidak boleh digunakan terus oleh Vercel. Gunakan pangkalan data produksi berasingan dengan TLS dan pengguna khusus.
-2. Simpan kod dalam repo Git peribadi; `.env.local`, kata laluan dan `.local` jangan dimuat naik. Import repo ke Vercel, framework **Next.js**, Node.js 24, build command `npm run build`. Tiada static export diperlukan.
-3. Tetapkan `MYSQL_HOST`, `MYSQL_PORT`, `MYSQL_USER`, `MYSQL_PASSWORD`, `MYSQL_DATABASE`, `MYSQL_SSL=true`, `SESSION_SECRET` rawak baharu, `ADMIN_EMAIL`, `ADMIN_PASSWORD` kukuh dan `APP_URL=https://domain-anda` sebagai environment variables. Simpan rahsia secara berasingan untuk production dan preview. Untuk migration tempatan guna fail `.env.local` yang disambungkan ke database sasaran, kemudian pulihkan konfigurasi tempatan.
+1. Gunakan **Turso Cloud** yang boleh dicapai melalui `libsql://...` dan token database dengan hak baca/tulis. Asingkan database preview jika ujian tidak patut menyentuh data produksi.
+2. Import repository GitHub ke Vercel, framework **Next.js**, Node.js 24, build command `npm run build`. `.env.local`, token, kata laluan dan `.local` mesti kekal di luar Git. Tiada static export diperlukan.
+3. Tetapkan `TURSO_DATABASE_URL`, `TURSO_AUTH_TOKEN`, `SESSION_SECRET`, `ADMIN_EMAIL`, `ADMIN_PASSWORD` dan `APP_URL=https://domain-anda` dalam Vercel Environment Variables. Kekalkan `SESSION_SECRET` apabila memindahkan pendaftaran sedia ada supaya token capaian resit kekal sah. Jangan gunakan pemboleh ubah awalan `NEXT_PUBLIC_` untuk token database.
 4. Jalankan `npm run db:setup` terhadap database produksi dari persekitaran dipercayai sebelum deployment pertama. Ini menyediakan skema dan akaun admin awal. Tukar `ADMIN_PASSWORD` dalam env sahaja tidak menukar akaun sedia ada; gunakan halaman Akaun admin.
-5. Untuk memindahkan kandungan dan muat naik localhost, eksport/import database aplikasi termasuk `files` serta `file_chunks`. Backup hendaklah disimpan secara sulit kerana mengandungi maklumat peserta. Alternatif: mulakan dengan seed bersih dan isi semula tetapan produksi melalui admin.
+5. Jika localhost dan Vercel menggunakan database Turso yang sama, semua kandungan serta muat naik sudah dikongsi; tiada eksport/import tambahan diperlukan. Backup hendaklah disimpan secara sulit kerana mengandungi maklumat peserta.
 6. Deploy, lengkapkan QR/harga/jadual dan uji pendaftaran percubaan sebelum membuka pendaftaran sebenar. Semak had database dan Vercel. Muat naik dihadkan 3MB supaya permintaan kekal di bawah had payload fungsi.
 
-Rujukan rasmi: [Next.js](https://nextjs.org/docs/app/getting-started/installation), [Deploy Next.js di Vercel](https://vercel.com/docs/frameworks/full-stack/nextjs), [Had payload fungsi](https://vercel.com/docs/errors/function_payload_too_large).
+Rujukan rasmi: [Turso TypeScript SDK](https://tursodatabase.github.io/libsql-client-ts/), [Next.js](https://nextjs.org/docs/app/getting-started/installation), [Deploy Next.js di Vercel](https://vercel.com/docs/frameworks/full-stack/nextjs), [Had payload fungsi](https://vercel.com/docs/errors/function_payload_too_large).
 
-Tiada deployment atau akaun cloud dibuat dalam kerja localhost ini.
+Website belum diterbitkan ke Vercel. Sambungan Turso menggunakan database yang dibekalkan pengguna.
 
 ## Kempen cuti sekolah akhir tahun
 
@@ -115,4 +115,4 @@ Skrip hanya mengemas kini ayat kempen, manfaat, FAQ dan penerangan modul sekolah
 - Pautan kumpulan hanya diberikan kepada peserta yang telah menghantar bukti dan berstatus **Menunggu semakan** atau **Disahkan**. Landing page serta API konfigurasi awam tidak mendedahkan pautan. Sekiranya pautan masih kosong, peserta diminta menyemak semula selepas admin menambah pautan.
 - PDF mencerminkan status semasa: **Menunggu semakan**, **Pembayaran disahkan** atau **Perlu tindakan**. Memuat naik imej bank tidak terus mengesahkan pembayaran. Tarikh pengesahan dicatat apabila admin meluluskan resit.
 - PDF dijana di server dengan `pdf-lib` dan fon Noto Sans berlesen SIL OFL (lesen di `public/fonts/LICENSE-Noto.txt`). Fon dibundel untuk Vercel, tanpa bergantung pada Python atau fon komputer pengguna. Muat turun menggunakan permintaan POST dengan token peserta atau sesi admin, dan respons tidak dicache.
-- Tiada perubahan skema MySQL diperlukan; tetapan dan metadata resit disimpan dalam medan JSON sedia ada. Rekod lama masih boleh dibaca. Medan mod pembelajaran serta rujukan transaksi lama tidak lagi dikumpulkan dalam borang atau dimasukkan dalam eksport CSV baharu.
+- Tetapan dan metadata resit disimpan sebagai JSON dalam Turso. Rekod lama masih boleh dibaca. Medan mod pembelajaran serta rujukan transaksi lama tidak lagi dikumpulkan dalam borang atau dimasukkan dalam eksport CSV baharu.

@@ -1,23 +1,20 @@
-import mysql, { type RowDataPacket } from 'mysql2/promise';
+import type { Client, InValue, Row } from '@libsql/client';
+import { createDatabaseClient } from './turso';
 import type { Settings, Module, Registration } from './types';
-const globalDb = globalThis as unknown as { pakarUtcPool?: mysql.Pool };
+const globalDb = globalThis as unknown as { pakarTurso?: {url:string;client:Client} };
 export function db() {
-  if (!process.env.MYSQL_DATABASE) throw new Error('MySQL belum dikonfigurasi. Jalankan npm run db:setup.');
-  if(globalDb.pakarUtcPool)return globalDb.pakarUtcPool;
-  const pool=mysql.createPool({
-    host: process.env.MYSQL_HOST || '127.0.0.1', port: Number(process.env.MYSQL_PORT || 3306),
-    user: process.env.MYSQL_USER, password: process.env.MYSQL_PASSWORD,
-    database: process.env.MYSQL_DATABASE, connectionLimit: 5, waitForConnections: true,
-    charset: 'utf8mb4', timezone: 'Z', decimalNumbers: true,
-    ssl: process.env.MYSQL_SSL === 'true' ? { rejectUnauthorized: true } : undefined
-  });
-  pool.pool.on('connection',(connection:import('mysql2').PoolConnection)=>{
-    connection.query("SET time_zone = '+00:00'");
-  });
-  return globalDb.pakarUtcPool=pool;
+  const url=process.env.TURSO_DATABASE_URL||'';
+  if(globalDb.pakarTurso?.url===url&&!globalDb.pakarTurso.client.closed)return globalDb.pakarTurso.client;
+  globalDb.pakarTurso?.client.close();
+  const client=createDatabaseClient();globalDb.pakarTurso={url,client};return client;
 }
-export async function rows(sql: string, values: (string | number | boolean | null | Buffer)[] = []): Promise<RowDataPacket[]> {
-  const [result] = await db().execute<RowDataPacket[]>(sql, values); return result;
+interface DatabaseRow {
+  id:string;content:string;reference:string;status:string;email:string;access_hash:string;
+  created_at:string;updated_at:string;password_hash:string;is_private:number;hits:number;
+  name:string;mime:string;data:ArrayBuffer;
+}
+export async function rows(sql: string, values: InValue[] = []): Promise<DatabaseRow[]> {
+  const result = await db().execute(sql, values); return result.rows as unknown as DatabaseRow[];
 }
 export async function getConfiguration(includeInactive = false, includePrivate = false) {
   const [s, mods] = await Promise.all([rows('SELECT content FROM settings WHERE id=1'), rows('SELECT content FROM modules')]);
@@ -27,7 +24,7 @@ export async function getConfiguration(includeInactive = false, includePrivate =
   const modules = mods.map(r => {const m=JSON.parse(r.content) as Module;return {...m,cover:m.cover||m.poster};}).filter(m => includeInactive || m.active).sort((a,b) => a.sortOrder-b.sortOrder);
   return { settings, modules };
 }
-export function parseRegistration(row: RowDataPacket): Registration {
-  return { ...JSON.parse(row.content), id: row.id, reference: row.reference, status: row.status,
-    createdAt: new Date(row.created_at).toISOString(), updatedAt: new Date(row.updated_at).toISOString() };
+export function parseRegistration(row: Row|DatabaseRow): Registration {
+  return { ...JSON.parse(String(row.content)), id:String(row.id), reference:String(row.reference), status:String(row.status),
+    createdAt: new Date(String(row.created_at)).toISOString(), updatedAt: new Date(String(row.updated_at)).toISOString() };
 }

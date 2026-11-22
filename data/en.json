@@ -223,7 +223,7 @@
   "Semak pendaftaran lain": "Check another registration",
   "Permintaan gagal. Sila cuba semula.": "The request failed. Please try again.",
   "Sambungan terganggu.": "Connection interrupted.",
-  "Pastikan MySQL sedang berjalan dan konfigurasi database telah disediakan.": "Please make sure MySQL is running and the database is configured.",
+  "Semak sambungan internet dan konfigurasi database Turso.": "Check your internet connection and Turso database configuration.",
   "Cuba semula": "Try again",
   "MISI TIDAK DITEMUI": "MISSION NOT FOUND",
   "Halaman ini tiada.": "This page could not be found.",
