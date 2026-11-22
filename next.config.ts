@@ -2,6 +2,7 @@ import type { NextConfig } from 'next';
 const config: NextConfig = {
   poweredByHeader: false,
   devIndicators: false,
+  outputFileTracingIncludes: { '/api/**': ['./public/fonts/*.ttf'] },
   async headers() {
     return [{ source: '/(.*)', headers: [
       { key: 'X-Content-Type-Options', value: 'nosniff' },

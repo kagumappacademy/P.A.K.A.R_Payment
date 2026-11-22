@@ -33,10 +33,11 @@ Maklumat track, nama modul dan tempoh **5–31 Disember 2026** diambil daripada 
 
 ## Aliran peserta
 
-1. Pilih track dari landing page; isi nama, e-mel, telefon, institusi, umur dan mod pembelajaran. Peserta bawah 18 tahun perlu maklumat penjaga.
+1. Pilih track dari landing page; isi nama, e-mel, telefon, institusi dan umur. Peserta bawah 18 tahun perlu maklumat penjaga.
 2. Pilih satu atau lebih modul. Jumlah dan kombo dikira serta disahkan semula di server. Berikan persetujuan penggunaan maklumat.
-3. Pendaftaran disimpan dengan nombor rawak unik. Imbas QR rasmi melalui aplikasi bank; jumlah yang perlu dibayar dipaparkan. Masukkan rujukan transaksi dan muat naik resit PNG/JPG/WEBP/PDF, maksimum 3MB.
-4. Semak status menggunakan nombor pendaftaran dan e-mel melalui `/semak`. Jika resit ditolak, nota admin dipaparkan dan peserta boleh memuat naik resit baharu.
+3. Pendaftaran disimpan dengan nombor rawak unik. Imbas QR rasmi melalui aplikasi bank; jumlah yang perlu dibayar dipaparkan. Muat naik resit PNG/JPG/WEBP/PDF, maksimum 3MB. Peserta tidak perlu memasukkan nombor rujukan transaksi.
+4. Selepas bukti pembayaran dihantar, resit pendaftaran bernombor dijana secara automatik. Peserta boleh melihat atau memuat turun PDF, kemudian menekan butang menyertai kumpulan WhatsApp track mereka jika admin telah menyediakan pautan. Status resit kekal **Menunggu semakan** sehingga admin mengesahkan pembayaran.
+5. Semak status menggunakan nombor pendaftaran dan e-mel melalui `/semak`. Jika resit ditolak, nota admin dipaparkan dan peserta boleh memuat naik resit baharu.
 
 Pembayaran **disemak secara manual** oleh admin. Tiada transaksi bank, debit automatik atau pengesahan terus dengan DuitNow dilakukan oleh aplikasi.
 
@@ -46,7 +47,7 @@ Pembayaran **disemak secara manual** oleh admin. Tiada transaksi bank, debit aut
 - Carian, penapisan status, butiran penuh peserta dan penjaga, paparan resit, pengesahan/penolakan dengan nota, eksport CSV.
 - Tambah / edit modul, harga, warna, poster, jadual, hasil pembelajaran dan status aktif.
 - Edit landing page, maklumat program, track, FAQ, notis privasi, imej utama serta poster rasmi. Editor JSON penuh turut tersedia untuk manfaat dan semua medan kandungan.
-- Edit DuitNow QR, nama penerima dan kadar kombo; tukar kata laluan admin.
+- Edit DuitNow QR, nama penerima, kadar kombo dan pautan jemputan kumpulan WhatsApp berasingan untuk Sekolah Menengah / Universiti; tukar kata laluan admin.
 
 ## Database & fail
 
@@ -100,3 +101,12 @@ node --env-file=.env.local scripts/apply-school-holiday-campaign.mjs
 ```
 
 Skrip hanya mengemas kini ayat kempen, manfaat, FAQ dan penerangan modul sekolah. Harga, diskaun, tetapan pembayaran, jadual, poster muat naik dan pendaftaran sedia ada dikekalkan. Salinan sebelum perubahan disimpan di `.local/` yang diabaikan Git. Jangan menjalankan skrip ini semula selepas menyunting ayat kempen melalui admin kecuali anda mahu menggunakan semula ayat seed.
+
+## Resit pendaftaran PDF & kumpulan WhatsApp
+
+- Tetapkan pautan di **Admin → Tetapan pembayaran → Kumpulan WhatsApp peserta**. Gunakan URL jemputan rasmi `https://chat.whatsapp.com/...` bagi setiap track. Medan ini berbeza daripada nombor WhatsApp penganjur untuk dihubungi.
+- Selepas bukti pembayaran dimuat naik, peserta memperoleh nombor resit `RCT-...`, paparan resit dan muat turun PDF. Nombor serta tarikh pengeluaran dikekalkan apabila bukti dihantar semula. Nama penerima dan maklumat penganjur direkodkan pada pengeluaran pertama; jumlah dan harga menggunakan pendaftaran asal.
+- Pautan kumpulan hanya diberikan kepada peserta yang telah menghantar bukti dan berstatus **Menunggu semakan** atau **Disahkan**. Landing page serta API konfigurasi awam tidak mendedahkan pautan. Sekiranya pautan masih kosong, peserta diminta menyemak semula selepas admin menambah pautan.
+- PDF mencerminkan status semasa: **Menunggu semakan**, **Pembayaran disahkan** atau **Perlu tindakan**. Memuat naik imej bank tidak terus mengesahkan pembayaran. Tarikh pengesahan dicatat apabila admin meluluskan resit.
+- PDF dijana di server dengan `pdf-lib` dan fon Noto Sans berlesen SIL OFL (lesen di `public/fonts/LICENSE-Noto.txt`). Fon dibundel untuk Vercel, tanpa bergantung pada Python atau fon komputer pengguna. Muat turun menggunakan permintaan POST dengan token peserta atau sesi admin, dan respons tidak dicache.
+- Tiada perubahan skema MySQL diperlukan; tetapan dan metadata resit disimpan dalam medan JSON sedia ada. Rekod lama masih boleh dibaca. Medan mod pembelajaran serta rujukan transaksi lama tidak lagi dikumpulkan dalam borang atau dimasukkan dalam eksport CSV baharu.

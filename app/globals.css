@@ -52,3 +52,51 @@
 .school-holiday-theme .final-cta>.eyebrow{color:var(--holiday)}
 @media(max-width:850px){.holiday-note-inner{gap:15px}.holiday-note strong{font-size:16px}.holiday-note p>span{font-size:12px}.holiday-note .text-link{font-size:12px}.school-holiday-theme .floating-chip div>span{font-size:11px}.school-holiday-theme .chip-bottom{padding-inline:15px}}
 @media(max-width:680px){.holiday-note-inner{align-items:flex-start;flex-wrap:wrap;padding-block:24px;gap:13px}.holiday-note strong{font-size:17px;line-height:1.45}.holiday-note p>span{font-size:12px;line-height:1.9;margin-top:7px}.holiday-note-icon{width:39px;height:39px;border-radius:10px}.holiday-note p{flex:1;min-width:220px}.holiday-note .text-link{font-size:13px;margin-left:52px}.school-holiday-theme .hero-copy>.eyebrow{font-size:9px!important;letter-spacing:.11em}.school-holiday-theme .hero-description{max-width:430px}.school-holiday-theme .hero-actions .button{padding-inline:15px;font-size:12px}.school-holiday-theme .hero-art{margin-top:16px}}
+
+/* Generated registration receipt and participant WhatsApp step. */
+.receipt-after-upload-note{font-size:12px!important;line-height:1.8;margin-top:16px;color:#8095af!important}
+.generated-receipt{border-top:1px solid var(--border);padding-top:26px;text-align:left}
+.generated-receipt-heading{display:flex;align-items:flex-start;gap:14px;margin-bottom:23px}
+.generated-receipt-heading h3{font-family:var(--display);font-size:23px;font-weight:500;margin-bottom:8px}
+.generated-receipt-heading p{font-size:12px;line-height:1.9;overflow-wrap:anywhere}
+.generated-receipt-summary{display:grid;grid-template-columns:1fr auto;gap:21px 25px;padding:22px;border:1px solid #ffffff12;background:#0b1422;border-radius:10px}
+.generated-receipt-summary>div{display:flex;flex-direction:column;align-items:flex-start;gap:7px;min-width:0}
+.generated-receipt-summary>div:last-child{grid-column:1/-1}
+.generated-receipt-summary>div>span:first-child{font-size:12px;color:#8196b1}
+.generated-receipt-summary strong{font-size:16px;color:#dfebfb;overflow-wrap:anywhere}
+.generated-receipt-summary>div:nth-child(2)>strong{font-family:var(--display);color:var(--cyan);font-size:24px;line-height:1.2}
+.receipt-status-note{font-size:12px;display:flex;align-items:flex-start;gap:9px;line-height:1.9;margin-top:19px;color:#8ea5bf}
+.receipt-status-note svg{flex-shrink:0;margin-top:4px;color:var(--cyan)}
+.receipt-document-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:23px}
+.receipt-document-actions .button{font-size:13px;min-height:45px}
+.receipt-loading{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted);padding:15px 0}
+.whatsapp-next-step{display:flex;gap:15px;align-items:flex-start;padding:23px;background:#4ade8006;border:1px solid #4ade8025;border-radius:11px;margin-top:28px}
+.whatsapp-step-icon{display:grid;place-items:center;width:44px;height:44px;border-radius:12px;flex-shrink:0;background:#4ade800d;color:#8ee2aa;border:1px solid #4ade8020}
+.whatsapp-next-step h3{font-size:17px;line-height:1.5;margin-bottom:9px;color:#d3eddd}
+.whatsapp-next-step p{font-size:13px;line-height:1.9;color:#8da998}
+.button-whatsapp{background:#87e3a7;color:#092a16;font-size:13px;min-height:46px;margin-top:18px;white-space:normal}
+.button-whatsapp:hover:not(:disabled){background:#a3efbe;box-shadow:0 5px 25px #4ade8015}
+.whatsapp-next-step .whatsapp-pending{font-size:12px;color:#afbdaf;margin-top:13px;border-top:1px solid #4ade8015;padding-top:13px}
+.receipt-paper{background:#fff;color:#18283c;border-radius:10px;overflow:hidden;border:1px solid #dce4ec}
+.receipt-paper>header{background:#0c1628;color:#fff;padding:27px 30px}
+.receipt-paper>header>span{color:#62d9e1;font-family:var(--display);font-size:20px;font-weight:600;letter-spacing:.08em}
+.receipt-paper>header h2{font-size:28px;margin-top:12px;letter-spacing:-.035em;color:#fff}
+.receipt-paper>header p{font-size:12px;color:#a2cad8;margin-top:10px}
+.receipt-paper-body{padding:28px 30px}
+.receipt-paper .status-pending{color:#805914;background:#fff6dc;border-color:#f1dfa6}
+.receipt-paper .status-approved{color:#236140;background:#e9f8ef;border-color:#bee6cd}
+.receipt-paper .status-rejected{color:#9b3545;background:#fff0f3;border-color:#f1c7cf}
+.receipt-paper-note{font-size:12px;color:#65758b;line-height:1.9;margin:15px 0 23px}
+.receipt-paper dl{display:grid;grid-template-columns:1fr 1fr;gap:21px 26px;border-top:1px solid #e5eaf1;border-bottom:1px solid #e5eaf1;padding:24px 0;margin:0 0 24px}
+.receipt-paper dt{font-size:11px;color:#708097;margin-bottom:5px}
+.receipt-paper dd{font-size:13px;line-height:1.8;color:#1b2d45;margin:0;overflow-wrap:anywhere}
+.receipt-paper-modules{display:grid;gap:14px;font-size:13px}
+.receipt-paper-modules>div{display:flex;justify-content:space-between;align-items:flex-start;gap:20px}
+.receipt-paper-modules strong{white-space:nowrap;font-size:13px}
+.receipt-paper-totals{border-top:1px solid #e5eaf1;padding-top:19px;margin-top:24px}
+.receipt-paper-totals>div{display:flex;justify-content:space-between;gap:18px;color:#61748c;font-size:13px;margin-top:12px}
+.receipt-paper-totals>.receipt-paper-total{align-items:center;padding:17px 18px;background:#0c1628;border-radius:7px;color:#fff;font-size:14px;margin-top:20px}
+.receipt-paper-total strong{color:#67dce5;font-family:var(--display);font-size:26px;font-weight:500;white-space:nowrap}
+.receipt-paper footer{border-top:1px solid #e5eaf1;margin-top:26px;padding-top:18px}
+.receipt-paper footer p{font-size:11px;color:#7b8ca2;line-height:1.9}
+@media(max-width:680px){.generated-receipt-heading h3{font-size:22px}.generated-receipt-heading p{font-size:11px}.generated-receipt-heading .panel-icon{width:40px;height:40px}.generated-receipt-summary{padding:19px;gap:20px}.generated-receipt-summary strong{font-size:14px}.generated-receipt-summary>div:nth-child(2)>strong{font-size:23px}.receipt-document-actions{flex-direction:column}.receipt-document-actions .button{width:100%;font-size:14px;min-height:48px}.whatsapp-next-step{padding:19px;flex-direction:column;gap:15px}.whatsapp-next-step h3{font-size:18px}.whatsapp-next-step p{font-size:13px}.button-whatsapp{width:100%;font-size:13px;gap:9px;padding-inline:13px}.receipt-paper>header{padding:23px 20px}.receipt-paper>header h2{font-size:26px}.receipt-paper-body{padding:23px 20px}.receipt-paper dl{grid-template-columns:1fr;gap:18px}.receipt-paper-modules{font-size:12px}.receipt-paper-modules strong{font-size:12px}.receipt-paper-totals>.receipt-paper-total{padding:15px;gap:15px;font-size:13px}.receipt-paper-total strong{font-size:23px}}

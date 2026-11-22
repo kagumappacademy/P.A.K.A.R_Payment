@@ -2,11 +2,18 @@ import { z } from 'zod';
 const text = (max = 200) => z.string().trim().min(1).max(max);
 const optionalText = (max = 200) => z.string().trim().max(max).default('');
 const asset = z.string().max(250).regex(/^$|^\/images\/[a-zA-Z0-9_./-]+$|^\/api\/files\/[a-f0-9-]{36}$/);
+export const whatsappGroupSchema = z.string().trim().max(350).refine(value=>{
+  if(!value)return true;
+  try {
+    const url=new URL(value);
+    return url.protocol==='https:' && url.hostname==='chat.whatsapp.com' && !url.port && !url.username && !url.password && !url.hash && /^\/[a-zA-Z0-9]{10,64}\/?$/.test(url.pathname);
+  }catch{return false;}
+},'Gunakan pautan jemputan kumpulan rasmi https://chat.whatsapp.com/...');
 export const registrationSchema = z.object({
   fullName: text(120), email: z.email().max(190).transform(v=>v.toLowerCase()),
   phone: text(25).regex(/^[+\d\s()-]{8,25}$/), institution: text(200), age: z.number().int().min(12).max(99),
   guardianName: optionalText(120), guardianPhone: optionalText(25),
-  track: z.enum(['menengah','universiti']), learningMode: z.enum(['Online','Fizikal']),
+  track: z.enum(['menengah','universiti']),
   moduleIds: z.array(text(80)).min(1).max(20), consent: z.literal(true),
   idempotencyKey: z.uuid(), expectedTotal: z.number().min(0)
 }).superRefine((d,ctx)=> {
@@ -26,6 +33,7 @@ export const settingsSchema = z.object({
   aboutTitle:text(200),aboutDescription:text(3000),dateLabel:text(100),startDate:z.iso.date(),endDate:z.iso.date(),
   location:text(300),delivery:text(100),organizer:text(200),contactEmail:z.union([z.literal(''),z.email()]),
   whatsapp:z.string().regex(/^$|^\d{8,16}$/),heroImage:asset,eventPoster:asset,registrationOpen:z.boolean(),
+  whatsappGroups:z.object({menengah:whatsappGroupSchema.default(''),universiti:whatsappGroupSchema.default('')}).default({menengah:'',universiti:''}),
   tracks:z.object({menengah:track,universiti:track}),
   comboTwo:z.number().min(0).max(90),comboThree:z.number().min(0).max(90),comboAll:z.number().min(0).max(90),
   paymentName:optionalText(200),bankName:optionalText(100),bankAccount:optionalText(60),paymentQr:asset,

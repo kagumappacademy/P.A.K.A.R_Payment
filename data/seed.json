@@ -77,7 +77,11 @@
         "question": "Bagaimanakah pembayaran disahkan?",
         "answer": "Selepas mendaftar, bayar menggunakan QR DuitNow rasmi dan muat naik resit. Admin akan menyemak pembayaran anda. Gunakan nombor pendaftaran dan e-mel untuk menyemak status; jika resit memerlukan pembetulan, nota admin akan dipaparkan."
       }
-    ]
+    ],
+    "whatsappGroups": {
+      "menengah": "",
+      "universiti": ""
+    }
   },
   "modules": [
     {
