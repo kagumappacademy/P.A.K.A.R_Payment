@@ -1,10 +1,9 @@
 import { SignJWT, jwtVerify } from 'jose';
 import { cookies } from 'next/headers';
+import { sessionSecret } from './session-secret';
 export const SESSION_COOKIE = 'pakar_admin';
 function key() {
-  const secret = process.env.SESSION_SECRET;
-  if (!secret || secret.length < 32) throw new Error('SESSION_SECRET must contain at least 32 characters.');
-  return new TextEncoder().encode(secret);
+  return new TextEncoder().encode(sessionSecret());
 }
 export async function createSession(id: string, email: string) {
   return new SignJWT({ email }).setProtectedHeader({ alg: 'HS256' }).setSubject(id).setIssuer('pakar').setAudience('pakar-admin').setIssuedAt().setExpirationTime('8h').sign(key());

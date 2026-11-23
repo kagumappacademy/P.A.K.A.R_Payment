@@ -1,10 +1,12 @@
 import { createDatabaseClient } from '../lib/turso.ts';
+import { sessionSecret } from '../lib/session-secret.ts';
 import { hash } from 'bcryptjs';
 import { randomUUID } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
-const required = ['TURSO_DATABASE_URL','SESSION_SECRET','ADMIN_EMAIL','ADMIN_PASSWORD'];
+const required = ['TURSO_DATABASE_URL','ADMIN_EMAIL','ADMIN_PASSWORD'];
 for (const key of required) if (!process.env[key]) throw new Error(`Missing ${key}`);
-if (process.env.ADMIN_PASSWORD.length < 12 || process.env.SESSION_SECRET.length < 32) throw new Error('Use an admin password of at least 12 characters and session secret of at least 32.');
+sessionSecret();
+if (process.env.ADMIN_PASSWORD.length < 12) throw new Error('Use an admin password of at least 12 characters.');
 const connection = createDatabaseClient();
 try {
   await connection.executeMultiple(await readFile(new URL('../database/schema.sql', import.meta.url), 'utf8'));

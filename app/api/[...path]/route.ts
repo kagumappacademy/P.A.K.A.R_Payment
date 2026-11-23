@@ -4,6 +4,7 @@ import { createHash, createHmac, randomBytes, randomUUID, timingSafeEqual } from
 import { z, ZodError } from 'zod';
 import { db, getConfiguration, parseRegistration, rows } from '@/lib/db';
 import { createSession, getAdmin, SESSION_COOKIE } from '@/lib/auth';
+import { sessionSecret } from '@/lib/session-secret';
 import { registrationSchema, moduleSchema, settingsSchema } from '@/lib/validation';
 import { calculatePrice } from '@/lib/pricing';
 import { readFile, saveFile } from '@/lib/files';
@@ -14,7 +15,7 @@ export const dynamic = 'force-dynamic';
 type Context = { params: Promise<{ path: string[] }> };
 class HttpError extends Error { constructor(public status:number,message:string) {super(message);} }
 const hash = (s:string) => createHash('sha256').update(s).digest('hex');
-const accessToken = (id:string) => createHmac('sha256', process.env.SESSION_SECRET!).update(`registration:${id}`).digest('hex');
+const accessToken = (id:string) => createHmac('sha256', sessionSecret()).update(`registration:${id}`).digest('hex');
 const reply = (data:unknown,status=200) => NextResponse.json(data,{status,headers:{'Cache-Control':'no-store'}});
 async function rateLimit(request:NextRequest,scope:string,limit:number,windowMs=15*60*1000) {
   const ip=request.headers.get('x-forwarded-for')?.split(',')[0].trim() || 'local';
