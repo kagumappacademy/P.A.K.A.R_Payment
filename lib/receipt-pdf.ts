@@ -24,7 +24,7 @@ function wrap(text:string,font:PDFFont,size:number,width:number) {
 }
 
 export async function createPaymentReceiptPdf(registration:Registration,settings:Settings,language:Language='bm') {
-  const t=(value:string)=>translateText(value,language);
+  const t=(value:string)=>translateText(value,language,settings.interfaceText);
   const doc=await PDFDocument.create();doc.registerFontkit(fontkit);
   const buffers=await (fontFiles??=Promise.all(['NotoSans-Regular.ttf','NotoSans-Bold.ttf'].map(name=>readFile(join(process.cwd(),'public','fonts',name)))));
   const [regular,bold]=await Promise.all(buffers.map(data=>doc.embedFont(data,{subset:true})));

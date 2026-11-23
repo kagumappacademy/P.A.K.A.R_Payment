@@ -20,10 +20,14 @@ export async function getConfiguration(includeInactive = false, includePrivate =
   const [s, mods] = await Promise.all([rows('SELECT content FROM settings WHERE id=1'), rows('SELECT content FROM modules')]);
   if (!s[0]) throw new Error('Jalankan npm run db:setup dahulu.');
   const settings = JSON.parse(s[0].content) as Settings;
-  settings.organizerLogo??='/images/brand/kagum-academy.jpg';
+  settings.organizerLogo??='/images/brand/kagum-academy.png';
   settings.whatsappGroups=includePrivate?{menengah:settings.whatsappGroups?.menengah||'',universiti:settings.whatsappGroups?.universiti||''}:{menengah:'',universiti:''};
   const modules = mods.map(r => {const m=JSON.parse(r.content) as Module;return {...m,cover:m.cover||m.poster};}).filter(m => includeInactive || m.active).sort((a,b) => a.sortOrder-b.sortOrder);
   return { settings, modules };
+}
+export async function getInterfaceText():Promise<NonNullable<Settings['interfaceText']>> {
+  try {const result=await rows('SELECT content FROM settings WHERE id=1');return JSON.parse(result[0]?.content||'{}').interfaceText||{};}
+  catch {return {};}
 }
 export function parseRegistration(row: Row|DatabaseRow): Registration {
   return { ...JSON.parse(String(row.content)), id:String(row.id), reference:String(row.reference), status:String(row.status),

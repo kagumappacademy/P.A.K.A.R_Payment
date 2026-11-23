@@ -1,17 +1,20 @@
 'use client';
-import { Children, cloneElement, createContext, isValidElement, useContext, useState, type ReactNode } from 'react';
+import { Children, cloneElement, createContext, isValidElement, useContext, useState, useEffect, type ReactNode } from 'react';
 import { Moon, Sun } from 'lucide-react';
-import { translateText, type Language, type Theme } from '@/lib/i18n';
-type Preferences={theme:Theme;language:Language;setTheme:(value:Theme)=>void;setLanguage:(value:Language)=>void;t:(value:string)=>string};
-const Context=createContext<Preferences>({theme:'dark',language:'bm',setTheme:()=>{},setLanguage:()=>{},t:value=>value});
+import { translateText, type InterfaceText, type Language, type Theme } from '@/lib/i18n';
+type Preferences={theme:Theme;language:Language;setTheme:(value:Theme)=>void;setLanguage:(value:Language)=>void;setInterfaceText:(value:InterfaceText)=>void;t:(value:string)=>string};
+const Context=createContext<Preferences>({theme:'dark',language:'bm',setTheme:()=>{},setLanguage:()=>{},setInterfaceText:()=>{},t:value=>value});
+const EMPTY_TEXT:InterfaceText={};
 function savePreference(key:string,value:string){
   document.cookie=`${key}=${value}; Path=/; Max-Age=31536000; SameSite=Lax${location.protocol==='https:'?'; Secure':''}`;
 }
-export function PreferencesProvider({initialTheme='dark',initialLanguage='bm',children}:{initialTheme?:Theme;initialLanguage?:Language;children:ReactNode}) {
+export function PreferencesProvider({initialTheme='dark',initialLanguage='bm',initialInterfaceText=EMPTY_TEXT,children}:{initialTheme?:Theme;initialLanguage?:Language;initialInterfaceText?:InterfaceText;children:ReactNode}) {
   const [theme,setThemeState]=useState<Theme>(initialTheme),[language,setLanguageState]=useState<Language>(initialLanguage);
+  const [interfaceText,setInterfaceText]=useState(initialInterfaceText);
+  useEffect(()=>setInterfaceText(initialInterfaceText),[initialInterfaceText]);
   const setTheme=(value:Theme)=>{setThemeState(value);document.documentElement.dataset.theme=value;savePreference('pakar-theme',value);};
   const setLanguage=(value:Language)=>{setLanguageState(value);document.documentElement.lang=value==='en'?'en':'ms';savePreference('pakar-language',value);};
-  return <Context.Provider value={{theme,language,setTheme,setLanguage,t:value=>translateText(value,language)}}><Localized>{children}</Localized></Context.Provider>;
+  return <Context.Provider value={{theme,language,setTheme,setLanguage,setInterfaceText,t:value=>translateText(value,language,interfaceText)}}><Localized>{children}</Localized></Context.Provider>;
 }
 export function usePreferences(){return useContext(Context);}
 
@@ -39,6 +42,6 @@ export function PreferenceControls(){
     <button className="theme-switch" type="button" role="switch" aria-checked={theme==='dark'} aria-label={t('Mod gelap')} title={t(theme==='dark'?'Tukar ke mod cerah':'Tukar ke mod gelap')} onClick={()=>setTheme(theme==='dark'?'light':'dark')}>
       {theme==='dark'?<Moon size={17}/>:<Sun size={17}/>}<span className="theme-switch-label">{t(theme==='dark'?'Gelap':'Cerah')}</span><span className="theme-switch-track"><span/></span>
     </button>
-    <div className="language-switch" role="group" aria-label={t('Bahasa')}><button type="button" lang="ms" aria-pressed={language==='bm'} onClick={()=>setLanguage('bm')} title="Bahasa Melayu">BM</button><button type="button" lang="en" aria-pressed={language==='en'} onClick={()=>setLanguage('en')} title="English">ENG</button></div>
+    <div className="language-switch" role="group" aria-label={t('Bahasa')}><button type="button" lang="ms" aria-pressed={language==='bm'} onClick={()=>setLanguage('bm')} title={t('Bahasa Melayu')}>{t('BM')}</button><button type="button" lang="en" aria-pressed={language==='en'} onClick={()=>setLanguage('en')} title={t('English')}>{t('ENG')}</button></div>
   </div>;
 }

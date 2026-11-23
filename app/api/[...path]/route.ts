@@ -5,7 +5,7 @@ import { z, ZodError } from 'zod';
 import { db, getConfiguration, parseRegistration, rows } from '@/lib/db';
 import { createSession, getAdmin, SESSION_COOKIE } from '@/lib/auth';
 import { sessionSecret } from '@/lib/session-secret';
-import { registrationSchema, moduleSchema, settingsSchema } from '@/lib/validation';
+import { registrationSchema, moduleSchema, settingsSchema, interfaceTextSchema } from '@/lib/validation';
 import { calculatePrice } from '@/lib/pricing';
 import { readFile, saveFile } from '@/lib/files';
 import { participantGroup, receiptSnapshot } from '@/lib/receipts';
@@ -150,6 +150,14 @@ async function handle(request:NextRequest,context:Context) {
         await connection.execute({sql:'INSERT INTO audit_logs (id,admin_id,action,target) VALUES (?,?,?,?)',args:[randomUUID(),admin.id,`receipt.${input.status}`,input.id]});
         await connection.commit();
       } catch(error) {if(!connection.closed)await connection.rollback();throw error;} finally {connection.close();}
+      return reply({ok:true});
+    }
+    if(route==='admin/interface-text' && method==='PUT') {
+      const copy=interfaceTextSchema.parse(await request.json());
+      await db().batch([
+        {sql:"UPDATE settings SET content=json_set(content,'$.interfaceText',json(?)) WHERE id=1",args:[JSON.stringify(copy)]},
+        {sql:'INSERT INTO audit_logs (id,admin_id,action,target) VALUES (?,?,?,?)',args:[randomUUID(),admin.id,'interface-text.update','1']}
+      ],'write');
       return reply({ok:true});
     }
     if(route==='admin/settings' && method==='PUT') {

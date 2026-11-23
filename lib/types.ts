@@ -5,6 +5,7 @@ export type Module = {
   schedule: string; active: boolean; sortOrder: number; outcomes: string[];
 };
 export type Settings = {
+  interfaceText?:import('./i18n').InterfaceText;
   eventName: string; eyebrow: string; heroTitle: string; heroHighlight: string;
   heroDescription: string; aboutTitle: string; aboutDescription: string;
   dateLabel: string; startDate: string; endDate: string; location: string;

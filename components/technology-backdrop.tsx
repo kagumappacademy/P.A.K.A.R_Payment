@@ -5,7 +5,7 @@ import { usePreferences } from './preferences';
 
 export function TechnologyBackdrop(){
   const background=useRef<HTMLDivElement>(null),pathname=usePathname();
-  const {language}=usePreferences();
+  const {language,t}=usePreferences();
   useEffect(()=>{
     const media=window.matchMedia('(prefers-reduced-motion: reduce)');let frame=0;
     const move=(event:PointerEvent)=>{
@@ -31,6 +31,6 @@ export function TechnologyBackdrop(){
     <div className="technology-pointer-glow"/>
     <div className="technology-orbit technology-orbit-one"><span/><i/></div><div className="technology-orbit technology-orbit-two"><span/></div>
     <div className="technology-particles">{Array.from({length:14},(_,index)=><span key={index} style={{'--particle-index':index,'--particle-left':`${(index*37+11)%100}%`,'--particle-top':`${(index*23+13)%100}%`} as CSSProperties}/>)}</div>
-    <span className="technology-hud-label">P.A.K.A.R / DIGITAL MISSION</span>
+    <span className="technology-hud-label">{t('P.A.K.A.R / DIGITAL MISSION')}</span>
   </div>;
 }

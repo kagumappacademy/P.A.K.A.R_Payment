@@ -28,10 +28,12 @@ export const moduleSchema = z.object({
   sortOrder: z.number().int().min(0).max(1000), outcomes: z.array(text(250)).min(1).max(10)
 });
 const track = z.object({name:text(100),audience:text(150),description:text(1000)});
+export const interfaceTextSchema=z.record(z.string().trim().min(1).max(6000),z.object({bm:text(6000).optional(),en:text(6000).optional()}).strict()).refine(value=>Object.keys(value).length<=2500,'Terlalu banyak teks tersuai.');
 export const settingsSchema = z.object({
+  interfaceText:interfaceTextSchema.default({}),
   eventName:text(100),eyebrow:text(200),heroTitle:text(200),heroHighlight:text(200),heroDescription:text(2000),
   aboutTitle:text(200),aboutDescription:text(3000),dateLabel:text(100),startDate:z.iso.date(),endDate:z.iso.date(),
-  location:text(300),delivery:text(100),organizer:text(200),organizerLogo:asset.default('/images/brand/kagum-academy.jpg'),contactEmail:z.union([z.literal(''),z.email()]),
+  location:text(300),delivery:text(100),organizer:text(200),organizerLogo:asset.default('/images/brand/kagum-academy.png'),contactEmail:z.union([z.literal(''),z.email()]),
   whatsapp:z.string().regex(/^$|^\d{8,16}$/),heroImage:asset,eventPoster:asset,registrationOpen:z.boolean(),
   whatsappGroups:z.object({menengah:whatsappGroupSchema.default(''),universiti:whatsappGroupSchema.default('')}).default({menengah:'',universiti:''}),
   tracks:z.object({menengah:track,universiti:track}),

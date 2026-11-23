@@ -35,7 +35,11 @@ Latar teknologi menggunakan litar, grid, orbit HUD, partikel dan cahaya mengikut
 
 Muzik latar menggunakan MP3 yang dibekalkan pengguna di `public/audio/pakar-technology-theme.mp3` (MUSIC4VIDEO). Pemain di penjuru bawah kanan hanya mempunyai satu butang mute/unmute. Volume awal ialah 20%; pilihan mute dan volume yang pernah disimpan dikekalkan pada pelayar. Website cuba memainkan muzik secara automatik apabila dibuka. Jika pelayar menyekat autoplay bersuara, muzik bermula pada interaksi pertama di halaman atau apabila butang unmute ditekan. Lagu dimainkan sampai habis kemudian berulang dari awal tanpa henti, termasuk semasa navigasi antara halaman. Mute hanya menyenyapkan audio tanpa menghentikan lagu.
 
-Penganjur ialah **Kagum Academy**, dengan logo asal pengguna di `public/images/brand/kagum-academy.jpg`. Nama dan logo penganjur boleh diubah melalui **Admin → Kandungan**; logo dipaparkan pada maklumat program dan footer.
+Penganjur ialah **Kagum Academy**, dengan logo PNG lutsinar di `public/images/brand/kagum-academy.png`. Versi lutsinar disediakan dengan built-in imagegen, arahan: “Buang latar putih di luar logo sahaja; kekalkan bentuk, warna, tulisan KAGUM/ACADEMY dan bahagian putih dalam perisai.” Nama dan logo penganjur boleh diubah melalui **Admin → Kandungan**; logo dipaparkan pada maklumat program dan footer.
+
+**Admin → Ayat & butang** menyediakan carian dan penapis bahagian untuk teks halaman utama, navigasi, borang, pembayaran, resit PDF serta admin. Edit BM dan English secara berasingan, kemudian tekan **Simpan teks & butang**. Kosongkan medan atau tekan **Guna teks asal** untuk pulih kepada teks lalai. Teks yang sama digunakan di beberapa tempat berubah bersama; editor hanya menukar label, bukan tindakan atau pautan butang. Teks tambahan boleh dimasukkan menggunakan teks asal yang tepat. Data peserta, harga dan status pembayaran kekal diurus melalui fungsi asal. Teks disimpan dalam Turso dan perubahan direkod dalam audit log.
+
+Katalog sumber dijana daripada komponen dan kamus bahasa dengan `node scripts/generate-text-catalog.mjs`. Jalankan semula selepas menambah ayat atau butang dalam kod. Kandungan program dan modul semasa turut dimasukkan secara automatik dalam editor.
 
 ## Aliran peserta
 
