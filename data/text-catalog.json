@@ -338,6 +338,12 @@
     ]
   },
   {
+    "key": "Bersama menjayakan misi kemahiran AI dan digital remaja.",
+    "groups": [
+      "general"
+    ]
+  },
+  {
     "key": "Bilakah program dan sesi setiap modul berlangsung?",
     "groups": [
       "general"
@@ -417,6 +423,12 @@
   },
   {
     "key": "Buang imej",
+    "groups": [
+      "admin"
+    ]
+  },
+  {
+    "key": "Buang kolaborator",
     "groups": [
       "admin"
     ]
@@ -681,6 +693,12 @@
   },
   {
     "key": "Dark mode",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "DENGAN KERJASAMA",
     "groups": [
       "system"
     ]
@@ -1727,6 +1745,18 @@
     ]
   },
   {
+    "key": "Logo kolaborator",
+    "groups": [
+      "admin"
+    ]
+  },
+  {
+    "key": "Logo lutsinar dan nama rakan yang dipaparkan pada halaman utama.",
+    "groups": [
+      "admin"
+    ]
+  },
+  {
     "key": "Logo P.A.K.A.R — Program Asas Kemahiran AI Remaja",
     "groups": [
       "navigation"
@@ -2150,6 +2180,12 @@
     ]
   },
   {
+    "key": "Naik",
+    "groups": [
+      "admin"
+    ]
+  },
+  {
     "key": "Naik taraf kemahiran untuk dunia sebenar. Dari penyelidikan akademik hingga portfolio profesional anda.",
     "groups": [
       "general"
@@ -2165,6 +2201,12 @@
     "key": "Nama ibu / bapa / penjaga",
     "groups": [
       "registration"
+    ]
+  },
+  {
+    "key": "Nama kolaborator",
+    "groups": [
+      "admin"
     ]
   },
   {
@@ -2386,6 +2428,12 @@
     ]
   },
   {
+    "key": "Paparkan kolaborator",
+    "groups": [
+      "admin"
+    ]
+  },
+  {
     "key": "Pastikan nama penerima, tarikh dan jumlah pembayaran jelas kelihatan.",
     "groups": [
       "payment"
@@ -2598,6 +2646,12 @@
   },
   {
     "key": "Penerangan",
+    "groups": [
+      "admin"
+    ]
+  },
+  {
+    "key": "Penerangan kolaborator",
     "groups": [
       "admin"
     ]
@@ -2891,6 +2945,12 @@
     ]
   },
   {
+    "key": "PNG lutsinar disyorkan. Susunan logo mengikut senarai ini. Tekan Simpan kandungan selepas menyunting.",
+    "groups": [
+      "admin"
+    ]
+  },
+  {
     "key": "PNG, JPG, WEBP atau PDF · Maksimum 3MB",
     "groups": [
       "payment"
@@ -3049,6 +3109,24 @@
   },
   {
     "key": "Raikan pengalaman belajar dan kemahiran baharu sepanjang misi cuti sekolah anda.",
+    "groups": [
+      "general"
+    ]
+  },
+  {
+    "key": "Rakan baharu",
+    "groups": [
+      "admin"
+    ]
+  },
+  {
+    "key": "Rakan kolaborasi",
+    "groups": [
+      "admin"
+    ]
+  },
+  {
+    "key": "Rakan kolaborasi P.A.K.A.R",
     "groups": [
       "general"
     ]
@@ -3802,6 +3880,12 @@
     ]
   },
   {
+    "key": "Tajuk bahagian kolaborator",
+    "groups": [
+      "admin"
+    ]
+  },
+  {
     "key": "Tajuk pengenalan",
     "groups": [
       "admin"
@@ -3823,6 +3907,12 @@
     "key": "Tambah kemahiran digital semasa cuti sekolah. Belajar menyediakan dokumen, mengenali hamparan elektronik dan bekerjasama dalam talian menggunakan alat harian.",
     "groups": [
       "general"
+    ]
+  },
+  {
+    "key": "Tambah kolaborator",
+    "groups": [
+      "admin"
     ]
   },
   {
@@ -4211,6 +4301,12 @@
     "key": "Tunjukkan potensi sebenar anda.",
     "groups": [
       "general"
+    ]
+  },
+  {
+    "key": "Turun",
+    "groups": [
+      "admin"
     ]
   },
   {

@@ -169,10 +169,10 @@ async function handle(request:NextRequest,context:Context) {
     }
     if(route==='admin/settings' && method==='PUT') {
       const input=await request.json(),settings=settingsSchema.parse(input);
-      if(!Object.hasOwn(input,'visualDesign')||!Object.hasOwn(input,'interfaceText')){
+      const preserved=['visualDesign','interfaceText','collaborators','collaboratorTitle','collaboratorDescription'];
+      if(preserved.some(key=>!Object.hasOwn(input,key))){
         const current=JSON.parse((await rows('SELECT content FROM settings WHERE id=1'))[0].content);
-        if(!Object.hasOwn(input,'visualDesign'))settings.visualDesign=current.visualDesign;
-        if(!Object.hasOwn(input,'interfaceText'))settings.interfaceText=current.interfaceText||{};
+        for(const key of preserved)if(!Object.hasOwn(input,key)&&Object.hasOwn(current,key))Object.assign(settings,{[key]:current[key]});
       }
       if(settings.paymentQr && !settings.paymentName)throw new HttpError(400,'Nama penerima diperlukan bersama QR pembayaran.');
       await db().execute('UPDATE settings SET content=? WHERE id=1',[JSON.stringify(settings)]);

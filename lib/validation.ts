@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import {validDesignSelector,designSections} from './visual-design.ts';
+import {defaultCollaborators,defaultCollaboratorTitle,defaultCollaboratorDescription} from './collaborators.ts';
 const text = (max = 200) => z.string().trim().min(1).max(max);
 const optionalText = (max = 200) => z.string().trim().max(max).default('');
 const asset = z.string().max(250).regex(/^$|^\/images\/[a-zA-Z0-9_./-]+$|^\/api\/files\/[a-f0-9-]{36}$/);
@@ -33,8 +34,11 @@ export const interfaceTextSchema=z.record(z.string().trim().min(1).max(6000),z.o
 const color=z.string().regex(/^#[a-fA-F0-9]{6}$/),number=(min:number,max:number)=>z.number().min(min).max(max).optional();
 export const elementStyleSchema=z.object({color:color.optional(),backgroundColor:color.optional(),borderColor:color.optional(),fontSize:number(8,140),fontWeight:z.number().int().min(100).max(900).optional(),lineHeight:number(.8,3),letterSpacing:number(-5,20),textAlign:z.enum(['left','center','right']).optional(),borderRadius:number(0,120),borderWidth:number(0,12),padding:number(0,160),marginTop:number(-120,240),marginBottom:number(-120,240),gap:number(0,120),widthPercent:number(10,100),offsetX:number(-320,320),offsetY:number(-320,320),columns:z.number().int().min(1).max(4).optional(),layout:z.enum(['original','row','column','row-reverse']).optional(),alignItems:z.enum(['start','center','end','stretch']).optional(),shadow:z.enum(['none','soft','glow']).optional(),hidden:z.boolean().optional(),inlineBlock:z.boolean().optional()}).strict();
 const palette=z.object({accent:color.optional(),background:color.optional(),surface:color.optional(),text:color.optional(),muted:color.optional()}).strict();
-export const visualDesignSchema=z.object({version:z.literal(1),elements:z.record(z.string().refine(validDesignSelector,'Elemen tidak sah.'),z.object({desktop:elementStyleSchema.optional(),mobile:elementStyleSchema.optional()}).strict()).refine(value=>Object.keys(value).length<=500),sectionOrder:z.array(z.string().refine(id=>designSections.some(s=>s.id===id))).max(8).refine(ids=>new Set(ids).size===ids.length),palette:z.object({dark:palette.optional(),light:palette.optional()}).strict().optional(),font:z.enum(['manrope','space','system']).optional()}).strict();
+export const visualDesignSchema=z.object({version:z.literal(1),elements:z.record(z.string().refine(validDesignSelector,'Elemen tidak sah.'),z.object({desktop:elementStyleSchema.optional(),mobile:elementStyleSchema.optional()}).strict()).refine(value=>Object.keys(value).length<=500),sectionOrder:z.array(z.string().refine(id=>designSections.some(s=>s.id===id))).max(designSections.length).refine(ids=>new Set(ids).size===ids.length),palette:z.object({dark:palette.optional(),light:palette.optional()}).strict().optional(),font:z.enum(['manrope','space','system']).optional()}).strict();
+export const collaboratorSchema=z.object({id:text(80).regex(/^[a-z0-9-]+$/),name:text(150),logo:asset,active:z.boolean()});
 export const settingsSchema = z.object({
+  collaborators:z.array(collaboratorSchema).max(16).refine(items=>new Set(items.map(item=>item.id)).size===items.length,'ID kolaborator mesti unik.').default(defaultCollaborators),
+  collaboratorTitle:text(200).default(defaultCollaboratorTitle),collaboratorDescription:optionalText(1000).default(defaultCollaboratorDescription),
   visualDesign:visualDesignSchema.optional(),
   interfaceText:interfaceTextSchema.default({}),
   eventName:text(100),eyebrow:text(200),heroTitle:text(200),heroHighlight:text(200),heroDescription:text(2000),

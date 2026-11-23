@@ -5,6 +5,8 @@ export type Module = {
   schedule: string; active: boolean; sortOrder: number; outcomes: string[];
 };
 export type Settings = {
+  collaborators?:{id:string;name:string;logo:string;active:boolean}[];
+  collaboratorTitle?:string;collaboratorDescription?:string;
   visualDesign?:import('./visual-design').VisualDesign;
   interfaceText?:import('./i18n').InterfaceText;
   eventName: string; eyebrow: string; heroTitle: string; heroHighlight: string;

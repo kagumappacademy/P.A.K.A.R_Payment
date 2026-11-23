@@ -1,6 +1,7 @@
 import type { Client, InValue, Row } from '@libsql/client';
 import { createDatabaseClient } from './turso';
 import type { Settings, Module, Registration } from './types';
+import {defaultCollaborators,defaultCollaboratorTitle,defaultCollaboratorDescription} from './collaborators';
 const globalDb = globalThis as unknown as { pakarTurso?: {url:string;client:Client} };
 export function db() {
   const url=process.env.TURSO_DATABASE_URL||'';
@@ -21,6 +22,9 @@ export async function getConfiguration(includeInactive = false, includePrivate =
   if (!s[0]) throw new Error('Jalankan npm run db:setup dahulu.');
   const settings = JSON.parse(s[0].content) as Settings;
   settings.organizerLogo??='/images/brand/kagum-academy.png';
+  settings.collaborators??=defaultCollaborators;
+  settings.collaboratorTitle??=defaultCollaboratorTitle;
+  settings.collaboratorDescription??=defaultCollaboratorDescription;
   settings.whatsappGroups=includePrivate?{menengah:settings.whatsappGroups?.menengah||'',universiti:settings.whatsappGroups?.universiti||''}:{menengah:'',universiti:''};
   const modules = mods.map(r => {const m=JSON.parse(r.content) as Module;return {...m,cover:m.cover||m.poster};}).filter(m => includeInactive || m.active).sort((a,b) => a.sortOrder-b.sortOrder);
   return { settings, modules };
