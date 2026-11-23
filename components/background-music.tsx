@@ -5,6 +5,11 @@ import { usePreferences } from './preferences';
 
 const STORAGE_KEY='pakar-music-preferences';
 export function BackgroundMusic(){
+  const [enabled,setEnabled]=useState(false);
+  useEffect(()=>setEnabled(!(window.parent!==window&&new URLSearchParams(location.search).has('pakar-editor'))),[]);
+  return enabled?<MusicPlayer/>:null;
+}
+function MusicPlayer(){
   const audio=useRef<HTMLAudioElement>(null),container=useRef<HTMLDivElement>(null),volume=useRef(.2);
   const {t}=usePreferences();
   const [muted,setMuted]=useState(false),[playing,setPlaying]=useState(false),[ready,setReady]=useState(false),[waiting,setWaiting]=useState(false),[error,setError]=useState('');

@@ -5,6 +5,7 @@ export type Module = {
   schedule: string; active: boolean; sortOrder: number; outcomes: string[];
 };
 export type Settings = {
+  visualDesign?:import('./visual-design').VisualDesign;
   interfaceText?:import('./i18n').InterfaceText;
   eventName: string; eyebrow: string; heroTitle: string; heroHighlight: string;
   heroDescription: string; aboutTitle: string; aboutDescription: string;

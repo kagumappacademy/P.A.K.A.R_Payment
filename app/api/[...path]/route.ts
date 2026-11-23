@@ -5,7 +5,7 @@ import { z, ZodError } from 'zod';
 import { db, getConfiguration, parseRegistration, rows } from '@/lib/db';
 import { createSession, getAdmin, SESSION_COOKIE } from '@/lib/auth';
 import { sessionSecret } from '@/lib/session-secret';
-import { registrationSchema, moduleSchema, settingsSchema, interfaceTextSchema } from '@/lib/validation';
+import { registrationSchema, moduleSchema, settingsSchema, interfaceTextSchema, visualDesignSchema } from '@/lib/validation';
 import { calculatePrice } from '@/lib/pricing';
 import { readFile, saveFile } from '@/lib/files';
 import { participantGroup, receiptSnapshot } from '@/lib/receipts';
@@ -152,6 +152,13 @@ async function handle(request:NextRequest,context:Context) {
       } catch(error) {if(!connection.closed)await connection.rollback();throw error;} finally {connection.close();}
       return reply({ok:true});
     }
+    if(route==='admin/visual-design' && method==='PUT') {
+      const value=z.object({interfaceText:interfaceTextSchema,visualDesign:visualDesignSchema}).strict().parse(await request.json());
+      await db().batch([
+        {sql:"UPDATE settings SET content=json_set(content,'$.interfaceText',json(?),'$.visualDesign',json(?)) WHERE id=1",args:[JSON.stringify(value.interfaceText),JSON.stringify(value.visualDesign)]},
+        {sql:'INSERT INTO audit_logs (id,admin_id,action,target) VALUES (?,?,?,?)',args:[randomUUID(),admin.id,'visual-design.update','1']}
+      ],'write');return reply({ok:true});
+    }
     if(route==='admin/interface-text' && method==='PUT') {
       const copy=interfaceTextSchema.parse(await request.json());
       await db().batch([
@@ -161,7 +168,12 @@ async function handle(request:NextRequest,context:Context) {
       return reply({ok:true});
     }
     if(route==='admin/settings' && method==='PUT') {
-      const settings=settingsSchema.parse(await request.json());
+      const input=await request.json(),settings=settingsSchema.parse(input);
+      if(!Object.hasOwn(input,'visualDesign')||!Object.hasOwn(input,'interfaceText')){
+        const current=JSON.parse((await rows('SELECT content FROM settings WHERE id=1'))[0].content);
+        if(!Object.hasOwn(input,'visualDesign'))settings.visualDesign=current.visualDesign;
+        if(!Object.hasOwn(input,'interfaceText'))settings.interfaceText=current.interfaceText||{};
+      }
       if(settings.paymentQr && !settings.paymentName)throw new HttpError(400,'Nama penerima diperlukan bersama QR pembayaran.');
       await db().execute('UPDATE settings SET content=? WHERE id=1',[JSON.stringify(settings)]);
       await audit(admin.id,'settings.update','1');return reply({ok:true});

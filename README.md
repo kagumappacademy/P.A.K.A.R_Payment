@@ -41,6 +41,12 @@ Penganjur ialah **Kagum Academy**, dengan logo PNG lutsinar di `public/images/br
 
 Katalog sumber dijana daripada komponen dan kamus bahasa dengan `node scripts/generate-text-catalog.mjs`. Jalankan semula selepas menambah ayat atau butang dalam kod. Kandungan program dan modul semasa turut dimasukkan secara automatik dalam editor.
 
+**Admin → Ayat & butang → Editor visual** memaparkan halaman sebenar dalam pratonton yang boleh diklik. Pilih ayat, butang, gambar atau bekas; gunakan **Pilih induk** untuk memilih satu bahagian. Panel kanan membolehkan admin menukar ayat BM/English, warna teks/latar/border, saiz dan ketebalan teks, penjajaran, kedudukan X/Y, lebar, padding, margin, kolum, susunan item, bucu dan bayang. Tema & susunan menyediakan palet light/dark, font global serta seret atau anak panah untuk menyusun lapan bahagian landing page. Susunan yang disimpan turut digunakan untuk susunan DOM halaman sebenar.
+
+Switch desktop/telefon menyediakan gaya berasingan bagi breakpoint 681px dan 680px; semak kedua-duanya sebelum menerbitkan. Skrin penuh, Undo/Redo serta pulihkan gaya tersedia. Draf kekal ketika bertukar antara editor visual dan senarai ayat sepanjang panel dibuka. Pratonton disokong untuk landing, borang pendaftaran, pilihan modul, semakan dan contoh pembayaran tanpa menghantar pendaftaran. Klik **Simpan & terbitkan** untuk menyimpan ayat dan reka bentuk secara atomik dalam Turso; medan kandungan, harga dan pendaftaran lain tidak ditulis semula oleh endpoint ini.
+
+Gaya hanya menerima sifat terpilih, nilai terhad dan selector yang berakar pada `data-design-id`; admin tidak memasukkan JavaScript, HTML atau CSS mentah. Kad modul menggunakan ID tersendiri supaya gaya tidak berpindah kepada modul daripada track lain. Preview hanya menerima mesej daripada parent pada origin yang sama; `X-Frame-Options: SAMEORIGIN` mengekalkan sekatan embedding dari domain lain. Susun semula komponen dalam kod boleh memerlukan pelarasan gaya anak yang telah disimpan; butang pulihkan gaya tersedia untuk ini.
+
 ## Aliran peserta
 
 1. Pilih track dari landing page; isi nama, e-mel, telefon, institusi dan umur. Peserta bawah 18 tahun perlu maklumat penjaga.

@@ -174,6 +174,12 @@
     ]
   },
   {
+    "key": "Asal",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Asas hamparan elektronik",
     "groups": [
       "general"
@@ -204,9 +210,39 @@
     ]
   },
   {
+    "key": "Atas / bawah (px)",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Ayat & butang",
     "groups": [
       "admin"
+    ]
+  },
+  {
+    "key": "Ayat & label butang",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Ayat dikekalkan. Undo tersedia sebelum anda menyimpan.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Ayat dipilih",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Ayat elemen dipilih",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -230,7 +266,8 @@
   {
     "key": "Bahasa Melayu",
     "groups": [
-      "navigation"
+      "navigation",
+      "system"
     ]
   },
   {
@@ -249,6 +286,12 @@
     "key": "Bawa cerita dan idea cuti sekolah ke dalam perancangan video. Pelajari asas skrip, papan cerita dan penceritaan kreatif dengan bantuan Claude AI.",
     "groups": [
       "general"
+    ]
+  },
+  {
+    "key": "Bayang",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -298,6 +341,12 @@
     "key": "Bilakah program dan sesi setiap modul berlangsung?",
     "groups": [
       "general"
+    ]
+  },
+  {
+    "key": "Bilangan kolum",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -351,13 +400,19 @@
   {
     "key": "BM",
     "groups": [
-      "navigation"
+      "system"
     ]
   },
   {
     "key": "Bolehkah ibu bapa atau penjaga mendaftarkan anak?",
     "groups": [
       "general"
+    ]
+  },
+  {
+    "key": "Border (px)",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -370,6 +425,12 @@
     "key": "Buang soalan",
     "groups": [
       "admin"
+    ]
+  },
+  {
+    "key": "Bucu bulat (px)",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -424,6 +485,12 @@
     "key": "Butiran pendaftaran",
     "groups": [
       "admin"
+    ]
+  },
+  {
+    "key": "Cahaya teknologi",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -613,9 +680,21 @@
     ]
   },
   {
+    "key": "Dark mode",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "dengan sesuatu yang anda minati.",
     "groups": [
       "landing"
+    ]
+  },
+  {
+    "key": "Desktop · 1180 px",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -787,6 +866,12 @@
     ]
   },
   {
+    "key": "Editor visual",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Eksperimen dengan bantuan AI",
     "groups": [
       "general"
@@ -799,9 +884,21 @@
     ]
   },
   {
+    "key": "Elemen",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "ELEMEN DIPILIH ·",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "ENG",
     "groups": [
-      "navigation"
+      "system"
     ]
   },
   {
@@ -847,6 +944,18 @@
     ]
   },
   {
+    "key": "Font asal",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Font website",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Format fail tidak sah. Gunakan PNG, JPG, WEBP atau PDF untuk resit.",
     "groups": [
       "general"
@@ -889,9 +998,39 @@
     ]
   },
   {
+    "key": "Gaya desktop dan telefon disimpan berasingan. Gunakan switch di atas untuk menyemak kedua-duanya.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Gelap",
     "groups": [
       "navigation"
+    ]
+  },
+  {
+    "key": "Gerak atas",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Gerak bawah",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Gerak kanan",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Gerak kiri",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -949,9 +1088,16 @@
     ]
   },
   {
+    "key": "Halaman pratonton",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Halaman utama",
     "groups": [
-      "admin"
+      "admin",
+      "system"
     ]
   },
   {
@@ -1024,6 +1170,12 @@
     ]
   },
   {
+    "key": "Hujung",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Identiti & landing page",
     "groups": [
       "admin"
@@ -1045,6 +1197,18 @@
     "key": "Impak besar untuk masa depan.",
     "groups": [
       "navigation"
+    ]
+  },
+  {
+    "key": "Ini pratonton sahaja. Borang tidak dihantar.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Ini pratonton sahaja. Pendaftaran tidak dihantar.",
+    "groups": [
+      "registration"
     ]
   },
   {
@@ -1089,6 +1253,30 @@
     "key": "Jadual akan diumumkan",
     "groups": [
       "admin"
+    ]
+  },
+  {
+    "key": "Jarak antara item",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Jarak atas (px)",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Jarak bawah (px)",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Jarak huruf (px)",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -1173,6 +1361,12 @@
     ]
   },
   {
+    "key": "Kanan",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Kandungan program",
     "groups": [
       "admin"
@@ -1224,6 +1418,12 @@
     "key": "Kawalan muzik latar",
     "groups": [
       "general"
+    ]
+  },
+  {
+    "key": "Kedudukan & jarak",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -1293,15 +1493,51 @@
     ]
   },
   {
+    "key": "Ketebalan teks",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Khas untuk pelajar sekolah menengah · Mesra pemula · Pilih modul mengikut minat",
     "groups": [
       "landing"
     ]
   },
   {
+    "key": "Kiri",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Kiri / kanan (px)",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Klik pada ayat, butang atau gambar. Pilihan warna, teks dan kedudukan akan muncul di sini.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Klik untuk pilih elemen. Pilih induk untuk menyunting bekas atau satu bahagian.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Klik untuk pilih resit",
     "groups": [
       "payment"
+    ]
+  },
+  {
+    "key": "Klik. Ubah. Jadikan milik anda.",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -1326,6 +1562,12 @@
     "key": "Konfigurasi penuh JSON",
     "groups": [
       "admin"
+    ]
+  },
+  {
+    "key": "Kosong = teks asal. Teks yang sama dikemas kini bersama di seluruh website.",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -1371,6 +1613,30 @@
     ]
   },
   {
+    "key": "Latar panel",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Latar website",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Lebar (%)",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Lembut",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Lengkapkan pembayaran dan hantar resit untuk pengesahan penyertaan.",
     "groups": [
       "payment"
@@ -1386,6 +1652,12 @@
     "key": "Lepaskan kreativiti sepanjang cuti sekolah. Terokai konsep, warna dan prompt AI untuk menghasilkan visual yang mencerminkan idea anda sendiri.",
     "groups": [
       "general"
+    ]
+  },
+  {
+    "key": "Light mode",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -1569,6 +1841,12 @@
     ]
   },
   {
+    "key": "Manrope",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Mari kembali ke pusat misi anda.",
     "groups": [
       "system"
@@ -1590,6 +1868,12 @@
     "key": "Memuat naik...",
     "groups": [
       "admin"
+    ]
+  },
+  {
+    "key": "Menegak",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -1687,6 +1971,12 @@
     "key": "Mod gelap",
     "groups": [
       "navigation"
+    ]
+  },
+  {
+    "key": "Mod interaksi untuk membuka modul atau menukar track. Borang pratonton tidak dihantar.",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -1833,6 +2123,12 @@
     "key": "MUDAH UNTUK PELAJAR & PENJAGA",
     "groups": [
       "landing"
+    ]
+  },
+  {
+    "key": "Mula",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -2144,6 +2440,12 @@
     ]
   },
   {
+    "key": "Pembayaran (contoh)",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Pembayaran & resit",
     "groups": [
       "admin"
@@ -2265,6 +2567,12 @@
     ]
   },
   {
+    "key": "Pendaftaran sekolah",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Pendaftaran terkini",
     "groups": [
       "admin"
@@ -2278,6 +2586,12 @@
   },
   {
     "key": "Pendaftaran tidak ditemui. Semak nombor pendaftaran dan e-mel anda.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Pendaftaran universiti",
     "groups": [
       "system"
     ]
@@ -2340,6 +2654,30 @@
     ]
   },
   {
+    "key": "Penjaga Contoh",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Penjajaran item",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Penjajaran teks",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Penuh",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Penyertaan telah disahkan",
     "groups": [
       "admin"
@@ -2395,6 +2733,12 @@
     ]
   },
   {
+    "key": "Perubahan belum diterbitkan",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Peserta",
     "groups": [
       "admin",
@@ -2414,9 +2758,33 @@
     ]
   },
   {
+    "key": "Peserta Contoh",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Pilih 2 modul jimat",
     "groups": [
       "registration"
+    ]
+  },
+  {
+    "key": "Pilih bahagian utama",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Pilih elemen",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Pilih induk",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -2435,6 +2803,12 @@
     "key": "PILIH MISI CUTI ANDA",
     "groups": [
       "landing"
+    ]
+  },
+  {
+    "key": "Pilih mod di toolbar untuk mengubah palet setiap tema.",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -2474,6 +2848,18 @@
     ]
   },
   {
+    "key": "Pilih sesuatu di pratonton",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Pilih teks, butang, gambar atau bahagian di pratonton untuk menyunting.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Pilih track anda",
     "groups": [
       "registration"
@@ -2490,6 +2876,12 @@
     "groups": [
       "navigation",
       "registration"
+    ]
+  },
+  {
+    "key": "Pilihan modul (contoh)",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -2554,6 +2946,36 @@
     ]
   },
   {
+    "key": "PRATONTON · DATA CONTOH",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Pratonton desktop",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Pratonton editor website",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Pratonton langsung",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Pratonton telefon",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "PROGRAM CUTI SEKOLAH AKHIR TAHUN 2026",
     "groups": [
       "general"
@@ -2575,6 +2997,18 @@
     "key": "Prompt untuk idea visual",
     "groups": [
       "general"
+    ]
+  },
+  {
+    "key": "Pulihkan gaya elemen",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Pulihkan semua reka bentuk",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -2635,6 +3069,18 @@
     "key": "Rancang portfolio digital",
     "groups": [
       "general"
+    ]
+  },
+  {
+    "key": "Redo",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Reka bentuk dan ayat berjaya diterbitkan.",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -2765,6 +3211,12 @@
     ]
   },
   {
+    "key": "Ruang dalam (px)",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Sahkan pembayaran",
     "groups": [
       "admin"
@@ -2792,6 +3244,12 @@
     "key": "Saiz poster penuh: 1080 × 1350 px (4:5).",
     "groups": [
       "admin"
+    ]
+  },
+  {
+    "key": "Saiz teks (px)",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -2837,6 +3295,18 @@
     ]
   },
   {
+    "key": "Sebaris",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Sebaris terbalik",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "SEBELUM ANDA BERMULA",
     "groups": [
       "landing"
@@ -2864,6 +3334,12 @@
     "key": "Sediakan QR rasmi dan tetapan kombo untuk peserta.",
     "groups": [
       "admin"
+    ]
+  },
+  {
+    "key": "Sekolah Contoh",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -2905,7 +3381,8 @@
   {
     "key": "Semak pendaftaran",
     "groups": [
-      "navigation"
+      "navigation",
+      "system"
     ]
   },
   {
@@ -2937,6 +3414,12 @@
     "groups": [
       "navigation",
       "payment",
+      "system"
+    ]
+  },
+  {
+    "key": "Sembunyikan elemen",
+    "groups": [
       "system"
     ]
   },
@@ -2977,6 +3460,12 @@
     ]
   },
   {
+    "key": "Semua perubahan disimpan",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Semua perubahan telah disimpan.",
     "groups": [
       "admin"
@@ -3007,6 +3496,12 @@
     ]
   },
   {
+    "key": "Senarai semua ayat",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Sentuh untuk mula",
     "groups": [
       "general"
@@ -3022,6 +3517,12 @@
     "key": "Serendah",
     "groups": [
       "landing"
+    ]
+  },
+  {
+    "key": "Seret bahagian atau gunakan anak panah untuk menukar kedudukan.",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -3103,6 +3604,12 @@
     ]
   },
   {
+    "key": "Simpan & terbitkan",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Simpan & teruskan pembayaran",
     "groups": [
       "registration"
@@ -3145,6 +3652,12 @@
     ]
   },
   {
+    "key": "Skrin penuh",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Skrip dan naratif lanjutan",
     "groups": [
       "general"
@@ -3178,6 +3691,12 @@
     "key": "Soalan lazim & privasi",
     "groups": [
       "admin"
+    ]
+  },
+  {
+    "key": "Space Grotesk",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -3217,6 +3736,12 @@
     ]
   },
   {
+    "key": "STUDIO WEBSITE",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Subtajuk",
     "groups": [
       "admin"
@@ -3253,9 +3778,27 @@
     ]
   },
   {
+    "key": "Susunan halaman utama",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Susunan item dalam bekas",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Susunan paparan",
     "groups": [
       "admin"
+    ]
+  },
+  {
+    "key": "System",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -3422,9 +3965,21 @@
     ]
   },
   {
+    "key": "Teks sekunder",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Teks tersuai",
     "groups": [
       "admin"
+    ]
+  },
+  {
+    "key": "Teks utama",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -3435,10 +3990,34 @@
     ]
   },
   {
+    "key": "Telefon · 390 px",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Telefon penjaga",
     "groups": [
       "admin",
       "registration",
+      "system"
+    ]
+  },
+  {
+    "key": "Tema & susunan",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Tema pratonton",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Tema website ·",
+    "groups": [
       "system"
     ]
   },
@@ -3458,6 +4037,12 @@
     "key": "Tempoh program ialah 5–31 Disember 2026 seperti dalam poster. Jadual sesi setiap modul, lokasi dan maklumat penyertaan fizikal atau online akan dimaklumkan oleh penganjur. Semak butiran modul sebelum membuat pendaftaran.",
     "groups": [
       "general"
+    ]
+  },
+  {
+    "key": "Tengah",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -3527,6 +4112,12 @@
     ]
   },
   {
+    "key": "Tiada",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Tiada hasil carian",
     "groups": [
       "admin"
@@ -3554,6 +4145,12 @@
     "key": "Tindakan",
     "groups": [
       "admin"
+    ]
+  },
+  {
+    "key": "Tinggi baris",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -3635,6 +4232,12 @@
     ]
   },
   {
+    "key": "Tutup skrin penuh",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Umur",
     "groups": [
       "admin",
@@ -3646,6 +4249,12 @@
     "key": "Umur peserta",
     "groups": [
       "registration"
+    ]
+  },
+  {
+    "key": "Undo",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -3691,15 +4300,45 @@
     ]
   },
   {
+    "key": "Warna & rupa",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Warna baharu untuk idea cuti anda.",
     "groups": [
       "general"
     ]
   },
   {
+    "key": "Warna border",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Warna latar elemen",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Warna teks",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Warna tema",
     "groups": [
       "admin"
+    ]
+  },
+  {
+    "key": "Warna utama",
+    "groups": [
+      "system"
     ]
   },
   {

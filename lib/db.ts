@@ -29,6 +29,9 @@ export async function getInterfaceText():Promise<NonNullable<Settings['interface
   try {const result=await rows('SELECT content FROM settings WHERE id=1');return JSON.parse(result[0]?.content||'{}').interfaceText||{};}
   catch {return {};}
 }
+export async function getSiteAppearance():Promise<Pick<Settings,'interfaceText'|'visualDesign'>> {
+ try {const result=await rows('SELECT content FROM settings WHERE id=1');const s=JSON.parse(result[0]?.content||'{}');return {interfaceText:s.interfaceText||{},visualDesign:s.visualDesign};}catch{return {};}
+}
 export function parseRegistration(row: Row|DatabaseRow): Registration {
   return { ...JSON.parse(String(row.content)), id:String(row.id), reference:String(row.reference), status:String(row.status),
     createdAt: new Date(String(row.created_at)).toISOString(), updatedAt: new Date(String(row.updated_at)).toISOString() };

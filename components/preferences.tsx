@@ -31,6 +31,11 @@ function localize(node:ReactNode,t:(value:string)=>string):ReactNode {
   const props=node.props as Record<string,unknown>;
   if(props['data-no-translate'])return node;
   const updated:Record<string,unknown>={};
+  if(typeof node.type==='string'&&!props['data-copy-keys']){
+    const keys=Children.toArray(props.children as ReactNode).filter((child):child is string=>typeof child==='string'&&!!child.trim()&&/[a-zA-Z]/.test(child)).map(text=>text.replace(/\s+/g,' ').trim());
+    for(const key of ['placeholder','aria-label','title','alt'])if(typeof props[key]==='string'&&(props[key] as string).trim())keys.push((props[key] as string).replace(/\s+/g,' ').trim());
+    if(keys.length)updated['data-copy-keys']=JSON.stringify(keys);
+  }
   for(const key of ['aria-label','placeholder','title','alt'])if(typeof props[key]==='string')updated[key]=t(props[key] as string);
   if(props.children!==undefined)updated.children=localize(props.children as ReactNode,t);
   return cloneElement(node,updated);
