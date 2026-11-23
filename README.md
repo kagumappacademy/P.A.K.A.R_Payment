@@ -27,11 +27,13 @@ Maklumat track, nama modul dan tempoh **5–31 Disember 2026** diambil daripada 
 
 ## Tema dan bahasa
 
+Logo P.A.K.A.R menggunakan imej yang dibekalkan pengguna, dengan versi lutsinar di `public/images/brand/pakar-logo.png` dan WebP untuk header/footer/admin. Favicon pelbagai saiz ada dalam `app/favicon.ico`, bersama `app/icon.png` dan `app/apple-icon.png`. Versi lutsinar disediakan menggunakan built-in imagegen dengan arahan membuang latar putih sahaja sambil mengekalkan badge, tulisan, bingkai metalik dan empat warna asal.
+
 Pelawat baharu bermula dalam **dark mode** dan Bahasa Melayu. Switch di header menukar light/dark mode; butang **BM / ENG** menukar bahasa antara muka termasuk pendaftaran, pembayaran, resit dan admin. Pilihan disimpan dalam cookie pada pelayar. Teks lalai program mempunyai terjemahan English; kandungan tersuai yang ditulis admin dikekalkan seperti yang dimasukkan, dan terjemahannya boleh ditambah dalam `data/en.json`.
 
 Latar teknologi menggunakan litar, grid, orbit HUD, partikel dan cahaya mengikut penunjuk. Animasi masuk, hover dan scroll disediakan dengan sokongan `prefers-reduced-motion` untuk mematikan pergerakan apabila tetapan aksesibiliti pelayar memintanya.
 
-Muzik latar menggunakan MP3 yang dibekalkan pengguna di `public/audio/pakar-technology-theme.mp3` (MUSIC4VIDEO). Pemain di penjuru bawah kanan menyediakan main/jeda, mute dan slider volume 0–100%. Volume awal ialah 20%; pilihan volume/mute disimpan pada pelayar. Lagu dimainkan berulang selepas pengguna menekan main dan terus berjalan semasa navigasi antara halaman. Tiada autoplay bersuara sebelum interaksi pengguna.
+Muzik latar menggunakan MP3 yang dibekalkan pengguna di `public/audio/pakar-technology-theme.mp3` (MUSIC4VIDEO). Pemain di penjuru bawah kanan menyediakan main/jeda, mute dan slider volume 0–100%. Volume awal ialah 20%; pilihan volume/mute disimpan pada pelayar. Website cuba memainkan muzik secara automatik selepas tetapan volume dimuatkan. Jika pelayar menyekat autoplay bersuara, muzik bermula pada interaksi pertama di halaman atau apabila butang main ditekan. Lagu dimainkan sampai habis kemudian berulang dari awal tanpa henti, dan terus berjalan semasa navigasi antara halaman. Pilihan jeda pengguna dihormati sepanjang lawatan semasa.
 
 ## Aliran peserta
 

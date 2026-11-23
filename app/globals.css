@@ -163,6 +163,12 @@
 @media(max-width:1050px){.nav-links{display:none;position:absolute;left:0;right:0;top:100%;background:var(--surface);padding:16px 25px;border-bottom:1px solid var(--border);margin:0;flex-direction:column;align-items:stretch;gap:0}.nav-links.is-open{display:flex}.nav-links a{font-size:14px;padding:13px 8px}.mobile-menu{display:flex}.nav-inner>.preference-controls{margin-left:auto}.nav-cta{font-size:12px}.nav-inner .brand{margin-right:auto}}
 @media(max-width:680px){.nav-cta{display:none}.nav-inner{gap:9px}.nav-inner .brand{gap:8px}.nav-inner .brand>span:last-child{font-size:17px}.nav-inner .brand small{font-size:6px}.nav-inner .brand-mark{grid-template-columns:repeat(2,7px);gap:2px}.nav-inner .brand-mark span{height:10px}.theme-switch{min-height:34px;padding:7px}.theme-switch-track{display:none}.language-switch{padding:2px}.language-switch>button{min-width:30px;padding:4px 5px;font-size:10px}.preference-controls{gap:6px}.nav-inner .mobile-menu{padding:4px}.nav-inner .mobile-menu svg{width:21px}.module-detail-layout{grid-template-columns:1fr;gap:26px}.module-detail-copy>.dialog-subtitle{font-size:19px}.module-detail-copy .dialog-bottom>div>span{font-size:11px}.admin-topbar>.admin-topbar-actions{gap:9px}.admin-topbar .admin-view-site{display:none}.admin-login-form>.preference-controls{top:22px;right:24px}.admin-login-form>.back-link{font-size:10px}.admin-login-form{padding-top:90px}}
 /* Technology atmosphere: circuit traces, agent HUD and calm motion. */
+.brand-logo{display:block;width:220px;height:auto;max-width:100%;object-fit:contain}
+.admin-sidebar .brand-logo{width:200px}
+.admin-login-art .brand-logo{width:260px}
+.site-footer .brand-logo{width:238px}
+@media(max-width:680px){.nav-inner .brand-logo{width:clamp(124px,36vw,168px)}.site-footer .brand-logo{width:220px}.admin-login-art .brand-logo{width:220px}}
+@media(max-width:380px){.nav-inner .brand-logo{width:110px}.nav-inner{gap:6px}.nav-inner .preference-controls{gap:4px}}
 .background-music{position:fixed;right:24px;bottom:22px;z-index:40;font-family:var(--font)}
 .background-music>audio{display:none}
 .music-player-pill{display:flex;align-items:center;gap:8px;padding:7px;background:var(--surface);border:1px solid var(--border);border-radius:40px;box-shadow:0 8px 32px #0003;backdrop-filter:blur(20px)}
