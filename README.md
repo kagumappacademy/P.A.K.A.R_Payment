@@ -23,7 +23,7 @@ Maklumat track, nama modul dan tempoh **5–31 Disember 2026** diambil daripada 
 2. **Admin → Modul & harga:** semak harga awal RM39/modul sekolah dan RM59/modul universiti. Harga universiti ialah cadangan permulaan, bukan harga yang dinyatakan poster.
 3. Diskaun awal: 2 modul **10%**, 3 atau lebih **20%**, semua modul aktif dalam track **25%**. Diskaun terbaik dikenakan sekali; harga dibekukan semasa pendaftaran. Semua kadar boleh diubah. Semak juga teks promosi dalam FAQ selepas menukar kadar.
 4. Semak jadual setiap modul, lokasi, telefon WhatsApp, e-mel, hasil pembelajaran dan maklumat fizikal/online. Jadual serta lokasi sebenar belum dibekalkan, jadi tiada jadual rekaan digunakan.
-5. Setiap modul mempunyai gambar kad dan poster penuh yang berasingan, dengan tema warna tersendiri. Di **Admin → Modul & harga → Edit**, muat naik kedua-dua gambar melalui medan masing-masing. Peserta boleh membuka poster penuh bersama penerangan, hasil pembelajaran dan harga melalui butang **Lihat modul**.
+5. Setiap modul mempunyai gambar kad dan poster penuh yang berasingan, dengan tema warna tersendiri. Gunakan **1200 × 750 px (8:5)** untuk gambar kad dan **1080 × 1350 px (4:5)** untuk poster penuh. PNG, JPG dan WEBP diterima sehingga 3MB. Di **Admin → Modul & harga → Edit**, muat naik kedua-dua gambar melalui medan masing-masing. Peserta boleh membuka poster penuh bersama penerangan, hasil pembelajaran dan harga melalui butang **Lihat modul**. Paparan poster menggunakan `contain` supaya seluruh reka bentuk dapat dilihat.
 
 ## Tema dan bahasa
 
