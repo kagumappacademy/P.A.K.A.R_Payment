@@ -8,7 +8,7 @@ export type Settings = {
   eventName: string; eyebrow: string; heroTitle: string; heroHighlight: string;
   heroDescription: string; aboutTitle: string; aboutDescription: string;
   dateLabel: string; startDate: string; endDate: string; location: string;
-  delivery: string; organizer: string; contactEmail: string; whatsapp: string;
+  delivery: string; organizer: string; organizerLogo: string; contactEmail: string; whatsapp: string;
   whatsappGroups: Record<Track, string>;
   heroImage: string; eventPoster: string; registrationOpen: boolean;
   tracks: Record<Track, { name: string; audience: string; description: string }>;

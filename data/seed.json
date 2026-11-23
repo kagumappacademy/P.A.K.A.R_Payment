@@ -6,13 +6,13 @@
     "heroHighlight": "Misi luar biasa.",
     "heroDescription": "Isi cuti akhir tahun dengan kemahiran baharu. Bina game, hasilkan visual dan terokai AI bersama P.A.K.A.R — program praktikal untuk pelajar sekolah menengah. Pilih modul mengikut minat dan mulakan misi kreatif anda.",
     "aboutTitle": "Cuti yang seronok. Kemahiran yang berguna.",
-    "aboutDescription": "Jadikan cuti sekolah akhir tahun ini ruang untuk mencuba, berkarya dan membina keyakinan. Bersama P.A.K.A.R, pelajar sekolah menengah boleh meneroka AI melalui projek permainan, visual, video dan kemahiran digital harian. Program Asas Kemahiran AI Remaja ini dibawakan oleh Kagum Academy dan Kagum Digital, dengan pilihan modul yang boleh disesuaikan mengikut minat peserta.",
+    "aboutDescription": "Jadikan cuti sekolah akhir tahun ini ruang untuk mencuba, berkarya dan membina keyakinan. Bersama P.A.K.A.R, pelajar sekolah menengah boleh meneroka AI melalui projek permainan, visual, video dan kemahiran digital harian. Program Asas Kemahiran AI Remaja ini dibawakan oleh Kagum Academy, dengan pilihan modul yang boleh disesuaikan mengikut minat peserta.",
     "dateLabel": "5–31 Disember 2026",
     "startDate": "2026-12-05",
     "endDate": "2026-12-31",
     "location": "Maklumat lokasi akan dimaklumkan oleh penganjur",
     "delivery": "Fizikal & Online",
-    "organizer": "Kagum Academy × Kagum Digital",
+    "organizer": "Kagum Academy",
     "contactEmail": "",
     "whatsapp": "",
     "heroImage": "/images/pakar-team.webp",
@@ -81,7 +81,8 @@
     "whatsappGroups": {
       "menengah": "",
       "universiti": ""
-    }
+    },
+    "organizerLogo": "/images/brand/kagum-academy.jpg"
   },
   "modules": [
     {

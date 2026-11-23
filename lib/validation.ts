@@ -31,7 +31,7 @@ const track = z.object({name:text(100),audience:text(150),description:text(1000)
 export const settingsSchema = z.object({
   eventName:text(100),eyebrow:text(200),heroTitle:text(200),heroHighlight:text(200),heroDescription:text(2000),
   aboutTitle:text(200),aboutDescription:text(3000),dateLabel:text(100),startDate:z.iso.date(),endDate:z.iso.date(),
-  location:text(300),delivery:text(100),organizer:text(200),contactEmail:z.union([z.literal(''),z.email()]),
+  location:text(300),delivery:text(100),organizer:text(200),organizerLogo:asset.default('/images/brand/kagum-academy.jpg'),contactEmail:z.union([z.literal(''),z.email()]),
   whatsapp:z.string().regex(/^$|^\d{8,16}$/),heroImage:asset,eventPoster:asset,registrationOpen:z.boolean(),
   whatsappGroups:z.object({menengah:whatsappGroupSchema.default(''),universiti:whatsappGroupSchema.default('')}).default({menengah:'',universiti:''}),
   tracks:z.object({menengah:track,universiti:track}),

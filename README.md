@@ -33,7 +33,9 @@ Pelawat baharu bermula dalam **dark mode** dan Bahasa Melayu. Switch di header m
 
 Latar teknologi menggunakan litar, grid, orbit HUD, partikel dan cahaya mengikut penunjuk. Animasi masuk, hover dan scroll disediakan dengan sokongan `prefers-reduced-motion` untuk mematikan pergerakan apabila tetapan aksesibiliti pelayar memintanya.
 
-Muzik latar menggunakan MP3 yang dibekalkan pengguna di `public/audio/pakar-technology-theme.mp3` (MUSIC4VIDEO). Pemain di penjuru bawah kanan menyediakan main/jeda, mute dan slider volume 0–100%. Volume awal ialah 20%; pilihan volume/mute disimpan pada pelayar. Website cuba memainkan muzik secara automatik selepas tetapan volume dimuatkan. Jika pelayar menyekat autoplay bersuara, muzik bermula pada interaksi pertama di halaman atau apabila butang main ditekan. Lagu dimainkan sampai habis kemudian berulang dari awal tanpa henti, dan terus berjalan semasa navigasi antara halaman. Pilihan jeda pengguna dihormati sepanjang lawatan semasa.
+Muzik latar menggunakan MP3 yang dibekalkan pengguna di `public/audio/pakar-technology-theme.mp3` (MUSIC4VIDEO). Pemain di penjuru bawah kanan hanya mempunyai satu butang mute/unmute. Volume awal ialah 20%; pilihan mute dan volume yang pernah disimpan dikekalkan pada pelayar. Website cuba memainkan muzik secara automatik apabila dibuka. Jika pelayar menyekat autoplay bersuara, muzik bermula pada interaksi pertama di halaman atau apabila butang unmute ditekan. Lagu dimainkan sampai habis kemudian berulang dari awal tanpa henti, termasuk semasa navigasi antara halaman. Mute hanya menyenyapkan audio tanpa menghentikan lagu.
+
+Penganjur ialah **Kagum Academy**, dengan logo asal pengguna di `public/images/brand/kagum-academy.jpg`. Nama dan logo penganjur boleh diubah melalui **Admin → Kandungan**; logo dipaparkan pada maklumat program dan footer.
 
 ## Aliran peserta
 
