@@ -31,6 +31,8 @@ Pelawat baharu bermula dalam **dark mode** dan Bahasa Melayu. Switch di header m
 
 Latar teknologi menggunakan litar, grid, orbit HUD, partikel dan cahaya mengikut penunjuk. Animasi masuk, hover dan scroll disediakan dengan sokongan `prefers-reduced-motion` untuk mematikan pergerakan apabila tetapan aksesibiliti pelayar memintanya.
 
+Muzik latar menggunakan MP3 yang dibekalkan pengguna di `public/audio/pakar-technology-theme.mp3` (MUSIC4VIDEO). Pemain di penjuru bawah kanan menyediakan main/jeda, mute dan slider volume 0–100%. Volume awal ialah 20%; pilihan volume/mute disimpan pada pelayar. Lagu dimainkan berulang selepas pengguna menekan main dan terus berjalan semasa navigasi antara halaman. Tiada autoplay bersuara sebelum interaksi pengguna.
+
 ## Aliran peserta
 
 1. Pilih track dari landing page; isi nama, e-mel, telefon, institusi dan umur. Peserta bawah 18 tahun perlu maklumat penjaga.
