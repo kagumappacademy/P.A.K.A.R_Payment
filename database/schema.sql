@@ -43,3 +43,5 @@ CREATE TRIGGER IF NOT EXISTS files_deleted AFTER DELETE ON files
 BEGIN
   DELETE FROM file_chunks WHERE file_id=OLD.id;
 END;
+
+CREATE TABLE IF NOT EXISTS staff_accounts(id TEXT PRIMARY KEY NOT NULL,role TEXT NOT NULL UNIQUE CHECK(role IN ('admin','finance')),code_hash TEXT NOT NULL);

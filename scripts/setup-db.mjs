@@ -19,3 +19,5 @@ try {
   await connection.execute('INSERT OR IGNORE INTO admins (id, email, password_hash) VALUES (?, ?, ?)', [randomUUID(), process.env.ADMIN_EMAIL.toLowerCase(), await hash(process.env.ADMIN_PASSWORD, 12)]);
   console.log('Database ready. Existing content and accounts preserved.');
 } finally { connection.close(); }
+
+if(process.env.ADMIN_LOGIN_CODE&&process.env.FINANCE_LOGIN_CODE)await import('./setup-staff.mjs');

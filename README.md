@@ -6,7 +6,8 @@ Website bertema **Misi Cuti Sekolah Akhir Tahun 2026**, berfokus kepada pelajar 
 
 - Website: http://localhost:3000
 - Admin: http://localhost:3000/admin
-- E-mel dan kata laluan admin tempatan ada dalam fail **`.local-admin.txt`**. Fail ini dan `.env.local` diabaikan Git.
+- Finance: http://localhost:3000/finance
+- Login Admin dan Finance menggunakan kod akses enam digit yang disediakan secara sulit. `.env.local` dan fail kelayakan tempatan diabaikan Git.
 - Untuk menjalankan semula selepas menutup aplikasi / restart komputer, buka PowerShell dalam folder projek dan jalankan:
 
 ```powershell
@@ -61,6 +62,10 @@ Pembayaran **disemak secara manual** oleh admin. Tiada transaksi bank, debit aut
 
 ## Portal admin
 
+Login Admin (`/admin`) dan Finance (`/finance`) menggunakan kod akses enam digit, termasuk sifar di hadapan. E-mel dan kata laluan tidak lagi digunakan pada login. Jalankan `node --env-file=.env.local scripts/setup-staff.mjs` sekali dengan `ADMIN_LOGIN_CODE` dan `FINANCE_LOGIN_CODE` untuk menyediakan akaun; kod disimpan sebagai hash bcrypt dalam Turso dan tidak dimasukkan ke Git. Akaun yang sudah wujud dikekalkan apabila setup dijalankan semula. Admin boleh menukar kedua-dua kod melalui **Akaun admin → Urus kod akses** dengan mengesahkan kod admin semasa. Sesi lama dan sesi bagi kod yang ditukar tidak lagi sah.
+
+Finance mempunyai sesi dan akses berasingan: semakan pendaftaran pembayaran, resit persendirian dan pengesahan sahaja. Portal menonjolkan jumlah RM menunggu semakan, disahkan dan dipilih; carian merangkumi nama, rujukan serta modul. Buka bukti pembayaran, semak penerima/jumlah/modul, tandakan pengesahan dan tekan **Hantar pengesahan**. Pengesahan kelompok dibuat secara atomik (maksimum 100 rekod), menolak status/resit/jumlah yang berubah dan pengesahan berulang. Audit merekod petugas, masa dan rekod yang disahkan. Admin dan Finance membaca pendaftaran Turso yang sama dan menyegar senarai setiap 30 saat atau melalui Muat semula; jumlah diterima admin dikira daripada rekod disahkan. Pengesahan kekal manual oleh petugas, tanpa sambungan semakan bank automatik.
+
 - Dashboard jumlah pendaftaran, resit menunggu semakan, penyertaan disahkan dan jumlah bayaran yang disahkan.
 - Carian, penapisan status, butiran penuh peserta dan penjaga, paparan resit, pengesahan/penolakan dengan nota, eksport CSV.
 - Tambah / edit modul, harga, warna, gambar kad, poster penuh, jadual, hasil pembelajaran dan status aktif.
@@ -112,7 +117,7 @@ Ujian unit meliputi harga, pembundaran, kadar kombo dan validasi. Skrip integras
 
 Rujukan rasmi: [Turso TypeScript SDK](https://tursodatabase.github.io/libsql-client-ts/), [Next.js](https://nextjs.org/docs/app/getting-started/installation), [Deploy Next.js di Vercel](https://vercel.com/docs/frameworks/full-stack/nextjs), [Had payload fungsi](https://vercel.com/docs/errors/function_payload_too_large).
 
-Website belum diterbitkan ke Vercel. Sambungan Turso menggunakan database yang dibekalkan pengguna.
+Website diterbitkan di https://pakar-kagum.vercel.app. Sambungan Turso menggunakan database yang dibekalkan pengguna.
 
 ## Kempen cuti sekolah akhir tahun
 
@@ -134,3 +139,5 @@ Skrip hanya mengemas kini ayat kempen, manfaat, FAQ dan penerangan modul sekolah
 - PDF mencerminkan status semasa: **Menunggu semakan**, **Pembayaran disahkan** atau **Perlu tindakan**. Memuat naik imej bank tidak terus mengesahkan pembayaran. Tarikh pengesahan dicatat apabila admin meluluskan resit.
 - PDF dijana di server dengan `pdf-lib` dan fon Noto Sans berlesen SIL OFL (lesen di `public/fonts/LICENSE-Noto.txt`). Fon dibundel untuk Vercel, tanpa bergantung pada Python atau fon komputer pengguna. Muat turun menggunakan permintaan POST dengan token peserta atau sesi admin, dan respons tidak dicache.
 - Tetapan dan metadata resit disimpan sebagai JSON dalam Turso. Rekod lama masih boleh dibaca. Medan mod pembelajaran serta rujukan transaksi lama tidak lagi dikumpulkan dalam borang atau dimasukkan dalam eksport CSV baharu.
+
+Slider kolaborator memaparkan satu logo pada satu masa, bergerak setiap 3.2 saat dan mengulang tanpa henti. Titik navigasi dan butang jeda disediakan. Pergerakan berhenti semasa hover, fokus papan kekunci atau tetapan reduced motion.

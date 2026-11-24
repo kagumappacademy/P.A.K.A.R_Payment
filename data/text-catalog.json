@@ -78,9 +78,15 @@
     ]
   },
   {
+    "key": "Admin",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "admin@organisasi.com",
     "groups": [
-      "admin"
+      "general"
     ]
   },
   {
@@ -122,7 +128,13 @@
   {
     "key": "Akses terhad kepada pentadbir yang dibenarkan.",
     "groups": [
-      "admin"
+      "general"
+    ]
+  },
+  {
+    "key": "Akses terhad kepada petugas yang dibenarkan.",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -320,6 +332,12 @@
     ]
   },
   {
+    "key": "Belum dimuat naik",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Bengkel praktikal",
     "groups": [
       "admin"
@@ -472,7 +490,14 @@
   {
     "key": "Buka resit asal",
     "groups": [
-      "admin"
+      "admin",
+      "system"
+    ]
+  },
+  {
+    "key": "Buka resit dahulu sebelum menandakan pembayaran untuk pengesahan.",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -483,6 +508,12 @@
   },
   {
     "key": "Bukti pembayaran memerlukan pembetulan. Sila rujuk nota admin dan hantar resit baharu.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Bukti pembayaran peserta",
     "groups": [
       "system"
     ]
@@ -527,6 +558,18 @@
     "key": "Cari nama, e-mel atau no. pendaftaran...",
     "groups": [
       "admin"
+    ]
+  },
+  {
+    "key": "Cari nama, rujukan atau modul...",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Cari pembayaran",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -718,7 +761,7 @@
   {
     "key": "Di sebalik setiap",
     "groups": [
-      "admin"
+      "general"
     ]
   },
   {
@@ -737,6 +780,12 @@
     "key": "Digital Resume & Web Portfolio",
     "groups": [
       "general"
+    ]
+  },
+  {
+    "key": "Dipilih untuk pengesahan",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -786,6 +835,12 @@
     ]
   },
   {
+    "key": "Diskaun kombo:",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Diskaun terbaik digunakan sekali sahaja. Harga pendaftaran terdahulu dikekalkan.",
     "groups": [
       "admin"
@@ -832,13 +887,13 @@
   {
     "key": "E-mel admin",
     "groups": [
-      "admin"
+      "general"
     ]
   },
   {
     "key": "E-mel atau kata laluan tidak tepat.",
     "groups": [
-      "system"
+      "general"
     ]
   },
   {
@@ -951,6 +1006,12 @@
   },
   {
     "key": "Fail tidak ditemui.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Finance",
     "groups": [
       "system"
     ]
@@ -1112,9 +1173,21 @@
     ]
   },
   {
+    "key": "Halaman tidak ditemui.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Halaman utama",
     "groups": [
       "admin",
+      "system"
+    ]
+  },
+  {
+    "key": "Hantar pengesahan",
+    "groups": [
       "system"
     ]
   },
@@ -1316,6 +1389,12 @@
     ]
   },
   {
+    "key": "Jeda slider logo",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Jumlah",
     "groups": [
       "admin",
@@ -1354,9 +1433,21 @@
     ]
   },
   {
+    "key": "Jumlah pengesahan dipilih",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Jumlah perlu dibayar",
     "groups": [
       "payment"
+    ]
+  },
+  {
+    "key": "Jumlah RM",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -1368,8 +1459,8 @@
   {
     "key": "Kagum Academy",
     "groups": [
-      "admin",
-      "navigation"
+      "navigation",
+      "system"
     ]
   },
   {
@@ -1405,31 +1496,31 @@
   {
     "key": "Kata laluan",
     "groups": [
-      "admin"
+      "general"
     ]
   },
   {
     "key": "Kata laluan baharu (sekurang-kurangnya 12 aksara)",
     "groups": [
-      "admin"
+      "general"
     ]
   },
   {
     "key": "Kata laluan berjaya ditukar.",
     "groups": [
-      "admin"
+      "general"
     ]
   },
   {
     "key": "Kata laluan semasa",
     "groups": [
-      "admin"
+      "general"
     ]
   },
   {
     "key": "Kata laluan semasa tidak tepat.",
     "groups": [
-      "system"
+      "general"
     ]
   },
   {
@@ -1459,7 +1550,7 @@
   {
     "key": "Kemaskini kata laluan untuk melindungi akses anda.",
     "groups": [
-      "admin"
+      "general"
     ]
   },
   {
@@ -1489,7 +1580,7 @@
   {
     "key": "Kembali ke website",
     "groups": [
-      "admin"
+      "system"
     ]
   },
   {
@@ -1554,6 +1645,42 @@
   },
   {
     "key": "Klik. Ubah. Jadikan milik anda.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Kod admin semasa",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Kod admin semasa tidak tepat.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Kod akses 6 digit",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Kod akses berjaya dikemas kini. Sila log masuk semula jika kod admin ditukar.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Kod akses tidak tepat.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Kod baharu (6 digit)",
     "groups": [
       "system"
     ]
@@ -1729,19 +1856,20 @@
   {
     "key": "Log keluar",
     "groups": [
-      "admin"
+      "admin",
+      "system"
     ]
   },
   {
     "key": "Log masuk",
     "groups": [
-      "admin"
+      "system"
     ]
   },
   {
     "key": "Log masuk untuk mengurus program P.A.K.A.R.",
     "groups": [
-      "admin"
+      "general"
     ]
   },
   {
@@ -1781,6 +1909,12 @@
     ]
   },
   {
+    "key": "Logo rakan kolaborasi",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Lokasi / maklumat lokasi",
     "groups": [
       "admin"
@@ -1796,6 +1930,12 @@
     "key": "Mainkan muzik latar",
     "groups": [
       "general"
+    ]
+  },
+  {
+    "key": "Mainkan slider logo",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -1885,7 +2025,13 @@
   {
     "key": "Masukkan kata laluan anda",
     "groups": [
-      "admin"
+      "general"
+    ]
+  },
+  {
+    "key": "Masukkan kod akses 6 digit untuk log masuk.",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -1902,6 +2048,12 @@
   },
   {
     "key": "Menegak",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Mengesahkan...",
     "groups": [
       "system"
     ]
@@ -1994,7 +2146,7 @@
   {
     "key": "misi yang hebat.",
     "groups": [
-      "admin"
+      "general"
     ]
   },
   {
@@ -2128,7 +2280,8 @@
   {
     "key": "Muat semula",
     "groups": [
-      "admin"
+      "admin",
+      "system"
     ]
   },
   {
@@ -2513,6 +2666,18 @@
     ]
   },
   {
+    "key": "Pembayaran disahkan oleh Admin.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Pembayaran disahkan oleh Finance.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Pembayaran disahkan.",
     "groups": [
       "admin"
@@ -2534,6 +2699,12 @@
     "key": "Pembayaran yang disahkan sahaja",
     "groups": [
       "admin"
+    ]
+  },
+  {
+    "key": "pendaftaran",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -2738,6 +2909,18 @@
     ]
   },
   {
+    "key": "Pergi ke Portal Admin",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Pergi ke Portal Finance",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Perhalusi idea kandungan, strategi skrip dan aliran produksi video menggunakan Claude AI.",
     "groups": [
       "general"
@@ -2796,6 +2979,12 @@
     "key": "Peserta",
     "groups": [
       "admin",
+      "system"
+    ]
+  },
+  {
+    "key": "Peserta & rujukan",
+    "groups": [
       "system"
     ]
   },
@@ -2920,9 +3109,21 @@
     ]
   },
   {
+    "key": "Pilihan berulang tidak dibenarkan.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Pilihan fleksibel",
     "groups": [
       "landing"
+    ]
+  },
+  {
+    "key": "Pilihan logo",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -2957,10 +3158,30 @@
     ]
   },
   {
+    "key": "Portal",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Portal admin",
     "groups": [
       "navigation",
       "admin"
+    ]
+  },
+  {
+    "key": "Portal Admin",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Portal Finance",
+    "groups": [
+      "admin",
+      "system",
+      "navigation"
     ]
   },
   {
@@ -3080,11 +3301,23 @@
   {
     "key": "PUSAT KAWALAN P.A.K.A.R",
     "groups": [
-      "admin"
+      "system"
+    ]
+  },
+  {
+    "key": "PUSAT KEWANGAN P.A.K.A.R",
+    "groups": [
+      "system"
     ]
   },
   {
     "key": "PUSAT MISI ANDA",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "PUSAT SEMAKAN PEMBAYARAN",
     "groups": [
       "system"
     ]
@@ -3174,6 +3407,12 @@
     ]
   },
   {
+    "key": "Resit",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Resit bank anda hanya boleh dilihat oleh admin.",
     "groups": [
       "payment"
@@ -3207,6 +3446,12 @@
     "key": "Resit memerlukan perhatian.",
     "groups": [
       "payment"
+    ]
+  },
+  {
+    "key": "Resit PDF peserta",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -3295,6 +3540,12 @@
     ]
   },
   {
+    "key": "Sahkan",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Sahkan pembayaran",
     "groups": [
       "admin"
@@ -3373,6 +3624,12 @@
     ]
   },
   {
+    "key": "Saya telah semak resit, penerima dan jumlah pembayaran ini.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Sebaris",
     "groups": [
       "system"
@@ -3429,7 +3686,7 @@
   {
     "key": "Selamat kembali.",
     "groups": [
-      "admin"
+      "general"
     ]
   },
   {
@@ -3442,6 +3699,18 @@
     "key": "Selepas mendaftar, bayar menggunakan QR DuitNow rasmi dan muat naik resit. Admin akan menyemak pembayaran anda. Gunakan nombor pendaftaran dan e-mel untuk menyemak status; jika resit memerlukan pembetulan, nota admin akan dipaparkan.",
     "groups": [
       "general"
+    ]
+  },
+  {
+    "key": "Selesai semakan",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Semak jumlah bayaran, modul pilihan dan bukti pembayaran peserta di satu tempat.",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -3476,6 +3745,24 @@
     ]
   },
   {
+    "key": "Semak resit",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Semak resit dan modul, tandakan bayaran yang tepat, kemudian hantar pengesahan.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Semak resit. Sahkan dengan yakin.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Semak sambungan internet dan konfigurasi database Turso.",
     "groups": [
       "system"
@@ -3496,6 +3783,18 @@
     ]
   },
   {
+    "key": "Semakan bukti pembayaran",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Semakan resit peserta",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Sembunyikan elemen",
     "groups": [
       "system"
@@ -3503,6 +3802,12 @@
   },
   {
     "key": "Sembunyikan kata laluan",
+    "groups": [
+      "admin"
+    ]
+  },
+  {
+    "key": "Sembunyikan kod",
     "groups": [
       "admin"
     ]
@@ -3558,7 +3863,8 @@
   {
     "key": "Semua status",
     "groups": [
-      "admin"
+      "admin",
+      "system"
     ]
   },
   {
@@ -3630,7 +3936,8 @@
   {
     "key": "Setiap misi, dalam kawalan.",
     "groups": [
-      "admin"
+      "admin",
+      "system"
     ]
   },
   {
@@ -3653,6 +3960,18 @@
   },
   {
     "key": "Sila log masuk sebagai admin.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Sila log masuk sebagai Finance.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Sila log masuk untuk melihat resit.",
     "groups": [
       "system"
     ]
@@ -3703,6 +4022,12 @@
     "key": "Simpan kandungan",
     "groups": [
       "admin"
+    ]
+  },
+  {
+    "key": "Simpan kod akses",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -3780,12 +4105,14 @@
   {
     "key": "Status",
     "groups": [
-      "admin"
+      "admin",
+      "system"
     ]
   },
   {
     "key": "Status pembayaran",
     "groups": [
+      "system",
       "payment"
     ]
   },
@@ -4214,6 +4541,12 @@
     ]
   },
   {
+    "key": "Tiada rekod untuk paparan ini",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Tiada teks ditemui",
     "groups": [
       "admin"
@@ -4258,7 +4591,8 @@
   {
     "key": "Track & modul",
     "groups": [
-      "admin"
+      "admin",
+      "system"
     ]
   },
   {
@@ -4270,7 +4604,7 @@
   {
     "key": "Tukar kata laluan",
     "groups": [
-      "admin"
+      "general"
     ]
   },
   {
@@ -4293,6 +4627,12 @@
   },
   {
     "key": "Tunjukkan kata laluan",
+    "groups": [
+      "admin"
+    ]
+  },
+  {
+    "key": "Tunjukkan kod",
     "groups": [
       "admin"
     ]
@@ -4372,6 +4712,18 @@
     ]
   },
   {
+    "key": "Urus kod akses",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Urus kod akses Admin dan Finance.",
+    "groups": [
+      "admin"
+    ]
+  },
+  {
     "key": "Urus maklumat, harga dan poster setiap modul.",
     "groups": [
       "admin"
@@ -4380,7 +4732,13 @@
   {
     "key": "Urus peserta, semak pembayaran dan bentuk pengalaman pembelajaran yang luar biasa.",
     "groups": [
-      "admin"
+      "general"
+    ]
+  },
+  {
+    "key": "Urus program, peserta dan pembayaran anda.",
+    "groups": [
+      "system"
     ]
   },
   {

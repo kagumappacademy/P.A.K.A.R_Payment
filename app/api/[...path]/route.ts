@@ -3,12 +3,13 @@ import { compare } from 'bcryptjs';
 import { createHash, createHmac, randomBytes, randomUUID, timingSafeEqual } from 'node:crypto';
 import { z, ZodError } from 'zod';
 import { db, getConfiguration, parseRegistration, rows } from '@/lib/db';
-import { createSession, getAdmin, SESSION_COOKIE } from '@/lib/auth';
+import { createSession, getAdmin, getStaff, credentialVersion, SESSION_COOKIE, FINANCE_COOKIE } from '@/lib/auth';
 import { sessionSecret } from '@/lib/session-secret';
 import { registrationSchema, moduleSchema, settingsSchema, interfaceTextSchema, visualDesignSchema } from '@/lib/validation';
 import { calculatePrice } from '@/lib/pricing';
 import { readFile, saveFile } from '@/lib/files';
 import { participantGroup, receiptSnapshot } from '@/lib/receipts';
+import {assertFinanceApproval,financeRecord} from '@/lib/finance';
 import type { Registration } from '@/lib/types';
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -44,16 +45,29 @@ async function handle(request:NextRequest,context:Context) {
   if(size>3.5*1024*1024)throw new HttpError(413,'Fail terlalu besar. Had muat naik ialah 3MB.');
   if(route==='config' && method==='GET') return reply(await getConfiguration());
   if(route==='auth/login' && method==='POST') {
-    await rateLimit(request,'login',10);
-    const input=z.object({email:z.email().max(190),password:z.string().min(1).max(200)}).parse(await request.json());
-    const admin=(await rows('SELECT * FROM admins WHERE email=?',[input.email.toLowerCase()]))[0];
-    const valid=await compare(input.password,admin?.password_hash || '$2b$12$04JBK5rRY35/5sYSu2Xk9O8kCmAn.zvPYJ84HDmj04zK0fGWJPgZi');
-    if(!admin || !valid)throw new HttpError(401,'E-mel atau kata laluan tidak tepat.');
-    const response=reply({ok:true});
-    response.cookies.set(SESSION_COOKIE,await createSession(admin.id,admin.email),{httpOnly:true,secure:process.env.NODE_ENV==='production',sameSite:'lax',path:'/',maxAge:8*60*60});
-    return response;
+    const input=z.object({role:z.enum(['admin','finance']).default('admin'),code:z.string().regex(/^\d{6}$/)}).strict().parse(await request.json());
+    await rateLimit(request,'code-login-'+input.role,10);
+    const accounts=await db().execute('SELECT id,code_hash FROM staff_accounts WHERE role=?',[input.role]);const account=accounts.rows[0];
+    const valid=await compare(input.code,String(account?.code_hash||'$2b$12$04JBK5rRY35/5sYSu2Xk9O8kCmAn.zvPYJ84HDmj04zK0fGWJPgZi'));
+    if(!account||!valid)throw new HttpError(401,'Kod akses tidak tepat.');
+    const response=reply({ok:true});response.cookies.set(input.role==='admin'?SESSION_COOKIE:FINANCE_COOKIE,await createSession(String(account.id),'',input.role,credentialVersion(String(account.code_hash))),{httpOnly:true,secure:process.env.NODE_ENV==='production',sameSite:'lax',path:'/',maxAge:8*60*60});return response;
   }
-  if(route==='auth/logout' && method==='POST') { const response=reply({ok:true});response.cookies.delete(SESSION_COOKIE);return response; }
+  if(route==='auth/logout'&&method==='POST'){const response=reply({ok:true});response.cookies.delete(SESSION_COOKIE);response.cookies.delete(FINANCE_COOKIE);return response;}
+  if(path[0]==='finance'){
+    const actor=await getStaff();if(!actor)throw new HttpError(401,'Sila log masuk sebagai Finance.');
+    if(route==='finance/registrations'&&method==='GET')return reply({registrations:(await rows('SELECT * FROM registrations ORDER BY created_at DESC')).map(parseRegistration).map(financeRecord)});
+    if(route==='finance/approve'&&method==='POST'){
+      const input=z.object({items:z.array(z.object({id:z.uuid(),receiptId:z.uuid(),total:z.number().min(0)}).strict()).min(1).max(100)}).strict().parse(await request.json());
+      if(new Set(input.items.map(i=>i.id)).size!==input.items.length)throw new HttpError(400,'Pilihan berulang tidak dibenarkan.');
+      const tx=await db().transaction('write');let total=0;
+      try{for(const item of input.items){const found=await tx.execute({sql:'SELECT * FROM registrations WHERE id=?',args:[item.id]});if(!found.rows[0])throw new HttpError(409,'Pendaftaran tidak ditemui.');const record=parseRegistration(found.rows[0]);try{assertFinanceApproval(record,item);}catch(e){throw new HttpError(409,(e as Error).message);}
+        const now=new Date().toISOString();await tx.execute({sql:'UPDATE registrations SET status=?,content=? WHERE id=?',args:['approved',JSON.stringify({...record,status:'approved',paymentApprovedAt:now,verifiedByRole:actor.role,verifiedById:actor.id,adminNote:actor.role==='finance'?'Pembayaran disahkan oleh Finance.':'Pembayaran disahkan oleh Admin.'}),item.id]});
+        await tx.execute({sql:'INSERT INTO audit_logs(id,admin_id,action,target) VALUES(?,?,?,?)',args:[randomUUID(),actor.id,actor.role+'.receipt.approved',item.id]});total+=record.total;}
+        await tx.commit();return reply({ok:true,count:input.items.length,total:Math.round(total*100)/100});
+      }catch(e){if(!tx.closed)await tx.rollback();throw e;}finally{tx.close();}
+    }
+    throw new HttpError(404,'Halaman tidak ditemui.');
+  }
   if(route==='registrations' && method==='POST') {
     await rateLimit(request,'register',20);
     const input=registrationSchema.parse(await request.json());
@@ -129,7 +143,7 @@ async function handle(request:NextRequest,context:Context) {
     const id=z.uuid().parse(path[1]);
     const meta=(await rows('SELECT is_private FROM files WHERE id=?',[id]))[0];
     if(!meta)throw new HttpError(404,'Fail tidak ditemui.');
-    if(meta.is_private)await requireAdmin();
+    if(meta.is_private&&!await getStaff())throw new HttpError(401,'Sila log masuk untuk melihat resit.');
     const file=await readFile(id);if(!file)throw new HttpError(404,'Fail tidak ditemui.');
     return new NextResponse(new Uint8Array(file.buffer),{headers:{'Content-Type':file.mime,'Content-Length':String(file.buffer.length),'Content-Disposition':`inline; filename*=UTF-8''${encodeURIComponent(file.name)}`,'Cache-Control':meta.is_private?'private, no-store':'public, max-age=31536000, immutable','X-Content-Type-Options':'nosniff','Content-Security-Policy':"default-src 'none'; sandbox"}});
   }
@@ -188,13 +202,11 @@ async function handle(request:NextRequest,context:Context) {
       if(!(file instanceof File))throw new HttpError(400,'Sila pilih imej.');
       return reply(await saveFile(file,false));
     }
-    if(route==='admin/password' && method==='PUT') {
-      const input=z.object({currentPassword:z.string().max(200),newPassword:z.string().min(12).max(200)}).parse(await request.json());
-      const row=(await rows('SELECT password_hash FROM admins WHERE id=?',[admin.id]))[0];
-      if(!row || !await compare(input.currentPassword,row.password_hash))throw new HttpError(400,'Kata laluan semasa tidak tepat.');
-      const {hash:passwordHash}=await import('bcryptjs');
-      await db().execute('UPDATE admins SET password_hash=? WHERE id=?',[await passwordHash(input.newPassword,12),admin.id]);
-      await audit(admin.id,'password.update',admin.id);return reply({ok:true});
+    if(route==='admin/access-code'&&method==='PUT'){
+      const input=z.object({role:z.enum(['admin','finance']),currentCode:z.string().regex(/^\d{6}$/),newCode:z.string().regex(/^\d{6}$/)}).parse(await request.json());
+      await rateLimit(request,'change-access-code',10);
+      const current=await db().execute('SELECT code_hash FROM staff_accounts WHERE id=?',[admin.id]);if(!current.rows[0]||!await compare(input.currentCode,String(current.rows[0].code_hash)))throw new HttpError(400,'Kod admin semasa tidak tepat.');
+      const {hash:codeHash}=await import('bcryptjs');await db().execute('UPDATE staff_accounts SET code_hash=? WHERE role=?',[await codeHash(input.newCode,12),input.role]);await audit(admin.id,'access-code.update',input.role);return reply({ok:true});
     }
     if(route==='admin/export' && method==='GET') {
       const records=(await rows('SELECT * FROM registrations ORDER BY created_at DESC')).map(parseRegistration);
