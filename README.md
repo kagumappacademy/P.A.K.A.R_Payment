@@ -6,7 +6,7 @@ Website bertema **Misi Cuti Sekolah Akhir Tahun 2026**, berfokus kepada pelajar 
 
 - Website: http://localhost:3000
 - Admin: http://localhost:3000/admin
-- Finance: http://localhost:3000/finance
+- Admin dan Finance berkongsi halaman login Admin. Kod akses menentukan paparan selepas log masuk.
 - Login Admin dan Finance menggunakan kod akses enam digit yang disediakan secara sulit. `.env.local` dan fail kelayakan tempatan diabaikan Git.
 - Untuk menjalankan semula selepas menutup aplikasi / restart komputer, buka PowerShell dalam folder projek dan jalankan:
 
@@ -62,7 +62,7 @@ Pembayaran **disemak secara manual** oleh admin. Tiada transaksi bank, debit aut
 
 ## Portal admin
 
-Login Admin (`/admin`) dan Finance (`/finance`) menggunakan kod akses enam digit, termasuk sifar di hadapan. E-mel dan kata laluan tidak lagi digunakan pada login. Jalankan `node --env-file=.env.local scripts/setup-staff.mjs` sekali dengan `ADMIN_LOGIN_CODE` dan `FINANCE_LOGIN_CODE` untuk menyediakan akaun; kod disimpan sebagai hash bcrypt dalam Turso dan tidak dimasukkan ke Git. Akaun yang sudah wujud dikekalkan apabila setup dijalankan semula. Admin boleh menukar kedua-dua kod melalui **Akaun admin → Urus kod akses** dengan mengesahkan kod admin semasa. Sesi lama dan sesi bagi kod yang ditukar tidak lagi sah.
+Login bersama di `/admin` menggunakan kod akses enam digit, termasuk sifar di hadapan. Server mengenal pasti peranan daripada hash kod dan membuka dashboard Admin atau semakan pembayaran (`/finance`) secara automatik. Tiada pilihan peranan atau pautan login Finance dipaparkan; `/finance` tanpa sesi kembali ke `/admin`. Login baharu menggantikan sesi peranan sebelumnya. Kod Admin dan Finance mesti berbeza. E-mel dan kata laluan tidak lagi digunakan pada login. Jalankan `node --env-file=.env.local scripts/setup-staff.mjs` sekali dengan `ADMIN_LOGIN_CODE` dan `FINANCE_LOGIN_CODE` untuk menyediakan akaun; kod disimpan sebagai hash bcrypt dalam Turso dan tidak dimasukkan ke Git. Akaun yang sudah wujud dikekalkan apabila setup dijalankan semula. Admin boleh menukar kedua-dua kod melalui **Akaun admin → Urus kod akses** dengan mengesahkan kod admin semasa. Sesi lama dan sesi bagi kod yang ditukar tidak lagi sah.
 
 Finance mempunyai sesi dan akses berasingan: semakan pendaftaran pembayaran, resit persendirian dan pengesahan sahaja. Portal menonjolkan jumlah RM menunggu semakan, disahkan dan dipilih; carian merangkumi nama, rujukan serta modul. Buka bukti pembayaran, semak penerima/jumlah/modul, tandakan pengesahan dan tekan **Hantar pengesahan**. Pengesahan kelompok dibuat secara atomik (maksimum 100 rekod), menolak status/resit/jumlah yang berubah dan pengesahan berulang. Audit merekod petugas, masa dan rekod yang disahkan. Admin dan Finance membaca pendaftaran Turso yang sama dan menyegar senarai setiap 30 saat atau melalui Muat semula; jumlah diterima admin dikira daripada rekod disahkan. Pengesahan kekal manual oleh petugas, tanpa sambungan semakan bank automatik.
 

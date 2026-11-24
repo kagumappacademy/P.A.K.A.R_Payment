@@ -1650,6 +1650,12 @@
     ]
   },
   {
+    "key": "Kod Admin dan Finance mesti berbeza.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Kod admin semasa",
     "groups": [
       "system"
@@ -2911,13 +2917,13 @@
   {
     "key": "Pergi ke Portal Admin",
     "groups": [
-      "system"
+      "general"
     ]
   },
   {
     "key": "Pergi ke Portal Finance",
     "groups": [
-      "system"
+      "general"
     ]
   },
   {
@@ -3179,9 +3185,7 @@
   {
     "key": "Portal Finance",
     "groups": [
-      "admin",
-      "system",
-      "navigation"
+      "general"
     ]
   },
   {
@@ -3307,7 +3311,7 @@
   {
     "key": "PUSAT KEWANGAN P.A.K.A.R",
     "groups": [
-      "system"
+      "general"
     ]
   },
   {
@@ -3710,7 +3714,7 @@
   {
     "key": "Semak jumlah bayaran, modul pilihan dan bukti pembayaran peserta di satu tempat.",
     "groups": [
-      "system"
+      "general"
     ]
   },
   {
@@ -3759,7 +3763,7 @@
   {
     "key": "Semak resit. Sahkan dengan yakin.",
     "groups": [
-      "system"
+      "general"
     ]
   },
   {
@@ -3785,6 +3789,13 @@
   {
     "key": "Semakan bukti pembayaran",
     "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Semakan pembayaran",
+    "groups": [
+      "admin",
       "system"
     ]
   },

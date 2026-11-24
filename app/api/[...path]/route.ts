@@ -10,6 +10,7 @@ import { calculatePrice } from '@/lib/pricing';
 import { readFile, saveFile } from '@/lib/files';
 import { participantGroup, receiptSnapshot } from '@/lib/receipts';
 import {assertFinanceApproval,financeRecord} from '@/lib/finance';
+import {matchStaffCode} from '@/lib/staff-codes';
 import type { Registration } from '@/lib/types';
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -45,12 +46,14 @@ async function handle(request:NextRequest,context:Context) {
   if(size>3.5*1024*1024)throw new HttpError(413,'Fail terlalu besar. Had muat naik ialah 3MB.');
   if(route==='config' && method==='GET') return reply(await getConfiguration());
   if(route==='auth/login' && method==='POST') {
-    const input=z.object({role:z.enum(['admin','finance']).default('admin'),code:z.string().regex(/^\d{6}$/)}).strict().parse(await request.json());
-    await rateLimit(request,'code-login-'+input.role,10);
-    const accounts=await db().execute('SELECT id,code_hash FROM staff_accounts WHERE role=?',[input.role]);const account=accounts.rows[0];
-    const valid=await compare(input.code,String(account?.code_hash||'$2b$12$04JBK5rRY35/5sYSu2Xk9O8kCmAn.zvPYJ84HDmj04zK0fGWJPgZi'));
-    if(!account||!valid)throw new HttpError(401,'Kod akses tidak tepat.');
-    const response=reply({ok:true});response.cookies.set(input.role==='admin'?SESSION_COOKIE:FINANCE_COOKIE,await createSession(String(account.id),'',input.role,credentialVersion(String(account.code_hash))),{httpOnly:true,secure:process.env.NODE_ENV==='production',sameSite:'lax',path:'/',maxAge:8*60*60});return response;
+    const input=z.object({code:z.string().regex(/^\d{6}$/)}).strict().parse(await request.json());
+    await rateLimit(request,'staff-code-login',10);
+    const accounts=await db().execute('SELECT id,role,code_hash FROM staff_accounts');
+    const account=await matchStaffCode(input.code,accounts.rows.map(a=>({id:String(a.id),role:a.role as 'admin'|'finance',code_hash:String(a.code_hash)})));
+    if(!account)throw new HttpError(401,'Kod akses tidak tepat.');
+    const response=reply({ok:true,redirectTo:account.role==='admin'?'/admin':'/finance'});
+    response.cookies.delete(account.role==='admin'?FINANCE_COOKIE:SESSION_COOKIE);
+    response.cookies.set(account.role==='admin'?SESSION_COOKIE:FINANCE_COOKIE,await createSession(account.id,'',account.role,credentialVersion(account.code_hash)),{httpOnly:true,secure:process.env.NODE_ENV==='production',sameSite:'lax',path:'/',maxAge:8*60*60});return response;
   }
   if(route==='auth/logout'&&method==='POST'){const response=reply({ok:true});response.cookies.delete(SESSION_COOKIE);response.cookies.delete(FINANCE_COOKIE);return response;}
   if(path[0]==='finance'){
@@ -206,6 +209,7 @@ async function handle(request:NextRequest,context:Context) {
       const input=z.object({role:z.enum(['admin','finance']),currentCode:z.string().regex(/^\d{6}$/),newCode:z.string().regex(/^\d{6}$/)}).parse(await request.json());
       await rateLimit(request,'change-access-code',10);
       const current=await db().execute('SELECT code_hash FROM staff_accounts WHERE id=?',[admin.id]);if(!current.rows[0]||!await compare(input.currentCode,String(current.rows[0].code_hash)))throw new HttpError(400,'Kod admin semasa tidak tepat.');
+      const other=await db().execute('SELECT code_hash FROM staff_accounts WHERE role<>?',[input.role]);if(other.rows[0]&&await compare(input.newCode,String(other.rows[0].code_hash)))throw new HttpError(400,'Kod Admin dan Finance mesti berbeza.');
       const {hash:codeHash}=await import('bcryptjs');await db().execute('UPDATE staff_accounts SET code_hash=? WHERE role=?',[await codeHash(input.newCode,12),input.role]);await audit(admin.id,'access-code.update',input.role);return reply({ok:true});
     }
     if(route==='admin/export' && method==='GET') {
