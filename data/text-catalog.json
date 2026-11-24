@@ -598,6 +598,12 @@
     ]
   },
   {
+    "key": "Buka menu Finance",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Buka pendaftaran kepada peserta",
     "groups": [
       "admin"
@@ -2271,7 +2277,8 @@
   {
     "key": "Lihat website",
     "groups": [
-      "admin"
+      "admin",
+      "system"
     ]
   },
   {
@@ -4011,7 +4018,8 @@
   {
     "key": "PUSAT KAWALAN",
     "groups": [
-      "admin"
+      "admin",
+      "system"
     ]
   },
   {
@@ -5817,6 +5825,7 @@
   {
     "key": "Tutup menu",
     "groups": [
+      "system",
       "navigation"
     ]
   },
@@ -5867,7 +5876,8 @@
   {
     "key": "Urus & pulihkan pendaftaran",
     "groups": [
-      "admin"
+      "admin",
+      "system"
     ]
   },
   {

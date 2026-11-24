@@ -154,6 +154,8 @@ Admin → Tetapan track menyediakan switch Paparkan track bagi Menengah dan Univ
 
 Senarai Finance memaparkan 20 rekod setiap halaman dengan navigasi Sebelum/Seterusnya selepas carian dan penapis. Tanda semua memilih rekod pada halaman semasa sahaja; pilihan daripada halaman lain dikekalkan dalam jumlah serta langkah semakan seterusnya. Carian, status atau tab baharu kembali ke halaman pertama. Ringkasan Jumlah pengesahan dipilih berada dalam aliran halaman biasa di bawah senarai dan tidak lagi sticky/fixed.
 
+Finance menggunakan menu sisi sepadan dengan Admin: logo P.A.K.A.R, Dashboard, Semakan bayaran, Peserta mengikut modul, urus/pulihkan pendaftaran, lihat website dan Log keluar. Menu aktif disorot cyan dan bilangan resit menunggu semakan dipaparkan pada menu Semakan bayaran. Pada skrin sehingga 900px, menu boleh dibuka/ditutup melalui butang menu, klik luar atau Escape.
+
 Finance bermula pada menu Dashboard dengan statistik peserta belum bayar, resit belum disemak, sudah diapprove dan perlu tindakan, serta jumlah diterima dan statistik track/modul. Menu Semakan bayaran mengandungi proses tick empat langkah; pilihan dikekalkan apabila menukar menu. Kad statistik boleh membuka senarai status berkaitan.
 
 Laporan Peserta mengikut modul pada Admin dan Finance kini menyenaraikan semua status, bukan peserta berbayar sahaja. Setiap modul menunjukkan kiraan sudah bayar/disahkan, belum bayar, belum disemak dan perlu tindakan, bersama nama, telefon, e-mel, institusi dan rujukan. Penapis status serta 20 rekod setiap halaman disediakan dalam setiap modul. Jumlah keseluruhan dikira sekali setiap pendaftaran; peserta kombo muncul dalam setiap modul yang dipilih.
