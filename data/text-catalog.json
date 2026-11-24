@@ -295,6 +295,12 @@
     ]
   },
   {
+    "key": "Batal",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Bawa cerita dan idea cuti sekolah ke dalam perancangan video. Pelajari asas skrip, papan cerita dan penceritaan kreatif dengan bantuan Claude AI.",
     "groups": [
       "general"
@@ -319,9 +325,33 @@
     ]
   },
   {
+    "key": "Bayaran akan kembali ke Belum disahkan. Jumlah disahkan Admin dan Finance akan dikira semula. Rekod pengesahan terdahulu kekal disimpan.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Bayaran belum disahkan",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Bayaran yang ditanda",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Belajar. Cuba. Cipta.",
     "groups": [
       "landing"
+    ]
+  },
+  {
+    "key": "Belum ada pengesahan.",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -333,6 +363,12 @@
   },
   {
     "key": "Belum dimuat naik",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Belum disahkan",
     "groups": [
       "system"
     ]
@@ -428,6 +464,12 @@
     ]
   },
   {
+    "key": "Boleh tanda beberapa resit serentak. Semak ringkasan sebelum menghantar pengesahan.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Bolehkah ibu bapa atau penjaga mendaftarkan anak?",
     "groups": [
       "general"
@@ -496,6 +538,18 @@
   },
   {
     "key": "Buka resit dahulu sebelum menandakan pembayaran untuk pengesahan.",
+    "groups": [
+      "general"
+    ]
+  },
+  {
+    "key": "Buka semula",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Buka semula pengesahan",
     "groups": [
       "system"
     ]
@@ -594,6 +648,12 @@
     "key": "Contoh: SMK Taman Melawati",
     "groups": [
       "registration"
+    ]
+  },
+  {
+    "key": "Contoh: tersalah tanda resit peserta.",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -796,6 +856,18 @@
     ]
   },
   {
+    "key": "Disahkan oleh Admin",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Disahkan oleh Finance",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Disahkan pada",
     "groups": [
       "system"
@@ -850,6 +922,12 @@
     "key": "Diskaun tersedia untuk kombo",
     "groups": [
       "landing"
+    ]
+  },
+  {
+    "key": "Ditanda",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -1188,13 +1266,19 @@
   {
     "key": "Hantar pengesahan",
     "groups": [
-      "system"
+      "general"
     ]
   },
   {
     "key": "Hantar resit untuk semakan",
     "groups": [
       "payment"
+    ]
+  },
+  {
+    "key": "Hanya pendaftaran dalam senarai ini akan disahkan.",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -1584,6 +1668,12 @@
     ]
   },
   {
+    "key": "Kembali semak",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Kemungkinan tanpa batas.",
     "groups": [
       "registration"
@@ -1724,6 +1814,7 @@
   {
     "key": "Kosongkan pilihan",
     "groups": [
+      "system",
       "registration"
     ]
   },
@@ -1836,9 +1927,21 @@
     ]
   },
   {
+    "key": "Lihat rekod pengesahan atau buka semula jika tersalah tanda.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Lihat resit",
     "groups": [
       "payment"
+    ]
+  },
+  {
+    "key": "Lihat resit & rekod",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -2725,6 +2828,12 @@
     ]
   },
   {
+    "key": "pendaftaran ·",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Pendaftaran anda telah disimpan.",
     "groups": [
       "payment"
@@ -2868,6 +2977,36 @@
     "key": "Pengenalan program",
     "groups": [
       "admin"
+    ]
+  },
+  {
+    "key": "Pengesahan dibuka semula",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Pengesahan dibuka semula. Bayaran kembali ke senarai belum disahkan dan jumlah Admin dikemas kini.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Pengesahan telah berubah. Muat semula dan semak sekali lagi.",
+    "groups": [
+      "general"
+    ]
+  },
+  {
+    "key": "Pengesahan terakhir",
+    "groups": [
+      "general"
+    ]
+  },
+  {
+    "key": "Pengesahan terakhir ·",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -3037,6 +3176,12 @@
   },
   {
     "key": "Pilih induk",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Pilih maksimum 100 pendaftaran setiap hantaran.",
     "groups": [
       "system"
     ]
@@ -3416,7 +3561,25 @@
     ]
   },
   {
+    "key": "Rekod pembayaran disahkan",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Rekod semakan & pengesahan",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Resit",
+    "groups": [
+      "general"
+    ]
+  },
+  {
+    "key": "Resit & rekod",
     "groups": [
       "system"
     ]
@@ -3443,6 +3606,12 @@
     "key": "Resit diterima. Terima kasih!",
     "groups": [
       "payment"
+    ]
+  },
+  {
+    "key": "Resit ditolak",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -3537,6 +3706,12 @@
     ]
   },
   {
+    "key": "Ringkasan yang ditanda",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "RM",
     "groups": [
       "landing"
@@ -3549,7 +3724,19 @@
     ]
   },
   {
+    "key": "Rujukan kelompok:",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Sahkan",
+    "groups": [
+      "general"
+    ]
+  },
+  {
+    "key": "Sahkan bayaran dipilih",
     "groups": [
       "system"
     ]
@@ -3633,7 +3820,19 @@
     ]
   },
   {
+    "key": "Saya telah semak resit, penerima dan jumlah bagi semua bayaran yang ditanda.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Saya telah semak resit, penerima dan jumlah pembayaran ini.",
+    "groups": [
+      "general"
+    ]
+  },
+  {
+    "key": "Sebab pembetulan",
     "groups": [
       "system"
     ]
@@ -3723,6 +3922,12 @@
     ]
   },
   {
+    "key": "Semak & hantar pengesahan",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Semak jumlah bayaran, modul pilihan dan bukti pembayaran peserta di satu tempat.",
     "groups": [
       "general"
@@ -3760,6 +3965,12 @@
     ]
   },
   {
+    "key": "Semak pilihan sebelum sahkan",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Semak resit",
     "groups": [
       "system"
@@ -3767,6 +3978,12 @@
   },
   {
     "key": "Semak resit dan modul, tandakan bayaran yang tepat, kemudian hantar pengesahan.",
+    "groups": [
+      "general"
+    ]
+  },
+  {
+    "key": "Semak resit, tanda bayaran di sebelah kanan dan sahkan pilihan anda.",
     "groups": [
       "system"
     ]
@@ -3813,7 +4030,7 @@
   {
     "key": "Semakan resit peserta",
     "groups": [
-      "system"
+      "general"
     ]
   },
   {
@@ -3844,6 +4061,12 @@
     "key": "Semua bahagian",
     "groups": [
       "admin"
+    ]
+  },
+  {
+    "key": "Semua belum disahkan",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -3885,14 +4108,19 @@
   {
     "key": "Semua status",
     "groups": [
-      "admin",
-      "system"
+      "admin"
     ]
   },
   {
     "key": "Semua yang anda perlu tahu",
     "groups": [
       "landing"
+    ]
+  },
+  {
+    "key": "Senarai pembayaran",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -4059,6 +4287,12 @@
     ]
   },
   {
+    "key": "Simpan pembetulan",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Simpan teks & butang",
     "groups": [
       "admin"
@@ -4181,6 +4415,12 @@
     ]
   },
   {
+    "key": "Sudah disahkan",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Susun hasil kerja",
     "groups": [
       "general"
@@ -4286,6 +4526,24 @@
     "key": "Tambah teks asal yang belum tersenarai",
     "groups": [
       "admin"
+    ]
+  },
+  {
+    "key": "Tanda",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Tanda bayaran ini untuk pengesahan.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Tanda semua bayaran dalam paparan",
+    "groups": [
+      "system"
     ]
   },
   {

@@ -9,7 +9,7 @@ import { registrationSchema, moduleSchema, settingsSchema, interfaceTextSchema, 
 import { calculatePrice } from '@/lib/pricing';
 import { readFile, saveFile } from '@/lib/files';
 import { participantGroup, receiptSnapshot } from '@/lib/receipts';
-import {assertFinanceApproval,financeRecord} from '@/lib/finance';
+import {assertFinanceApproval,assertFinanceReopen,financeRecord,recordPaymentReview} from '@/lib/finance';
 import {matchStaffCode} from '@/lib/staff-codes';
 import type { Registration } from '@/lib/types';
 export const runtime = 'nodejs';
@@ -62,11 +62,19 @@ async function handle(request:NextRequest,context:Context) {
     if(route==='finance/approve'&&method==='POST'){
       const input=z.object({items:z.array(z.object({id:z.uuid(),receiptId:z.uuid(),total:z.number().min(0)}).strict()).min(1).max(100)}).strict().parse(await request.json());
       if(new Set(input.items.map(i=>i.id)).size!==input.items.length)throw new HttpError(400,'Pilihan berulang tidak dibenarkan.');
-      const tx=await db().transaction('write');let total=0;
+      const tx=await db().transaction('write');let total=0;const batchId=randomUUID();
       try{for(const item of input.items){const found=await tx.execute({sql:'SELECT * FROM registrations WHERE id=?',args:[item.id]});if(!found.rows[0])throw new HttpError(409,'Pendaftaran tidak ditemui.');const record=parseRegistration(found.rows[0]);try{assertFinanceApproval(record,item);}catch(e){throw new HttpError(409,(e as Error).message);}
-        const now=new Date().toISOString();await tx.execute({sql:'UPDATE registrations SET status=?,content=? WHERE id=?',args:['approved',JSON.stringify({...record,status:'approved',paymentApprovedAt:now,verifiedByRole:actor.role,verifiedById:actor.id,adminNote:actor.role==='finance'?'Pembayaran disahkan oleh Finance.':'Pembayaran disahkan oleh Admin.'}),item.id]});
+        const now=new Date().toISOString(),note=actor.role==='finance'?'Pembayaran disahkan oleh Finance.':'Pembayaran disahkan oleh Admin.';await tx.execute({sql:'UPDATE registrations SET status=?,content=? WHERE id=?',args:['approved',JSON.stringify({...record,status:'approved',paymentApprovedAt:now,verifiedByRole:actor.role,verifiedById:actor.id,adminNote:note,paymentHistory:recordPaymentReview(record,{action:'approved',at:now,role:actor.role,note,total:record.total,receiptId:record.receiptId,batchId})}),item.id]});
         await tx.execute({sql:'INSERT INTO audit_logs(id,admin_id,action,target) VALUES(?,?,?,?)',args:[randomUUID(),actor.id,actor.role+'.receipt.approved',item.id]});total+=record.total;}
-        await tx.commit();return reply({ok:true,count:input.items.length,total:Math.round(total*100)/100});
+        await tx.commit();return reply({ok:true,count:input.items.length,total:Math.round(total*100)/100,batchId});
+      }catch(e){if(!tx.closed)await tx.rollback();throw e;}finally{tx.close();}
+    }
+    if(route==='finance/reopen'&&method==='POST'){
+      const input=z.object({id:z.uuid(),receiptId:z.uuid(),total:z.number().min(0),approvedAt:z.string().nullable(),reason:z.string().trim().min(3).max(500)}).strict().parse(await request.json());
+      const tx=await db().transaction('write');
+      try{const found=await tx.execute({sql:'SELECT * FROM registrations WHERE id=?',args:[input.id]});if(!found.rows[0])throw new HttpError(409,'Pendaftaran tidak ditemui.');const record=parseRegistration(found.rows[0]);try{assertFinanceReopen(record,input);}catch(e){throw new HttpError(409,(e as Error).message);}
+        const now=new Date().toISOString();await tx.execute({sql:'UPDATE registrations SET status=?,content=? WHERE id=?',args:['pending',JSON.stringify({...record,status:'pending',paymentApprovedAt:undefined,verifiedByRole:undefined,verifiedById:undefined,adminNote:input.reason,paymentHistory:recordPaymentReview(record,{action:'reopened',at:now,role:actor.role,note:input.reason,total:record.total,receiptId:record.receiptId})}),input.id]});
+        await tx.execute({sql:'INSERT INTO audit_logs(id,admin_id,action,target) VALUES(?,?,?,?)',args:[randomUUID(),actor.id,actor.role+'.receipt.reopened',input.id]});await tx.commit();return reply({ok:true});
       }catch(e){if(!tx.closed)await tx.rollback();throw e;}finally{tx.close();}
     }
     throw new HttpError(404,'Halaman tidak ditemui.');
@@ -163,7 +171,7 @@ async function handle(request:NextRequest,context:Context) {
         const row=matches[0];if(!row)throw new HttpError(404,'Pendaftaran tidak ditemui.');
         const registration=parseRegistration(row);
         if(!registration.receiptId || row.status!=='pending')throw new HttpError(409,'Hanya resit yang menunggu semakan boleh disahkan atau ditolak.');
-        await connection.execute({sql:'UPDATE registrations SET status=?,content=? WHERE id=?',args:[input.status,JSON.stringify({...registration,status:input.status,adminNote:input.note,paymentApprovedAt:input.status==='approved'?new Date().toISOString():undefined}),input.id]});
+        const now=new Date().toISOString();await connection.execute({sql:'UPDATE registrations SET status=?,content=? WHERE id=?',args:[input.status,JSON.stringify({...registration,status:input.status,adminNote:input.note,paymentApprovedAt:input.status==='approved'?now:undefined,verifiedByRole:input.status==='approved'?'admin':undefined,verifiedById:input.status==='approved'?admin.id:undefined,paymentHistory:recordPaymentReview(registration,{action:input.status,at:now,role:'admin',note:input.note,total:registration.total,receiptId:registration.receiptId})}),input.id]});
         await connection.execute({sql:'INSERT INTO audit_logs (id,admin_id,action,target) VALUES (?,?,?,?)',args:[randomUUID(),admin.id,`receipt.${input.status}`,input.id]});
         await connection.commit();
       } catch(error) {if(!connection.closed)await connection.rollback();throw error;} finally {connection.close();}

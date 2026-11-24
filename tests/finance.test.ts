@@ -1,6 +1,8 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {assertFinanceApproval} from '../lib/finance.ts';
+import {assertFinanceApproval,assertFinanceReopen,paymentHistory,recordPaymentReview} from '../lib/finance.ts';
 import type {Registration} from '../lib/types.ts';
 const record={status:'pending',receiptId:'proof-a',total:70.2} as Registration;
 test('finance only approves the exact reviewed proof and amount',()=>{assert.doesNotThrow(()=>assertFinanceApproval(record,{id:'x',receiptId:'proof-a',total:70.2}));for(const changed of [{...record,status:'approved'},{...record,status:'awaiting_payment'},{...record,receiptId:'proof-b'},{...record,total:80}])assert.throws(()=>assertFinanceApproval(changed as Registration,{id:'x',receiptId:'proof-a',total:70.2}));});
+test('reopening requires the current approval and exact receipt and amount',()=>{const approved={...record,status:'approved',paymentApprovedAt:'2026-11-24T01:00:00Z'} as Registration;const input={receiptId:'proof-a',total:70.2,approvedAt:approved.paymentApprovedAt!};assert.doesNotThrow(()=>assertFinanceReopen(approved,input));for(const change of [{status:'pending'},{receiptId:'other'},{total:80},{paymentApprovedAt:'2026-11-24T02:00:00Z'}])assert.throws(()=>assertFinanceReopen({...approved,...change} as Registration,input));});
+test('legacy approvals remain in history after a correction',()=>{const approved={...record,paymentApprovedAt:'2026-11-24T01:00:00Z',verifiedByRole:'finance'} as Registration;const history=recordPaymentReview(approved,{action:'reopened',at:'2026-11-24T02:00:00Z',role:'finance',note:'Wrong receipt',receiptId:'proof-a',total:70.2});assert.deepEqual(history.map(e=>e.action),['approved','reopened']);assert.equal(history[0].role,'finance');assert.equal(paymentHistory({...approved,paymentHistory:history}).length,2);assert.equal(approved.paymentHistory,undefined);});

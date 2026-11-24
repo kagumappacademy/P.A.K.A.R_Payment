@@ -30,8 +30,10 @@ export type Registration = {
   status: 'awaiting_payment' | 'pending' | 'approved' | 'rejected';
   receiptId: string | null; receiptName: string | null; receiptMime?: string;
   paymentReceipt?: PaymentReceiptSnapshot; paymentSubmittedAt?: string; paymentApprovedAt?: string;
+  verifiedByRole?:'admin'|'finance'; verifiedById?:string; paymentHistory?:PaymentReviewEvent[];
   adminNote: string; createdAt: string; updatedAt: string;
 };
+export type PaymentReviewEvent={action:'approved'|'reopened'|'rejected';at:string;role:'admin'|'finance';note:string;total:number;receiptId:string|null;batchId?:string};
 export type PaymentReceiptSnapshot = {
   number: string; issuedAt: string; recipient: string; organizer: string;
   eventName: string; eventDate: string;
