@@ -160,6 +160,8 @@ Finance bermula pada menu Dashboard dengan statistik peserta belum bayar, resit 
 
 Laporan Peserta mengikut modul pada Admin dan Finance kini menyenaraikan semua status, bukan peserta berbayar sahaja. Setiap modul menunjukkan kiraan sudah bayar/disahkan, belum bayar, belum disemak dan perlu tindakan, bersama nama, telefon, e-mel, institusi dan rujukan. Penapis status serta 20 rekod setiap halaman disediakan dalam setiap modul. Jumlah keseluruhan dikira sekali setiap pendaftaran; peserta kombo muncul dalam setiap modul yang dipilih.
 
+Dalam Admin → Peserta mengikut modul, butang **Lihat butiran** membuka butiran penuh pendaftaran termasuk peserta yang telah disahkan pembayarannya. Nombor telefon peserta dan penjaga boleh diklik untuk membuka WhatsApp dalam tab baharu; nombor juga boleh diklik terus dalam senarai peserta modul. Nombor tempatan Malaysia dinormalkan dengan kod negara 60, sementara nombor antarabangsa mengekalkan kod negaranya. Nilai kosong atau format tidak sah kekal sebagai teks. Pautan menggunakan format rasmi [WhatsApp Click to Chat](https://faq.whatsapp.com/5913398998672934), tanpa menghantar mesej secara automatik.
+
 Admin → Modul & harga mempunyai tab Modul aktif dan Modul tidak aktif, masing-masing dengan kiraan modul. Selepas menyimpan perubahan status modul, senarai beralih ke tab yang sesuai supaya modul yang dikemas kini terus kelihatan.
 
 Panel slider kolaborator kini menggunakan latar biru navy dengan grid litar, bingkai cyan dan cahaya teal di belakang logo. Tiada panel putih digunakan; fail serta warna asal logo dikekalkan, dengan glow halus untuk memastikan tulisan gelap kekal jelas. Slider kekal automatik tanpa kawalan play/pause.

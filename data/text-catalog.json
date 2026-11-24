@@ -1546,6 +1546,12 @@
     ]
   },
   {
+    "key": "Hubungi melalui WhatsApp",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Hubungi penganjur",
     "groups": [
       "landing",
@@ -2193,7 +2199,8 @@
   {
     "key": "Lihat butiran",
     "groups": [
-      "admin"
+      "admin",
+      "system"
     ]
   },
   {
@@ -5966,6 +5973,12 @@
   },
   {
     "key": "Warna utama",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "WhatsApp",
     "groups": [
       "system"
     ]
