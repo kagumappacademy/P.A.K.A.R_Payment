@@ -140,4 +140,4 @@ Skrip hanya mengemas kini ayat kempen, manfaat, FAQ dan penerangan modul sekolah
 - PDF dijana di server dengan `pdf-lib` dan fon Noto Sans berlesen SIL OFL (lesen di `public/fonts/LICENSE-Noto.txt`). Fon dibundel untuk Vercel, tanpa bergantung pada Python atau fon komputer pengguna. Muat turun menggunakan permintaan POST dengan token peserta atau sesi admin, dan respons tidak dicache.
 - Tetapan dan metadata resit disimpan sebagai JSON dalam Turso. Rekod lama masih boleh dibaca. Medan mod pembelajaran serta rujukan transaksi lama tidak lagi dikumpulkan dalam borang atau dimasukkan dalam eksport CSV baharu.
 
-Slider kolaborator memaparkan satu logo pada satu masa, bergerak setiap 3.2 saat dan mengulang tanpa henti. Titik navigasi dan butang jeda disediakan. Pergerakan berhenti semasa hover, fokus papan kekunci atau tetapan reduced motion.
+Slider kolaborator memaparkan satu logo pada satu masa, bergerak setiap 3.2 saat dan mengulang tanpa henti. Titik navigasi disediakan tanpa butang play/pause. Slider terus bergerak selepas pilihan logo atau hover; tetapan reduced motion kekal dihormati.
