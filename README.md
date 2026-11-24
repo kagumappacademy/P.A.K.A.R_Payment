@@ -141,3 +141,5 @@ Skrip hanya mengemas kini ayat kempen, manfaat, FAQ dan penerangan modul sekolah
 - Tetapan dan metadata resit disimpan sebagai JSON dalam Turso. Rekod lama masih boleh dibaca. Medan mod pembelajaran serta rujukan transaksi lama tidak lagi dikumpulkan dalam borang atau dimasukkan dalam eksport CSV baharu.
 
 Slider kolaborator memaparkan satu logo pada satu masa, bergerak setiap 3.2 saat dan mengulang tanpa henti. Titik navigasi disediakan tanpa butang play/pause. Slider terus bergerak selepas pilihan logo atau hover; tetapan reduced motion kekal dihormati.
+
+Butang Log keluar tersedia di bar atas Admin dan Finance, serta sidebar Admin. Butang menutup kedua-dua sesi melalui server sebelum kembali ke login bersama `/admin` dengan navigasi penuh. Jika permintaan gagal, mesej ralat dipaparkan dan pengguna boleh mencuba semula.

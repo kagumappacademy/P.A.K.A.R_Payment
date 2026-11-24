@@ -628,5 +628,7 @@
   "Mainkan slider logo": "Play logo slideshow",
   "Jeda slider logo": "Pause logo slideshow",
   "Semakan pembayaran": "Payment review",
-  "Kod Admin dan Finance mesti berbeza.": "Admin and Finance codes must be different."
+  "Kod Admin dan Finance mesti berbeza.": "Admin and Finance codes must be different.",
+  "Sedang log keluar...": "Signing out...",
+  "Log keluar gagal. Sila cuba semula.": "Sign out failed. Please try again."
 }
