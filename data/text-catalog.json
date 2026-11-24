@@ -42,6 +42,12 @@
     ]
   },
   {
+    "key": "20 rekod setiap halaman. Pilihan tick dikekalkan apabila bertukar halaman.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "3+ modul",
     "groups": [
       "landing"
@@ -833,6 +839,7 @@
   {
     "key": "daripada",
     "groups": [
+      "system",
       "registration"
     ]
   },
@@ -1287,6 +1294,12 @@
     ]
   },
   {
+    "key": "Halaman",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Halaman API tidak ditemui.",
     "groups": [
       "system"
@@ -1300,6 +1313,12 @@
   },
   {
     "key": "Halaman pratonton",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Halaman senarai pembayaran",
     "groups": [
       "system"
     ]
@@ -2823,6 +2842,12 @@
     ]
   },
   {
+    "key": "Paparan",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Paparkan kolaborator",
     "groups": [
       "admin"
@@ -3809,6 +3834,12 @@
     ]
   },
   {
+    "key": "rekod",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Rekod Admin dan laporan peserta berbayar telah dikemas kini.",
     "groups": [
       "system"
@@ -4135,6 +4166,12 @@
   },
   {
     "key": "Sebaris terbalik",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Sebelum",
     "groups": [
       "system"
     ]
@@ -4494,6 +4531,7 @@
   {
     "key": "Seterusnya",
     "groups": [
+      "system",
       "admin"
     ]
   },
