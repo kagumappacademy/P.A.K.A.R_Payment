@@ -1,7 +1,7 @@
 'use client';
 import { Localized } from './preferences';
 import { useState } from 'react';
-import { Check, CheckCircle2, Copy, FileCheck2, FileUp, LoaderCircle, RefreshCw, ShieldCheck } from 'lucide-react';
+import { Check, CheckCircle2, Copy, Download, ExternalLink, FileCheck2, FileUp, LoaderCircle, RefreshCw, ShieldCheck } from 'lucide-react';
 import Link from 'next/link';
 import { api, Notice, Status } from './ui';
 import { GeneratedReceipt } from './generated-receipt';
@@ -39,7 +39,7 @@ export function Payment({registration:r,accessToken,settings:s,onUpdate}:{regist
       <div className="form-actions"><button className="button button-secondary" disabled={busy} onClick={refresh}>{busy?<LoaderCircle className="spin" size={17}/>:<RefreshCw size={17}/>}Semak semula</button><Link className="button button-secondary" href="/">Kembali ke utama</Link></div>
     </>:<div className="payment-grid">
       <div className="qr-panel"><h3>Bayar dengan DuitNow QR</h3>{paymentReady?<>
-        <div className="qr-image"><img src={s.paymentQr} alt={`QR DuitNow rasmi ${s.paymentName}`}/></div><span className="payment-recipient">{s.paymentName}</span>
+        <div className="qr-image"><a href={s.paymentQr} target="_blank" rel="noopener noreferrer" aria-label="Buka QR DuitNow saiz penuh"><img src={s.paymentQr} alt={`QR DuitNow rasmi ${s.paymentName}`}/></a></div><div className="qr-actions"><a className="button button-secondary button-small" href={s.paymentQr} target="_blank" rel="noopener noreferrer"><ExternalLink size={16}/>Buka QR saiz penuh</a><a className="button button-secondary button-small" href={s.paymentQr} download><Download size={16}/>Muat turun QR</a></div><span className="payment-recipient">{s.paymentName}</span>
         {s.bankName&&<p>{s.bankName}{s.bankAccount&&<> · {s.bankAccount}</>}</p>}
         <div className="payment-amount"><span>Jumlah perlu dibayar</span><strong>{money(r.total)}</strong></div><p className="payment-instructions">{s.paymentInstructions}</p>
       </>:<div className="qr-unavailable"><ShieldCheck size={34}/><h4>QR rasmi sedang disediakan</h4><p>Pendaftaran anda telah disimpan. Pembayaran akan dibuka selepas penganjur menyediakan QR DuitNow rasmi.</p>{s.whatsapp&&<a className="text-link" href={`https://wa.me/${s.whatsapp}`}>Hubungi penganjur</a>}<p>Gunakan halaman <Link href="/semak">Semak status</Link> untuk kembali ke pembayaran.</p></div>}</div>

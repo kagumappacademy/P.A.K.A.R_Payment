@@ -178,6 +178,11 @@ async function handle(request:NextRequest,context:Context) {
   if(path[0]==='admin') {
     const admin=await requireAdmin();
     if(route==='admin/config' && method==='GET')return reply(await getConfiguration(true,true));
+    if(route==='admin/track-visibility'&&method==='PUT'){
+      const input=z.object({menengah:z.boolean(),universiti:z.boolean()}).strict().parse(await request.json());
+      await db().execute("UPDATE settings SET content=json_set(content,'$.tracks.menengah.visible',json(?),'$.tracks.universiti.visible',json(?)) WHERE id=1",[JSON.stringify(input.menengah),JSON.stringify(input.universiti)]);
+      await audit(admin.id,'tracks.visibility','settings');return reply({ok:true});
+    }
     if(route==='admin/registrations' && method==='GET') return reply({registrations:(await rows("SELECT * FROM registrations WHERE json_extract(content,'$.deletedAt') IS NULL ORDER BY created_at DESC")).map(parseRegistration)});
     if(route==='admin/review' && method==='POST') {
       const input=z.object({id:z.uuid(),status:z.enum(['approved','rejected']),note:z.string().trim().max(2000)}).parse(await request.json());

@@ -30,6 +30,12 @@
     ]
   },
   {
+    "key": "% pembayaran diapprove",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "2 modul",
     "groups": [
       "landing"
@@ -355,6 +361,12 @@
     ]
   },
   {
+    "key": "Belum ada pendaftaran modul.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Belum ada pengesahan.",
     "groups": [
       "system"
@@ -362,6 +374,25 @@
   },
   {
     "key": "Belum ada peserta berbayar untuk track ini.",
+    "groups": [
+      "general"
+    ]
+  },
+  {
+    "key": "belum bayar",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Belum bayar",
+    "groups": [
+      "admin",
+      "system"
+    ]
+  },
+  {
+    "key": "belum bayar ·",
     "groups": [
       "system"
     ]
@@ -381,6 +412,31 @@
   },
   {
     "key": "Belum disahkan",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "belum disemak",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Belum disemak",
+    "groups": [
+      "admin",
+      "system"
+    ]
+  },
+  {
+    "key": "belum disemak ·",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Belum disemak menunjukkan resit yang telah dihantar. Ia dikira berasingan daripada peserta yang belum bayar.",
     "groups": [
       "system"
     ]
@@ -554,6 +610,18 @@
     ]
   },
   {
+    "key": "Buka QR DuitNow saiz penuh",
+    "groups": [
+      "payment"
+    ]
+  },
+  {
+    "key": "Buka QR saiz penuh",
+    "groups": [
+      "payment"
+    ]
+  },
+  {
     "key": "Buka resit",
     "groups": [
       "system"
@@ -581,6 +649,13 @@
   {
     "key": "Buka semula pengesahan",
     "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Bukti pembayaran belum dihantar",
+    "groups": [
+      "admin",
       "system"
     ]
   },
@@ -639,6 +714,18 @@
     ]
   },
   {
+    "key": "Cari modul atau peserta",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Cari modul, nama, telefon atau rujukan...",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Cari nama, e-mel atau no. pendaftaran...",
     "groups": [
       "admin"
@@ -677,7 +764,7 @@
   {
     "key": "Cari peserta berbayar",
     "groups": [
-      "system"
+      "general"
     ]
   },
   {
@@ -850,7 +937,25 @@
     ]
   },
   {
+    "key": "Daripada pembayaran yang sudah diapprove sahaja",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Dark mode",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Dashboard",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Dashboard kewangan",
     "groups": [
       "system"
     ]
@@ -886,6 +991,12 @@
     ]
   },
   {
+    "key": "diapprove ·",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Dibina untuk generasi pencipta.",
     "groups": [
       "navigation"
@@ -904,9 +1015,15 @@
     ]
   },
   {
-    "key": "Dipilih untuk pengesahan",
+    "key": "Dipaparkan",
     "groups": [
       "system"
+    ]
+  },
+  {
+    "key": "Dipilih untuk pengesahan",
+    "groups": [
+      "general"
     ]
   },
   {
@@ -930,6 +1047,12 @@
   },
   {
     "key": "Disahkan pada",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Disembunyikan",
     "groups": [
       "system"
     ]
@@ -1312,6 +1435,12 @@
     ]
   },
   {
+    "key": "Halaman peserta modul",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Halaman pratonton",
     "groups": [
       "system"
@@ -1574,7 +1703,8 @@
   {
     "key": "Jumlah diterima",
     "groups": [
-      "admin"
+      "admin",
+      "system"
     ]
   },
   {
@@ -1609,6 +1739,24 @@
     ]
   },
   {
+    "key": "jumlah peserta",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Jumlah peserta",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Jumlah peserta berdaftar",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Jumlah RM",
     "groups": [
       "system"
@@ -1618,6 +1766,12 @@
     "key": "Kadar diskaun mesti meningkat mengikut jumlah modul. Kemas kini teks soalan lazim jika kadar promosi berubah.",
     "groups": [
       "admin"
+    ]
+  },
+  {
+    "key": "Kadar pembayaran diapprove",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -2009,7 +2163,7 @@
   {
     "key": "Lengkapkan tetapan pembayaran anda",
     "groups": [
-      "admin"
+      "general"
     ]
   },
   {
@@ -2043,7 +2197,25 @@
     ]
   },
   {
+    "key": "Lihat nama peserta",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Lihat peserta berbayar ikut modul",
+    "groups": [
+      "general"
+    ]
+  },
+  {
+    "key": "Lihat peserta dan status bayaran mengikut modul.",
+    "groups": [
+      "admin"
+    ]
+  },
+  {
+    "key": "Lihat peserta mengikut modul",
     "groups": [
       "system"
     ]
@@ -2075,7 +2247,19 @@
   {
     "key": "Lihat semua pendaftaran",
     "groups": [
-      "admin"
+      "general"
+    ]
+  },
+  {
+    "key": "Lihat senarai peserta",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Lihat siapa sudah bayar, belum bayar dan belum disemak bagi setiap modul.",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -2307,6 +2491,12 @@
     ]
   },
   {
+    "key": "Menu Finance",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Menunggu semakan",
     "groups": [
       "admin",
@@ -2448,6 +2638,12 @@
     ]
   },
   {
+    "key": "Modul aktif",
+    "groups": [
+      "admin"
+    ]
+  },
+  {
     "key": "Modul aktif & dibuka untuk pendaftaran",
     "groups": [
       "admin"
@@ -2496,6 +2692,12 @@
     ]
   },
   {
+    "key": "Modul tidak aktif",
+    "groups": [
+      "admin"
+    ]
+  },
+  {
     "key": "Modul tidak tersedia atau tidak berada dalam track yang dipilih.",
     "groups": [
       "system"
@@ -2522,7 +2724,7 @@
   {
     "key": "Muat naik QR DuitNow rasmi untuk membolehkan peserta membuat pembayaran.",
     "groups": [
-      "admin"
+      "general"
     ]
   },
   {
@@ -2540,6 +2742,12 @@
   },
   {
     "key": "Muat turun PDF",
+    "groups": [
+      "payment"
+    ]
+  },
+  {
+    "key": "Muat turun QR",
     "groups": [
       "payment"
     ]
@@ -2657,6 +2865,12 @@
     "groups": [
       "payment",
       "system"
+    ]
+  },
+  {
+    "key": "Nama peserta ditunjukkan bersama status bayaran. Resit yang belum disemak diasingkan daripada pembayaran yang telah disahkan.",
+    "groups": [
+      "general"
     ]
   },
   {
@@ -2788,6 +3002,12 @@
     ]
   },
   {
+    "key": "orang ·",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "P.A.K.A.R — Misi Cuti Sekolah Akhir Tahun",
     "groups": [
       "system"
@@ -2826,7 +3046,7 @@
   {
     "key": "pada website dan buka pendaftaran",
     "groups": [
-      "admin"
+      "general"
     ]
   },
   {
@@ -2836,15 +3056,39 @@
     ]
   },
   {
+    "key": "Pantau jumlah peserta, bayaran dan resit yang menunggu tindakan.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Pantau penyertaan dan pembayaran program anda.",
     "groups": [
-      "admin"
+      "general"
     ]
   },
   {
     "key": "Paparan",
     "groups": [
       "system"
+    ]
+  },
+  {
+    "key": "Paparan track berjaya disimpan.",
+    "groups": [
+      "admin"
+    ]
+  },
+  {
+    "key": "Paparan track pada website",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Paparkan atau sembunyikan track pada website.",
+    "groups": [
+      "admin"
     ]
   },
   {
@@ -2856,7 +3100,7 @@
   {
     "key": "Paparkan track",
     "groups": [
-      "admin"
+      "general"
     ]
   },
   {
@@ -2938,6 +3182,12 @@
     ]
   },
   {
+    "key": "pembayaran diapprove",
+    "groups": [
+      "general"
+    ]
+  },
+  {
     "key": "Pembayaran disahkan",
     "groups": [
       "admin",
@@ -2965,6 +3215,13 @@
   {
     "key": "Pembayaran pendaftaran ini telah disahkan oleh pentadbir program.",
     "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Pembayaran telah disahkan",
+    "groups": [
+      "admin",
       "system"
     ]
   },
@@ -3115,7 +3372,7 @@
   {
     "key": "Pendaftaran terkini",
     "groups": [
-      "admin"
+      "general"
     ]
   },
   {
@@ -3296,6 +3553,12 @@
     ]
   },
   {
+    "key": "perlu tindakan",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Perlu tindakan",
     "groups": [
       "admin",
@@ -3339,6 +3602,12 @@
     ]
   },
   {
+    "key": "peserta",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Peserta",
     "groups": [
       "admin",
@@ -3360,37 +3629,32 @@
   {
     "key": "peserta berbayar",
     "groups": [
-      "system"
-    ]
-  },
-  {
-    "key": "Peserta berbayar",
-    "groups": [
-      "admin"
+      "general"
     ]
   },
   {
     "key": "PESERTA BERBAYAR",
     "groups": [
-      "system"
+      "general"
     ]
   },
   {
     "key": "Peserta berbayar ikut modul",
     "groups": [
-      "system"
+      "general"
     ]
   },
   {
     "key": "Peserta berbayar mengikut modul",
     "groups": [
-      "system"
+      "general"
     ]
   },
   {
     "key": "peserta berdaftar",
     "groups": [
-      "admin"
+      "admin",
+      "system"
     ]
   },
   {
@@ -3400,8 +3664,21 @@
     ]
   },
   {
+    "key": "Peserta kombo disenaraikan dalam setiap modul yang dipilih.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Peserta kombo muncul dalam setiap modul yang diambil. Jumlah keseluruhan dikira sekali bagi setiap pendaftaran.",
     "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Peserta mengikut modul",
+    "groups": [
+      "admin",
       "system"
     ]
   },
@@ -3431,6 +3708,12 @@
   },
   {
     "key": "Pilih induk",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Pilih kad modul untuk melihat senarai pembayaran yang sudah disemak dan belum disemak secara berasingan.",
     "groups": [
       "system"
     ]
@@ -3517,6 +3800,12 @@
     "key": "Pilih track anda",
     "groups": [
       "registration"
+    ]
+  },
+  {
+    "key": "Pilih track yang mahu dipaparkan kepada pelanggan dan dibuka untuk pendaftaran baharu.",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -3852,6 +4141,12 @@
     ]
   },
   {
+    "key": "Rekod peserta terdahulu, pembayaran dan laporan kekal tersedia kepada Admin dan Finance.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Rekod semakan & pengesahan",
     "groups": [
       "system"
@@ -3888,6 +4183,13 @@
     ]
   },
   {
+    "key": "Resit dihantar, menunggu pengesahan",
+    "groups": [
+      "admin",
+      "system"
+    ]
+  },
+  {
     "key": "Resit dijana secara elektronik. Status terkini boleh disemak menggunakan nombor pendaftaran dan e-mel di portal P.A.K.A.R.",
     "groups": [
       "system"
@@ -3915,6 +4217,13 @@
     "key": "Resit ditolak. Peserta boleh memuat naik resit baharu.",
     "groups": [
       "admin"
+    ]
+  },
+  {
+    "key": "Resit memerlukan pembetulan",
+    "groups": [
+      "admin",
+      "system"
     ]
   },
   {
@@ -3994,6 +4303,18 @@
     "key": "Resit tidak dapat dimuat turun.",
     "groups": [
       "payment"
+    ]
+  },
+  {
+    "key": "RINGKASAN KEWANGAN",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Ringkasan mengikut modul",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -4352,6 +4673,12 @@
     ]
   },
   {
+    "key": "Semak statistik di sini. Proses tick dan pengesahan tersedia dalam menu Semakan bayaran.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Semak status",
     "groups": [
       "navigation",
@@ -4554,6 +4881,12 @@
     ]
   },
   {
+    "key": "Setiap bayaran, dalam pantauan.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Setiap misi, dalam kawalan.",
     "groups": [
       "admin",
@@ -4669,6 +5002,12 @@
     ]
   },
   {
+    "key": "Simpan paparan track",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Simpan pembetulan",
     "groups": [
       "system"
@@ -4741,10 +5080,34 @@
     ]
   },
   {
+    "key": "Statistik mengikut track",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Statistik utama pendaftaran dan pembayaran.",
+    "groups": [
+      "admin"
+    ]
+  },
+  {
     "key": "Status",
     "groups": [
       "admin",
       "system"
+    ]
+  },
+  {
+    "key": "Status bayaran",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Status modul",
+    "groups": [
+      "admin"
     ]
   },
   {
@@ -4755,7 +5118,19 @@
     ]
   },
   {
+    "key": "Status pembayaran modul",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Status pendaftaran",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "STATUS PESERTA",
     "groups": [
       "system"
     ]
@@ -4803,7 +5178,38 @@
     ]
   },
   {
+    "key": "sudah bayar",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Sudah bayar (disahkan)",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Sudah diapprove",
+    "groups": [
+      "admin",
+      "system"
+    ]
+  },
+  {
     "key": "Sudah disahkan",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Sudah disemak",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Sudah disemak & diapprove",
     "groups": [
       "system"
     ]
@@ -5191,7 +5597,19 @@
     ]
   },
   {
+    "key": "Tetapan paparan track",
+    "groups": [
+      "admin"
+    ]
+  },
+  {
     "key": "Tetapan pembayaran",
+    "groups": [
+      "admin"
+    ]
+  },
+  {
+    "key": "Tetapan track",
     "groups": [
       "admin"
     ]
@@ -5199,7 +5617,7 @@
   {
     "key": "Tetapkan QR",
     "groups": [
-      "admin"
+      "general"
     ]
   },
   {
@@ -5221,7 +5639,31 @@
     ]
   },
   {
+    "key": "Tiada modul aktif.",
+    "groups": [
+      "admin"
+    ]
+  },
+  {
+    "key": "Tiada modul tidak aktif.",
+    "groups": [
+      "admin"
+    ]
+  },
+  {
     "key": "Tiada pendaftaran dalam senarai ini.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Tiada pendaftaran modul sepadan.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Tiada peserta dalam status ini.",
     "groups": [
       "system"
     ]
@@ -5229,7 +5671,7 @@
   {
     "key": "Tiada peserta sepadan.",
     "groups": [
-      "system"
+      "general"
     ]
   },
   {
