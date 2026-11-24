@@ -355,6 +355,12 @@
     ]
   },
   {
+    "key": "Belum ada peserta berbayar untuk track ini.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Belum dibayar",
     "groups": [
       "admin",
@@ -494,6 +500,18 @@
     ]
   },
   {
+    "key": "Buang pendaftaran",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Buang pendaftaran tersalah dan pulihkan semula apabila diperlukan.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Buang soalan",
     "groups": [
       "admin"
@@ -527,6 +545,12 @@
     "key": "Buka poster penuh",
     "groups": [
       "landing"
+    ]
+  },
+  {
+    "key": "Buka resit",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -615,6 +639,12 @@
     ]
   },
   {
+    "key": "Cari nama, e-mel, telefon atau rujukan...",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Cari nama, rujukan atau modul...",
     "groups": [
       "system"
@@ -627,9 +657,21 @@
     ]
   },
   {
+    "key": "Cari pendaftaran",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Cari peserta",
     "groups": [
       "admin"
+    ]
+  },
+  {
+    "key": "Cari peserta berbayar",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -795,6 +837,12 @@
     ]
   },
   {
+    "key": "daripada 4",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Dark mode",
     "groups": [
       "system"
@@ -834,6 +882,12 @@
     "key": "Dibina untuk generasi pencipta.",
     "groups": [
       "navigation"
+    ]
+  },
+  {
+    "key": "Dibuang:",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -1482,11 +1536,18 @@
     "key": "Jumlah",
     "groups": [
       "admin",
+      "system",
       "registration"
     ]
   },
   {
     "key": "Jumlah (RM)",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "jumlah diterima",
     "groups": [
       "system"
     ]
@@ -1626,6 +1687,12 @@
     ]
   },
   {
+    "key": "Kemajuan pengesahan pembayaran",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Kemas kini cerita, maklumat dan penampilan program anda.",
     "groups": [
       "admin"
@@ -1641,6 +1708,12 @@
     "key": "Kembali",
     "groups": [
       "registration"
+    ]
+  },
+  {
+    "key": "Kembali ke dashboard",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -1669,6 +1742,12 @@
   },
   {
     "key": "Kembali semak",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Kembali: pilih bayaran",
     "groups": [
       "system"
     ]
@@ -1831,6 +1910,30 @@
     ]
   },
   {
+    "key": "Langkah",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Langkah 2: semak setiap resit",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Langkah 3: sahkan bayaran",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Langkah pengesahan pembayaran",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Langkah pertama.",
     "groups": [
       "registration"
@@ -1918,6 +2021,12 @@
     "key": "Lihat modul",
     "groups": [
       "landing"
+    ]
+  },
+  {
+    "key": "Lihat peserta berbayar ikut modul",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -2296,6 +2405,12 @@
     ]
   },
   {
+    "key": "Modul",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "modul ·",
     "groups": [
       "admin"
@@ -2351,6 +2466,12 @@
   },
   {
     "key": "modul sekolah menengah",
+    "groups": [
+      "general"
+    ]
+  },
+  {
+    "key": "modul tersedia",
     "groups": [
       "landing"
     ]
@@ -2515,7 +2636,8 @@
   {
     "key": "Nama peserta",
     "groups": [
-      "payment"
+      "payment",
+      "system"
     ]
   },
   {
@@ -2683,6 +2805,12 @@
     ]
   },
   {
+    "key": "pada website dan buka pendaftaran",
+    "groups": [
+      "admin"
+    ]
+  },
+  {
     "key": "PALING JIMAT",
     "groups": [
       "landing"
@@ -2698,6 +2826,18 @@
     "key": "Paparkan kolaborator",
     "groups": [
       "admin"
+    ]
+  },
+  {
+    "key": "Paparkan track",
+    "groups": [
+      "admin"
+    ]
+  },
+  {
+    "key": "Pastikan nama penerima, jumlah dan bukti pembayaran sepadan. Tandakan setiap resit selepas disemak.",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -2834,6 +2974,24 @@
     ]
   },
   {
+    "key": "Pendaftaran akan disembunyikan daripada senarai aktif dan laporan bayaran. Resit serta maklumat asal disimpan untuk pemulihan.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Pendaftaran akan kembali ke senarai aktif dengan status pembayaran asal.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Pendaftaran aktif",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Pendaftaran anda telah disimpan.",
     "groups": [
       "payment"
@@ -2852,6 +3010,18 @@
     ]
   },
   {
+    "key": "Pendaftaran dipindahkan ke Tong sampah. Anda boleh memulihkannya semula.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Pendaftaran dipulihkan. Senarai dan jumlah aktif telah dikemas kini.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Pendaftaran disimpan sebelum anda membuat pembayaran.",
     "groups": [
       "registration"
@@ -2865,6 +3035,12 @@
   },
   {
     "key": "Pendaftaran ini sudah wujud.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Pendaftaran ini telah dibuang. Sila hubungi penganjur.",
     "groups": [
       "system"
     ]
@@ -2992,6 +3168,12 @@
     ]
   },
   {
+    "key": "Pengesahan selesai",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Pengesahan telah berubah. Muat semula dan semak sekali lagi.",
     "groups": [
       "general"
@@ -3013,6 +3195,12 @@
     "key": "PENGIKTIRAFAN",
     "groups": [
       "landing"
+    ]
+  },
+  {
+    "key": "PENGURUSAN REKOD",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -3145,6 +3333,36 @@
     ]
   },
   {
+    "key": "peserta berbayar",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Peserta berbayar",
+    "groups": [
+      "admin"
+    ]
+  },
+  {
+    "key": "PESERTA BERBAYAR",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Peserta berbayar ikut modul",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Peserta berbayar mengikut modul",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "peserta berdaftar",
     "groups": [
       "admin"
@@ -3157,6 +3375,12 @@
     ]
   },
   {
+    "key": "Peserta kombo muncul dalam setiap modul yang diambil. Jumlah keseluruhan dikira sekali bagi setiap pendaftaran.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Pilih 2 modul jimat",
     "groups": [
       "registration"
@@ -3164,6 +3388,12 @@
   },
   {
     "key": "Pilih bahagian utama",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Pilih bayaran",
     "groups": [
       "system"
     ]
@@ -3291,6 +3521,12 @@
   },
   {
     "key": "Pilihan modul (contoh)",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Pindahkan ke Tong sampah",
     "groups": [
       "system"
     ]
@@ -3435,7 +3671,19 @@
     ]
   },
   {
+    "key": "Pulihkan",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Pulihkan gaya elemen",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Pulihkan pendaftaran",
     "groups": [
       "system"
     ]
@@ -3561,6 +3809,12 @@
     ]
   },
   {
+    "key": "Rekod Admin dan laporan peserta berbayar telah dikemas kini.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Rekod pembayaran disahkan",
     "groups": [
       "system"
@@ -3570,6 +3824,12 @@
     "key": "Rekod semakan & pengesahan",
     "groups": [
       "system"
+    ]
+  },
+  {
+    "key": "Rekod telah berubah. Muat semula sebelum meneruskan.",
+    "groups": [
+      "general"
     ]
   },
   {
@@ -3598,6 +3858,12 @@
   },
   {
     "key": "Resit dijana secara elektronik. Status terkini boleh disemak menggunakan nombor pendaftaran dan e-mel di portal P.A.K.A.R.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Resit disemak",
     "groups": [
       "system"
     ]
@@ -3724,6 +3990,12 @@
     ]
   },
   {
+    "key": "Rujukan",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Rujukan kelompok:",
     "groups": [
       "system"
@@ -3736,6 +4008,12 @@
     ]
   },
   {
+    "key": "Sahkan bayaran",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Sahkan bayaran dipilih",
     "groups": [
       "system"
@@ -3745,6 +4023,12 @@
     "key": "Sahkan pembayaran",
     "groups": [
       "admin"
+    ]
+  },
+  {
+    "key": "Sahkan pemulihan",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -3832,6 +4116,12 @@
     ]
   },
   {
+    "key": "Sebab buang pendaftaran",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Sebab pembetulan",
     "groups": [
       "system"
@@ -3886,6 +4176,12 @@
     ]
   },
   {
+    "key": "Sekolah / institusi",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Sekolah Contoh",
     "groups": [
       "system"
@@ -3916,6 +4212,12 @@
     ]
   },
   {
+    "key": "Selesai",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Selesai semakan",
     "groups": [
       "system"
@@ -3923,6 +4225,12 @@
   },
   {
     "key": "Semak & hantar pengesahan",
+    "groups": [
+      "general"
+    ]
+  },
+  {
+    "key": "Semak bayaran seterusnya",
     "groups": [
       "system"
     ]
@@ -3967,7 +4275,7 @@
   {
     "key": "Semak pilihan sebelum sahkan",
     "groups": [
-      "system"
+      "general"
     ]
   },
   {
@@ -4011,6 +4319,12 @@
     "groups": [
       "navigation",
       "payment",
+      "system"
+    ]
+  },
+  {
+    "key": "Semakan bayaran",
+    "groups": [
       "system"
     ]
   },
@@ -4112,6 +4426,12 @@
     ]
   },
   {
+    "key": "Semua track",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Semua yang anda perlu tahu",
     "groups": [
       "landing"
@@ -4184,6 +4504,18 @@
     ]
   },
   {
+    "key": "Seterusnya: sahkan bayaran",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Seterusnya: semak resit",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Setiap misi, dalam kawalan.",
     "groups": [
       "admin",
@@ -4224,6 +4556,18 @@
     "key": "Sila log masuk untuk melihat resit.",
     "groups": [
       "system"
+    ]
+  },
+  {
+    "key": "Sila log masuk.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Sila nyatakan sebab pendaftaran dibuang.",
+    "groups": [
+      "general"
     ]
   },
   {
@@ -4370,6 +4714,12 @@
     "groups": [
       "system",
       "payment"
+    ]
+  },
+  {
+    "key": "Status pendaftaran",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -4693,6 +5043,12 @@
     ]
   },
   {
+    "key": "Telefon & e-mel",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Telefon penjaga",
     "groups": [
       "admin",
@@ -4815,9 +5171,27 @@
     ]
   },
   {
+    "key": "Tiada bayaran ditanda. Kembali untuk memilih bayaran.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Tiada hasil carian",
     "groups": [
       "admin"
+    ]
+  },
+  {
+    "key": "Tiada pendaftaran dalam senarai ini.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Tiada peserta sepadan.",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -4847,7 +5221,8 @@
   {
     "key": "Tindakan",
     "groups": [
-      "admin"
+      "admin",
+      "system"
     ]
   },
   {
@@ -4863,6 +5238,12 @@
     ]
   },
   {
+    "key": "Tong sampah",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Track",
     "groups": [
       "admin"
@@ -4872,6 +5253,18 @@
     "key": "Track & modul",
     "groups": [
       "admin",
+      "system"
+    ]
+  },
+  {
+    "key": "Track ini tidak dibuka untuk pendaftaran.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Track laporan",
+    "groups": [
       "system"
     ]
   },
@@ -4992,6 +5385,12 @@
     ]
   },
   {
+    "key": "Urus & pulihkan pendaftaran",
+    "groups": [
+      "admin"
+    ]
+  },
+  {
     "key": "Urus kod akses",
     "groups": [
       "system"
@@ -5007,6 +5406,12 @@
     "key": "Urus maklumat, harga dan poster setiap modul.",
     "groups": [
       "admin"
+    ]
+  },
+  {
+    "key": "Urus pendaftaran",
+    "groups": [
+      "system"
     ]
   },
   {

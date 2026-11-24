@@ -1,0 +1,10 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {changeRegistrationArchive} from '../lib/registration-records.ts';
+import {paidParticipantsByModule} from '../lib/paid-participants.ts';
+import {visibleTracks} from '../lib/tracks.ts';
+import type {Registration,Settings} from '../lib/types.ts';
+const row={id:'a',reference:'A',status:'approved',updatedAt:'v1',total:70.2,track:'menengah',fullName:'Test',email:'t@example.invalid',phone:'0123456789',institution:'QA',modules:[{id:'m1',title:'Module 1',price:39},{id:'m2',title:'Module 2',price:39}]} as Registration;
+test('archive and restore preserve payment data and audit history',()=>{const deleted=changeRegistrationArchive(row,{action:'archive',expectedUpdatedAt:'v1',reason:'Duplicate participant'},'finance','now');assert.equal(deleted.deletedAt,'now');assert.equal(deleted.status,'approved');assert.equal(deleted.total,row.total);const restored=changeRegistrationArchive(deleted,{action:'restore',expectedUpdatedAt:'v1'},'admin','later');assert.equal(restored.deletedAt,undefined);assert.equal(restored.status,'approved');assert.deepEqual(restored.registrationHistory?.map(e=>e.action),['archived','restored']);assert.throws(()=>changeRegistrationArchive(row,{action:'restore',expectedUpdatedAt:'v1'},'admin','now'));assert.throws(()=>changeRegistrationArchive(row,{action:'archive',expectedUpdatedAt:'stale',reason:'Wrong'},'admin','now'));});
+test('module report counts combo participants once overall and excludes deleted/unpaid records',()=>{const report=paidParticipantsByModule([row,row,{...row,id:'b',status:'pending'},{...row,id:'c',deletedAt:'now'}]);assert.equal(report.paid.length,1);assert.equal(report.total,70.2);assert.equal(report.groups.length,2);assert.ok(report.groups.every(g=>g.participants.length===1));});
+test('track visibility is backward compatible and filters hidden tracks',()=>{const settings={tracks:{menengah:{},universiti:{visible:false}}} as Settings;assert.deepEqual(visibleTracks(settings),['menengah']);settings.tracks.menengah.visible=false;assert.deepEqual(visibleTracks(settings),[]);});

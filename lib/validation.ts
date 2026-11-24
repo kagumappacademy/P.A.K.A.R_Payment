@@ -29,7 +29,7 @@ export const moduleSchema = z.object({
   icon: text(30), cover: asset.default(''), poster: asset, duration: text(150), schedule: text(250), active: z.boolean(),
   sortOrder: z.number().int().min(0).max(1000), outcomes: z.array(text(250)).min(1).max(10)
 });
-const track = z.object({name:text(100),audience:text(150),description:text(1000)});
+const track = z.object({name:text(100),audience:text(150),description:text(1000),visible:z.boolean().default(true)});
 export const interfaceTextSchema=z.record(z.string().trim().min(1).max(6000),z.object({bm:text(6000).optional(),en:text(6000).optional()}).strict()).refine(value=>Object.keys(value).length<=2500,'Terlalu banyak teks tersuai.');
 const color=z.string().regex(/^#[a-fA-F0-9]{6}$/),number=(min:number,max:number)=>z.number().min(min).max(max).optional();
 export const elementStyleSchema=z.object({color:color.optional(),backgroundColor:color.optional(),borderColor:color.optional(),fontSize:number(8,140),fontWeight:z.number().int().min(100).max(900).optional(),lineHeight:number(.8,3),letterSpacing:number(-5,20),textAlign:z.enum(['left','center','right']).optional(),borderRadius:number(0,120),borderWidth:number(0,12),padding:number(0,160),marginTop:number(-120,240),marginBottom:number(-120,240),gap:number(0,120),widthPercent:number(10,100),offsetX:number(-320,320),offsetY:number(-320,320),columns:z.number().int().min(1).max(4).optional(),layout:z.enum(['original','row','column','row-reverse']).optional(),alignItems:z.enum(['start','center','end','stretch']).optional(),shadow:z.enum(['none','soft','glow']).optional(),hidden:z.boolean().optional(),inlineBlock:z.boolean().optional()}).strict();

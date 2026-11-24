@@ -15,7 +15,7 @@ export type Settings = {
   delivery: string; organizer: string; organizerLogo: string; contactEmail: string; whatsapp: string;
   whatsappGroups: Record<Track, string>;
   heroImage: string; eventPoster: string; registrationOpen: boolean;
-  tracks: Record<Track, { name: string; audience: string; description: string }>;
+  tracks: Record<Track, { name: string; audience: string; description: string; visible?:boolean }>;
   comboTwo: number; comboThree: number; comboAll: number;
   paymentName: string; bankName: string; bankAccount: string; paymentQr: string;
   paymentInstructions: string; privacyText: string;
@@ -31,6 +31,8 @@ export type Registration = {
   receiptId: string | null; receiptName: string | null; receiptMime?: string;
   paymentReceipt?: PaymentReceiptSnapshot; paymentSubmittedAt?: string; paymentApprovedAt?: string;
   verifiedByRole?:'admin'|'finance'; verifiedById?:string; paymentHistory?:PaymentReviewEvent[];
+  deletedAt?:string;deletedReason?:string;deletedByRole?:'admin'|'finance';
+  registrationHistory?:{action:'archived'|'restored';at:string;role:'admin'|'finance';reason:string}[];
   adminNote: string; createdAt: string; updatedAt: string;
 };
 export type PaymentReviewEvent={action:'approved'|'reopened'|'rejected';at:string;role:'admin'|'finance';note:string;total:number;receiptId:string|null;batchId?:string};
