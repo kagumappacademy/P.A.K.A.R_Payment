@@ -114,6 +114,12 @@
     ]
   },
   {
+    "key": "Ahad",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "AI Game Builder",
     "groups": [
       "general"
@@ -309,7 +315,6 @@
   {
     "key": "Batal",
     "groups": [
-      "admin",
       "system"
     ]
   },
@@ -380,6 +385,12 @@
     ]
   },
   {
+    "key": "Belum ada sesi yang dibuka. Jadual akan dimaklumkan.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "belum bayar",
     "groups": [
       "system"
@@ -401,7 +412,6 @@
   {
     "key": "Belum dibayar",
     "groups": [
-      "admin",
       "system"
     ]
   },
@@ -577,8 +587,8 @@
   {
     "key": "Buang pendaftaran",
     "groups": [
-      "admin",
-      "system"
+      "system",
+      "admin"
     ]
   },
   {
@@ -589,9 +599,21 @@
     ]
   },
   {
+    "key": "Buang sesi",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Buang soalan",
     "groups": [
       "admin"
+    ]
+  },
+  {
+    "key": "Buang yang dipilih",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -674,6 +696,12 @@
     ]
   },
   {
+    "key": "Buka sesi untuk pendaftaran",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Bukti pembayaran belum dihantar",
     "groups": [
       "admin",
@@ -694,6 +722,18 @@
   },
   {
     "key": "Bukti pembayaran peserta",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Bulan sebelumnya",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Bulan seterusnya",
     "groups": [
       "system"
     ]
@@ -749,7 +789,7 @@
   {
     "key": "Cari nama, e-mel atau no. pendaftaran...",
     "groups": [
-      "admin"
+      "general"
     ]
   },
   {
@@ -779,7 +819,7 @@
   {
     "key": "Cari peserta",
     "groups": [
-      "admin"
+      "system"
     ]
   },
   {
@@ -833,7 +873,7 @@
   {
     "key": "Cuba carian atau penapis lain.",
     "groups": [
-      "admin"
+      "general"
     ]
   },
   {
@@ -1042,6 +1082,12 @@
     ]
   },
   {
+    "key": "dipilih",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Dipilih untuk pengesahan",
     "groups": [
       "general"
@@ -1050,7 +1096,6 @@
   {
     "key": "Disahkan",
     "groups": [
-      "admin",
       "system"
     ]
   },
@@ -1236,7 +1281,7 @@
   {
     "key": "Eksport CSV",
     "groups": [
-      "admin"
+      "system"
     ]
   },
   {
@@ -1295,6 +1340,12 @@
   },
   {
     "key": "Finance",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Fizikal",
     "groups": [
       "system"
     ]
@@ -1456,6 +1507,12 @@
     ]
   },
   {
+    "key": "Halaman pendaftaran peserta",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Halaman peserta modul",
     "groups": [
       "system"
@@ -1549,6 +1606,12 @@
     ]
   },
   {
+    "key": "hasil tapisan",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Hasilkan rekaan sendiri",
     "groups": [
       "general"
@@ -1577,6 +1640,12 @@
     "key": "Hujung",
     "groups": [
       "system"
+    ]
+  },
+  {
+    "key": "ID sesi mesti unik.",
+    "groups": [
+      "general"
     ]
   },
   {
@@ -1648,6 +1717,12 @@
     ]
   },
   {
+    "key": "Isnin",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Jadikan cuti sekolah akhir tahun ini ruang untuk mencuba, berkarya dan membina keyakinan. Bersama P.A.K.A.R, pelajar sekolah menengah boleh meneroka AI melalui projek permainan, visual, video dan kemahiran digital harian. Program Asas Kemahiran AI Remaja ini dibawakan oleh Kagum Academy, dengan pilihan modul yang boleh disesuaikan mengikut minat peserta.",
     "groups": [
       "general"
@@ -1663,6 +1738,24 @@
     "key": "Jadual akan diumumkan",
     "groups": [
       "admin"
+    ]
+  },
+  {
+    "key": "Jadual semua sesi",
+    "groups": [
+      "landing"
+    ]
+  },
+  {
+    "key": "Jadual sesi akan dimaklumkan.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Jadual sesi modul",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -1714,15 +1807,26 @@
     ]
   },
   {
+    "key": "Jumaat",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Jumlah",
     "groups": [
-      "admin",
       "system",
       "registration"
     ]
   },
   {
     "key": "Jumlah (RM)",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Jumlah bayaran tertinggi",
     "groups": [
       "system"
     ]
@@ -1755,6 +1859,12 @@
   },
   {
     "key": "JUMLAH PENDAFTARAN",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Jumlah pendaftaran dipilih",
     "groups": [
       "system"
     ]
@@ -1811,6 +1921,18 @@
     "key": "Kagum Academy",
     "groups": [
       "navigation",
+      "system"
+    ]
+  },
+  {
+    "key": "Kalendar",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Kalendar sesi modul",
+    "groups": [
       "system"
     ]
   },
@@ -1983,6 +2105,12 @@
     ]
   },
   {
+    "key": "Khamis",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Khas untuk pelajar sekolah menengah · Mesra pemula · Pilih modul mengikut minat",
     "groups": [
       "landing"
@@ -2104,6 +2232,12 @@
     ]
   },
   {
+    "key": "Kosongkan tapisan",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Kumpulan sasaran",
     "groups": [
       "admin"
@@ -2220,8 +2354,13 @@
   {
     "key": "Lihat butiran",
     "groups": [
-      "admin",
       "system"
+    ]
+  },
+  {
+    "key": "Lihat jadual sesi",
+    "groups": [
+      "landing"
     ]
   },
   {
@@ -2376,9 +2515,21 @@
     ]
   },
   {
+    "key": "Lokasi / maklumat kelas",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Lokasi / maklumat lokasi",
     "groups": [
       "admin"
+    ]
+  },
+  {
+    "key": "Lokasi akan dimaklumkan",
+    "groups": [
+      "general"
     ]
   },
   {
@@ -2444,7 +2595,7 @@
   {
     "key": "Maklumat peserta akan dipaparkan di sini selepas pendaftaran pertama.",
     "groups": [
-      "admin"
+      "general"
     ]
   },
   {
@@ -2481,6 +2632,24 @@
     "key": "Mari kembali ke pusat misi anda.",
     "groups": [
       "system"
+    ]
+  },
+  {
+    "key": "Masa mula",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Masa tamat",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Masa tamat mesti selepas masa mula.",
+    "groups": [
+      "general"
     ]
   },
   {
@@ -2534,8 +2703,8 @@
   {
     "key": "Menunggu semakan",
     "groups": [
-      "admin",
-      "system"
+      "system",
+      "admin"
     ]
   },
   {
@@ -2601,7 +2770,7 @@
   {
     "key": "Misi pertama sedang menanti",
     "groups": [
-      "admin"
+      "general"
     ]
   },
   {
@@ -2641,9 +2810,14 @@
     ]
   },
   {
+    "key": "Mod sesi",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "modul",
     "groups": [
-      "admin",
       "landing",
       "navigation"
     ]
@@ -2664,6 +2838,12 @@
     "key": "Modul & harga",
     "groups": [
       "admin"
+    ]
+  },
+  {
+    "key": "Modul & sesi dipilih",
+    "groups": [
+      "payment"
     ]
   },
   {
@@ -2733,7 +2913,19 @@
     ]
   },
   {
+    "key": "Modul tidak ditemui.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Modul tidak tersedia atau tidak berada dalam track yang dipilih.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Modul untuk tetapan sesi",
     "groups": [
       "system"
     ]
@@ -2842,6 +3034,12 @@
     ]
   },
   {
+    "key": "Nama A–Z",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Nama bank / e-dompet",
     "groups": [
       "admin"
@@ -2924,6 +3122,18 @@
     "key": "Nama seperti dalam kad pengenalan",
     "groups": [
       "registration"
+    ]
+  },
+  {
+    "key": "Nama sesi",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Nama sesi mesti unik dalam modul.",
+    "groups": [
+      "general"
     ]
   },
   {
@@ -3034,6 +3244,12 @@
     "key": "Nyatakan sebab atau maklumat kepada peserta",
     "groups": [
       "admin"
+    ]
+  },
+  {
+    "key": "Online",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -3160,6 +3376,12 @@
     "key": "Pautan jemputan akan disediakan oleh admin. Tekan “Semak semula” untuk mendapatkan pautan terkini.",
     "groups": [
       "payment"
+    ]
+  },
+  {
+    "key": "Pautan kelas akan dimaklumkan",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -3293,7 +3515,6 @@
   {
     "key": "Pendaftaran akan disembunyikan daripada senarai aktif dan laporan bayaran. Resit serta maklumat asal disimpan untuk pemulihan.",
     "groups": [
-      "admin",
       "system"
     ]
   },
@@ -3325,6 +3546,12 @@
     "key": "Pendaftaran cuti sekolah dibuka",
     "groups": [
       "landing"
+    ]
+  },
+  {
+    "key": "pendaftaran dipilih",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -3402,6 +3629,18 @@
   },
   {
     "key": "Pendaftaran sekolah",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Pendaftaran terbaharu",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Pendaftaran terdahulu tanpa pilihan sesi.",
     "groups": [
       "system"
     ]
@@ -3598,8 +3837,8 @@
   {
     "key": "Perlu tindakan",
     "groups": [
-      "admin",
-      "system"
+      "system",
+      "admin"
     ]
   },
   {
@@ -3639,6 +3878,12 @@
     ]
   },
   {
+    "key": "Perubahan jadual digunakan untuk pendaftaran baharu. Sesi yang dipilih dalam pendaftaran terdahulu kekal disimpan dalam rekod peserta.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "peserta",
     "groups": [
       "system"
@@ -3647,7 +3892,6 @@
   {
     "key": "Peserta",
     "groups": [
-      "admin",
       "system"
     ]
   },
@@ -3690,7 +3934,12 @@
   {
     "key": "peserta berdaftar",
     "groups": [
-      "admin",
+      "system"
+    ]
+  },
+  {
+    "key": "peserta berdaftar ·",
+    "groups": [
       "system"
     ]
   },
@@ -3720,6 +3969,12 @@
     ]
   },
   {
+    "key": "Pilih 1 hingga 100 pendaftaran yang berbeza.",
+    "groups": [
+      "general"
+    ]
+  },
+  {
     "key": "Pilih 2 modul jimat",
     "groups": [
       "registration"
@@ -3739,6 +3994,12 @@
   },
   {
     "key": "Pilih elemen",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Pilih halaman ini",
     "groups": [
       "system"
     ]
@@ -3786,6 +4047,12 @@
     ]
   },
   {
+    "key": "Pilih modul dahulu",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Pilih modul dan lihat penjimatan anda di sini.",
     "groups": [
       "registration"
@@ -3810,6 +4077,12 @@
     ]
   },
   {
+    "key": "Pilih satu sesi",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Pilih sekurang-kurangnya satu modul.",
     "groups": [
       "registration"
@@ -3819,6 +4092,30 @@
     "key": "Pilih semua",
     "groups": [
       "registration"
+    ]
+  },
+  {
+    "key": "Pilih semua pendaftaran pada halaman ini",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Pilih sesi",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "PILIH SESI ANDA",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Pilih sesi ini",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -3852,6 +4149,12 @@
     ]
   },
   {
+    "key": "Pilihan dikekalkan apabila menukar halaman atau tapisan.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Pilihan fleksibel",
     "groups": [
       "landing"
@@ -3877,9 +4180,14 @@
     ]
   },
   {
+    "key": "Pilihan sesi tidak sepadan dengan modul yang dipilih.",
+    "groups": [
+      "general"
+    ]
+  },
+  {
     "key": "Pindahkan ke Tong sampah",
     "groups": [
-      "admin",
       "system"
     ]
   },
@@ -4096,6 +4404,12 @@
     ]
   },
   {
+    "key": "Rabu",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Raikan pengalaman belajar dan kemahiran baharu sepanjang misi cuti sekolah anda.",
     "groups": [
       "general"
@@ -4169,6 +4483,12 @@
   },
   {
     "key": "Rekod Admin dan laporan peserta berbayar telah dikemas kini.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Rekod dipilih telah berubah. Tanda semula sebelum meneruskan.",
     "groups": [
       "system"
     ]
@@ -4393,6 +4713,12 @@
     ]
   },
   {
+    "key": "Sabtu",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Sahkan",
     "groups": [
       "general"
@@ -4477,6 +4803,12 @@
     ]
   },
   {
+    "key": "Satu sesi bagi setiap modul. Semua waktu mengikut Malaysia.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Saya bersetuju dengan penggunaan maklumat untuk urusan program.",
     "groups": [
       "registration"
@@ -4509,7 +4841,6 @@
   {
     "key": "Sebab buang pendaftaran",
     "groups": [
-      "admin",
       "system"
     ]
   },
@@ -4588,13 +4919,20 @@
   {
     "key": "Sekolah Menengah",
     "groups": [
-      "admin"
+      "admin",
+      "system"
     ]
   },
   {
     "key": "Selamat kembali.",
     "groups": [
       "general"
+    ]
+  },
+  {
+    "key": "Selasa",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -4790,6 +5128,7 @@
   {
     "key": "Semua modul",
     "groups": [
+      "system",
       "landing"
     ]
   },
@@ -4824,9 +5163,21 @@
     ]
   },
   {
+    "key": "Semua sesi",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Semua sesi modul ini ditutup buat sementara waktu.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Semua status",
     "groups": [
-      "admin"
+      "system"
     ]
   },
   {
@@ -4842,6 +5193,12 @@
     ]
   },
   {
+    "key": "Senarai",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Senarai pembayaran",
     "groups": [
       "system"
@@ -4850,7 +5207,7 @@
   {
     "key": "Senarai pendaftaran",
     "groups": [
-      "admin"
+      "system"
     ]
   },
   {
@@ -4893,6 +5250,97 @@
     "key": "Sertai misi cuti",
     "groups": [
       "landing"
+    ]
+  },
+  {
+    "key": "sesi",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Sesi",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Sesi & jadual",
+    "groups": [
+      "admin"
+    ]
+  },
+  {
+    "key": "Sesi 1",
+    "groups": [
+      "general"
+    ]
+  },
+  {
+    "key": "Sesi 2",
+    "groups": [
+      "general"
+    ]
+  },
+  {
+    "key": "Sesi 3",
+    "groups": [
+      "general"
+    ]
+  },
+  {
+    "key": "Sesi 4",
+    "groups": [
+      "general"
+    ]
+  },
+  {
+    "key": "Sesi baharu",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "sesi dibuka",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Sesi dipilih",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Sesi modul",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Sesi modul berjaya disimpan.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Sesi terawal",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "sesi tersedia",
+    "groups": [
+      "landing",
+      "registration"
+    ]
+  },
+  {
+    "key": "Sesi yang dipilih tidak tersedia.",
+    "groups": [
+      "general"
     ]
   },
   {
@@ -5054,6 +5502,12 @@
     ]
   },
   {
+    "key": "Simpan sesi modul",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Simpan teks & butang",
     "groups": [
       "admin"
@@ -5134,7 +5588,6 @@
   {
     "key": "Status",
     "groups": [
-      "admin",
       "system"
     ]
   },
@@ -5226,7 +5679,7 @@
   {
     "key": "Sudah bayar (disahkan)",
     "groups": [
-      "system"
+      "general"
     ]
   },
   {
@@ -5264,6 +5717,12 @@
     "key": "Susun ilmu. Bersedia untuk langkah baharu.",
     "groups": [
       "general"
+    ]
+  },
+  {
+    "key": "Susun mengikut",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -5345,6 +5804,12 @@
     ]
   },
   {
+    "key": "Tambah sesi",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Tambah soalan",
     "groups": [
       "admin"
@@ -5383,13 +5848,13 @@
   {
     "key": "Tapis status",
     "groups": [
-      "admin"
+      "system"
     ]
   },
   {
     "key": "Tarikh",
     "groups": [
-      "admin"
+      "system"
     ]
   },
   {
@@ -5426,6 +5891,12 @@
     "key": "Tarikh resit",
     "groups": [
       "payment",
+      "system"
+    ]
+  },
+  {
+    "key": "Tarikh sesi",
+    "groups": [
       "system"
     ]
   },
@@ -5675,7 +6146,7 @@
   {
     "key": "Tiada hasil carian",
     "groups": [
-      "admin"
+      "system"
     ]
   },
   {
@@ -5721,6 +6192,24 @@
     ]
   },
   {
+    "key": "Tiada sesi dipilih",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Tiada sesi ditetapkan. Tambah sesi untuk modul ini.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Tiada sesi pada bulan ini.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Tiada teks ditemui",
     "groups": [
       "admin"
@@ -5741,7 +6230,6 @@
   {
     "key": "Tindakan",
     "groups": [
-      "admin",
       "system"
     ]
   },
@@ -5766,13 +6254,13 @@
   {
     "key": "Track",
     "groups": [
+      "system",
       "admin"
     ]
   },
   {
     "key": "Track & modul",
     "groups": [
-      "admin",
       "system"
     ]
   },
@@ -5792,6 +6280,12 @@
     "key": "Track program",
     "groups": [
       "landing"
+    ]
+  },
+  {
+    "key": "Track, modul & sesi",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -5868,6 +6362,12 @@
     ]
   },
   {
+    "key": "Ubah tarikh, masa, mod dan lokasi bagi setiap sesi.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Umur",
     "groups": [
       "admin",
@@ -5890,7 +6390,8 @@
   {
     "key": "Universiti",
     "groups": [
-      "admin"
+      "admin",
+      "system"
     ]
   },
   {
@@ -5946,6 +6447,12 @@
     "key": "Urus program, peserta dan pembayaran anda.",
     "groups": [
       "system"
+    ]
+  },
+  {
+    "key": "Urus sesi dan jadual bagi setiap modul.",
+    "groups": [
+      "admin"
     ]
   },
   {

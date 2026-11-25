@@ -1,8 +1,10 @@
 export type Track = 'menengah' | 'universiti';
+export type ModuleSession={id:string;label:string;date:string;startTime:string;endTime:string;mode:'online'|'physical';location:string;active:boolean};
+export type SessionSnapshot=Omit<ModuleSession,'active'>;
 export type Module = {
   id: string; track: Track; title: string; subtitle: string; description: string;
   price: number; accent: string; icon: string; cover: string; poster: string; duration: string;
-  schedule: string; active: boolean; sortOrder: number; outcomes: string[];
+  schedule: string; active: boolean; sortOrder: number; outcomes: string[];sessions?:ModuleSession[];
 };
 export type Settings = {
   collaborators?:{id:string;name:string;logo:string;active:boolean}[];
@@ -25,7 +27,7 @@ export type Settings = {
 export type Registration = {
   id: string; reference: string; fullName: string; email: string; phone: string;
   institution: string; age: number; guardianName: string; guardianPhone: string;
-  track: Track; modules: { id: string; title: string; price: number }[];
+  track: Track; modules: { id: string; title: string; price: number;session?:SessionSnapshot }[];
   subtotal: number; discount: number; discountPercent: number; total: number;
   status: 'awaiting_payment' | 'pending' | 'approved' | 'rejected';
   receiptId: string | null; receiptName: string | null; receiptMime?: string;

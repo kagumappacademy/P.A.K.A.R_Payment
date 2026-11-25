@@ -8,7 +8,7 @@ export function Icon({name,size=24,...props}:{name:string;size?:number;className
   const Glyph=icons[name]||Sparkles;return <Glyph size={size} strokeWidth={1.7} {...props}/>;
 }
 export function Accent({color,children,className='',designId}:{color:string;children:ReactNode;className?:string;designId?:string}) { return <div data-design-id={designId} className={className} style={{'--accent':color} as CSSProperties}>{children}</div>; }
-export function Modal({title,onClose,children,wide=false}:{title:string;onClose:()=>void;children:ReactNode;wide?:boolean}) {
+export function Modal({title,onClose,children,wide=false,className=''}:{title:string;onClose:()=>void;children:ReactNode;wide?:boolean;className?:string}) {
   const closeRef=useRef(onClose);closeRef.current=onClose;
   useEffect(()=>{
     const previous=document.activeElement as HTMLElement|null;
@@ -19,7 +19,7 @@ export function Modal({title,onClose,children,wide=false}:{title:string;onClose:
     const key=(e:KeyboardEvent)=>{if(e.key==='Escape')closeRef.current();if(e.key==='Tab'){const items=focusables(),first=items[0],last=items.at(-1);if(e.shiftKey&&document.activeElement===first){e.preventDefault();last?.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first?.focus();}}};
     document.addEventListener('keydown',key);return()=>{document.body.style.overflow=overflow;document.removeEventListener('keydown',key);previous?.focus();};
   },[]);
-  return <Localized><div className="modal-backdrop" onClick={e=>{if(e.target===e.currentTarget)onClose();}}><section data-design-id="dialog" role="dialog" aria-modal="true" aria-label={title} className={`modal ${wide?'modal-wide':''}`}><div className="modal-heading"><h2>{title}</h2><button type="button" className="icon-button" onClick={onClose} aria-label="Tutup"><X size={22}/></button></div>{children}</section></div></Localized>;
+  return <Localized><div className="modal-backdrop" onClick={e=>{if(e.target===e.currentTarget)onClose();}}><section data-design-id="dialog" role="dialog" aria-modal="true" aria-label={title} className={`modal ${wide?'modal-wide':''} ${className}`}><div className="modal-heading"><h2>{title}</h2><button type="button" className="icon-button" onClick={onClose} aria-label="Tutup"><X size={22}/></button></div>{children}</section></div></Localized>;
 }
 export function Notice({children,error=false}:{children:ReactNode;error?:boolean}) { return <div className={`notice ${error?'notice-error':''}`} role={error?'alert':'status'}>{children}</div>; }
 export function Status({status}:{status:string}) { const labels:Record<string,string>={awaiting_payment:'Belum dibayar',pending:'Menunggu semakan',approved:'Disahkan',rejected:'Perlu tindakan'};return <Localized><span className={`status status-${status}`}>{labels[status]||status}</span></Localized>; }

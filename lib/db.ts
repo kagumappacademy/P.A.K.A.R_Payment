@@ -3,6 +3,7 @@ import { createDatabaseClient } from './turso';
 import type { Settings, Module, Registration } from './types';
 import {defaultCollaborators,defaultCollaboratorTitle,defaultCollaboratorDescription} from './collaborators';
 import {trackVisible} from './tracks';
+import {moduleSessions} from './module-sessions';
 const globalDb = globalThis as unknown as { pakarTurso?: {url:string;client:Client} };
 export function db() {
   const url=process.env.TURSO_DATABASE_URL||'';
@@ -27,7 +28,7 @@ export async function getConfiguration(includeInactive = false, includePrivate =
   settings.collaboratorTitle??=defaultCollaboratorTitle;
   settings.collaboratorDescription??=defaultCollaboratorDescription;
   settings.whatsappGroups=includePrivate?{menengah:settings.whatsappGroups?.menengah||'',universiti:settings.whatsappGroups?.universiti||''}:{menengah:'',universiti:''};
-  const modules = mods.map(r => {const m=JSON.parse(r.content) as Module;return {...m,cover:m.cover||m.poster};}).filter(m => includeInactive || (m.active&&trackVisible(settings,m.track))).sort((a,b) => a.sortOrder-b.sortOrder);
+  const modules = mods.map(r => {const m=JSON.parse(r.content) as Module;return {...m,cover:m.cover||m.poster,sessions:moduleSessions(m)};}).filter(m => includeInactive || (m.active&&trackVisible(settings,m.track))).sort((a,b) => a.sortOrder-b.sortOrder);
   return { settings, modules };
 }
 export async function getInterfaceText():Promise<NonNullable<Settings['interfaceText']>> {

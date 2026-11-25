@@ -62,6 +62,10 @@ Nombor pendaftaran baharu menggunakan format ringkas **PKR-A7K2M9** (enam aksara
 
 Gambar dalam langkah pemilihan modul dipaparkan sepenuhnya mengikut nisbah asal, tanpa crop, pada desktop dan telefon. Modul Sekolah Menengah Pembangunan Website menggantikan Asas Produktiviti dengan penerangan, hasil pembelajaran dan poster sekolah yang sepadan; ID modul, harga dan snapshot pendaftaran terdahulu dikekalkan. Track Universiti disembunyikan daripada pelanggan dan pendaftaran baharu.
 
+Setiap modul Sekolah Menengah mempunyai empat sesi mengikut kalendar Disember 2026 yang dibekalkan (24 sesi keseluruhan). Butiran modul menyediakan kalendar serta senarai sesi; pautan sesi boleh membuka pendaftaran dengan modul dan sesi dipilih terlebih dahulu. Peserta memilih satu sesi bagi setiap modul. Server menyemak sesi masih dibuka, sesi milik modul yang dipilih dan tiada pertindihan masa dalam pendaftaran kombo. Harga kombo kekal mengikut modul, bukan jumlah sesi. Lokasi fizikal dipaparkan sebagai “Lokasi akan dimaklumkan” sehingga disunting.
+
+Admin → **Sesi & jadual** membolehkan admin menambah, menyunting atau menutup sesi, termasuk tarikh, masa, mod Online/Fizikal dan lokasi. Simpanan khusus hanya mengubah medan sesi modul; harga dan imej modul dikekalkan. Pilihan sesi disalin ke rekod pendaftaran serta dipaparkan dalam butiran Admin/Finance, laporan peserta mengikut sesi, semakan status, resit dan eksport CSV. Perubahan atau pembuangan sesi tidak mengubah jadual dalam pendaftaran yang telah disimpan. Pendaftaran lama tanpa sesi diletakkan dalam kumpulan **Tiada sesi dipilih**. Tidak perlu menukar struktur MySQL/Turso kerana data sesi disimpan dalam kandungan JSON sedia ada.
+
 Pembayaran **disemak secara manual** oleh admin. Tiada transaksi bank, debit automatik atau pengesahan terus dengan DuitNow dilakukan oleh aplikasi.
 
 ## Portal admin
@@ -155,6 +159,8 @@ Finance kini mempunyai empat langkah dengan progress bar: pilih bayaran, semak r
 Halaman `/staff/registrations` membolehkan Admin dan Finance memindahkan pendaftaran tersalah ke Tong sampah serta memulihkannya dengan status pembayaran asal. Jumlah/laporan aktif mengecualikan pendaftaran yang dibuang; bukti dan sejarah dikekalkan, tindakan diaudit, serta pemeriksaan versi mengelakkan perubahan terhadap rekod lapuk. Akses peserta kepada pendaftaran/resit yang dibuang disekat sehingga dipulihkan.
 
 Admin juga boleh memilih **Buang pendaftaran** terus pada baris Pendaftaran peserta atau dalam Butiran pendaftaran, termasuk butiran yang dibuka daripada Peserta mengikut modul. Pengesahan memaparkan nama, nombor pendaftaran dan jumlah peserta yang dipilih serta meminta sebab. Selepas dihantar, rekod dikeluarkan daripada statistik dan senarai aktif; pemulihan tersedia melalui Urus & pulihkan pendaftaran → Tong sampah.
+
+Senarai Admin menyokong penapis modul, sesi, status bayaran, track dan carian nama/e-mel/telefon/rujukan. Pilihan susunan termasuk pendaftaran terbaharu, nama, sesi terawal dan jumlah bayaran. Setiap halaman mempunyai 20 rekod; kotak pilihan di kanan boleh memilih beberapa peserta atau semua pada halaman semasa, dengan pilihan kekal ketika menukar halaman/tapisan (maksimum 100). **Buang yang dipilih** memaparkan semua nama dan meminta sebab sebelum memindahkan rekod ke Tong sampah. Semua rekod diperiksa dan dikemas kini dalam satu transaksi; jika satu rekod berubah, tiada rekod dalam kelompok dibuang.
 
 Admin → Tetapan track menyediakan switch Paparkan track bagi Menengah dan Universiti. Hide hanya menutup paparan modul dan pendaftaran baharu bagi track tersebut; rekod peserta terdahulu dan laporan kekal tersedia kepada petugas. Kedua-dua track boleh disembunyikan. URL/API pendaftaran juga memeriksa tetapan ini.
 

@@ -1,0 +1,8 @@
+'use client';
+import type {Registration} from '@/lib/types';
+import {money} from '@/lib/pricing';
+import {Localized} from './preferences';
+import {Modal,Notice,Status} from './ui';
+export function RegistrationArchiveDialog({records,reason,onReason,busy,error,onCancel,onSubmit}:{records:Registration[];reason:string;onReason:(value:string)=>void;busy:boolean;error:string;onCancel:()=>void;onSubmit:(event:React.FormEvent)=>void}){
+ return <Localized><Modal title="Buang pendaftaran" onClose={()=>{if(!busy)onCancel();}}><form onSubmit={onSubmit}>{error&&<Notice error>{error}</Notice>}<h3>{records.length} pendaftaran dipilih</h3><ul className="archive-selected-records">{records.map(record=><li key={record.id}><strong data-no-translate="true">{record.fullName}</strong><span>{record.reference} · {money(record.total)}</span><Status status={record.status}/></li>)}</ul><div className="archive-selected-total"><span>Jumlah pendaftaran dipilih</span><strong>{money(records.reduce((sum,record)=>sum+record.total,0))}</strong></div><Notice>Pendaftaran akan disembunyikan daripada senarai aktif dan laporan bayaran. Resit serta maklumat asal disimpan untuk pemulihan.</Notice><label className="field"><span>Sebab buang pendaftaran</span><textarea required minLength={3} maxLength={500} value={reason} disabled={busy} onChange={event=>onReason(event.target.value)}/></label><div className="form-actions"><button type="button" className="button button-secondary" disabled={busy} onClick={onCancel}>Batal</button><button type="submit" className="button button-danger" disabled={busy||reason.trim().length<3}>{busy?'Menyimpan...':'Pindahkan ke Tong sampah'}</button></div></form></Modal></Localized>;
+}

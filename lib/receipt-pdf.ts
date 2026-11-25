@@ -3,6 +3,7 @@ import { join } from 'node:path';
 import { PDFDocument, rgb, type PDFFont, type PDFPage } from 'pdf-lib';
 import fontkit from '@pdf-lib/fontkit';
 import { money } from './pricing';
+import {sessionText} from './module-sessions';
 import { receiptDate, receiptSnapshot, receiptStatus } from './receipts';
 import type { Registration, Settings } from './types';
 import { translateText, type Language } from './i18n';
@@ -73,7 +74,7 @@ export async function createPaymentReceiptPdf(registration:Registration,settings
   page.drawRectangle({x:left,y:height-y-27,width:contentWidth,height:27,color:rgb(.94,.96,.98)});
   text(t('MODUL PILIHAN'),left+10,y+7,9,bold,muted);text(t('HARGA (RM)'),right-88,y+7,9,bold,muted);y+=35;
   for(const mod of registration.modules){
-    const lines=wrap(t(mod.title),regular,10,contentWidth-120),rowHeight=Math.max(26,lines.length*16+7);ensure(rowHeight);
+    const lines=wrap(t(mod.title)+(mod.session?' | '+sessionText(mod.session,language)+' | '+t(mod.session.location):''),regular,10,contentWidth-120),rowHeight=Math.max(26,lines.length*16+7);ensure(rowHeight);
     lines.forEach((value,i)=>text(value,left+10,y+i*16,10));
     const price=money(mod.price);text(price,right-10-regular.widthOfTextAtSize(price,10),y,10);y+=rowHeight;
   }

@@ -16,18 +16,20 @@ export const registrationSchema = z.object({
   phone: text(25).regex(/^[+\d\s()-]{8,25}$/), institution: text(200), age: z.number().int().min(12).max(99),
   guardianName: optionalText(120), guardianPhone: optionalText(25),
   track: z.enum(['menengah','universiti']),
-  moduleIds: z.array(text(80)).min(1).max(20), consent: z.literal(true),
+  moduleIds: z.array(text(80)).min(1).max(20),sessionSelections:z.record(z.string().min(1).max(80),z.string().min(1).max(80)).refine(value=>Object.keys(value).length<=20).default({}), consent: z.literal(true),
   idempotencyKey: z.uuid(), expectedTotal: z.number().min(0)
 }).superRefine((d,ctx)=> {
   if (d.age < 18 && (!d.guardianName || !/^[+\d\s()-]{8,25}$/.test(d.guardianPhone))) ctx.addIssue({code:'custom',message:'Nama dan telefon penjaga diperlukan bagi peserta bawah 18 tahun.'});
   if (new Set(d.moduleIds).size !== d.moduleIds.length) ctx.addIssue({code:'custom',message:'Pilihan modul berulang tidak dibenarkan.'});
 });
+export const moduleSessionSchema=z.object({id:text(80).regex(/^[a-zA-Z0-9-]+$/),label:text(80),date:z.iso.date(),startTime:z.string().regex(/^([01]\d|2[0-3]):[0-5]\d$/),endTime:z.string().regex(/^([01]\d|2[0-3]):[0-5]\d$/),mode:z.enum(['online','physical']),location:optionalText(300),active:z.boolean()}).strict().refine(session=>session.startTime<session.endTime,'Masa tamat mesti selepas masa mula.');
+export const moduleSessionsSchema=z.array(moduleSessionSchema).max(60).refine(sessions=>new Set(sessions.map(s=>s.id)).size===sessions.length,'ID sesi mesti unik.').refine(sessions=>new Set(sessions.map(s=>s.label.toLowerCase())).size===sessions.length,'Nama sesi mesti unik dalam modul.');
 export const moduleSchema = z.object({
   id: text(80).regex(/^[a-z0-9-]+$/), track: z.enum(['menengah','universiti']),
   title: text(150), subtitle: optionalText(200), description: text(2000),
   price: z.number().min(1).max(10000), accent: z.string().regex(/^#[a-fA-F0-9]{6}$/),
   icon: text(30), cover: asset.default(''), poster: asset, duration: text(150), schedule: text(250), active: z.boolean(),
-  sortOrder: z.number().int().min(0).max(1000), outcomes: z.array(text(250)).min(1).max(10)
+  sortOrder: z.number().int().min(0).max(1000), outcomes: z.array(text(250)).min(1).max(10),sessions:moduleSessionsSchema.default([])
 });
 const track = z.object({name:text(100),audience:text(150),description:text(1000),visible:z.boolean().default(true)});
 export const interfaceTextSchema=z.record(z.string().trim().min(1).max(6000),z.object({bm:text(6000).optional(),en:text(6000).optional()}).strict()).refine(value=>Object.keys(value).length<=2500,'Terlalu banyak teks tersuai.');

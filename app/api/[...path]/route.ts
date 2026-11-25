@@ -5,15 +5,16 @@ import { z, ZodError } from 'zod';
 import { db, getConfiguration, parseRegistration, rows } from '@/lib/db';
 import { createSession, getAdmin, getStaff, credentialVersion, SESSION_COOKIE, FINANCE_COOKIE } from '@/lib/auth';
 import { sessionSecret } from '@/lib/session-secret';
-import { registrationSchema, moduleSchema, settingsSchema, interfaceTextSchema, visualDesignSchema } from '@/lib/validation';
+import { registrationSchema, moduleSchema, moduleSessionsSchema, settingsSchema, interfaceTextSchema, visualDesignSchema } from '@/lib/validation';
 import { calculatePrice } from '@/lib/pricing';
 import { readFile, saveFile } from '@/lib/files';
 import { participantGroup, receiptSnapshot } from '@/lib/receipts';
 import {assertFinanceApproval,assertFinanceReopen,financeRecord,recordPaymentReview} from '@/lib/finance';
 import {matchStaffCode} from '@/lib/staff-codes';
 import {trackVisible} from '@/lib/tracks';
-import {changeRegistrationArchive} from '@/lib/registration-records';
+import {archiveRegistrationBatch,changeRegistrationArchive} from '@/lib/registration-records';
 import {withUniqueRegistrationReference} from '@/lib/registration-references';
+import {moduleSessions,selectModuleSessions,sessionText} from '@/lib/module-sessions';
 import type { Registration } from '@/lib/types';
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -108,13 +109,14 @@ async function handle(request:NextRequest,context:Context) {
     const available=modules.filter(m=>m.track===input.track);
     const selected=available.filter(m=>input.moduleIds.includes(m.id));
     if(selected.length!==input.moduleIds.length)throw new HttpError(400,'Modul tidak tersedia atau tidak berada dalam track yang dipilih.');
+    let moduleSnapshots:Registration['modules'];try{moduleSnapshots=selectModuleSessions(selected,input.sessionSelections);}catch(error){throw new HttpError(400,(error as Error).message);}
     const price=calculatePrice(selected.map(m=>m.price),settings,available.length);
     if(Math.abs(input.expectedTotal-price.total)>0.005) throw new HttpError(409,'Harga modul telah dikemas kini. Muat semula halaman untuk melihat jumlah terkini.');
     const id=input.idempotencyKey;
-    const {moduleIds: _moduleIds,consent:_consent,idempotencyKey:_key,expectedTotal:_total,...details}=input;
+    const {moduleIds: _moduleIds,sessionSelections:_sessions,consent:_consent,idempotencyKey:_key,expectedTotal:_total,...details}=input;
     try {
       const registration=await withUniqueRegistrationReference(async reference=>{
-        const record={...details,id,reference,modules:selected.map(m=>({id:m.id,title:m.title,price:m.price})),...price,status:'awaiting_payment',receiptId:null,receiptName:null,adminNote:'',createdAt:new Date().toISOString(),updatedAt:new Date().toISOString()};
+        const record={...details,id,reference,modules:moduleSnapshots,...price,status:'awaiting_payment',receiptId:null,receiptName:null,adminNote:'',createdAt:new Date().toISOString(),updatedAt:new Date().toISOString()};
         await db().execute('INSERT INTO registrations (id,reference,access_hash,email,status,content) VALUES (?,?,?,?,?,?)',[id,reference,hash(token),input.email,'awaiting_payment',JSON.stringify(record)]);return record;
       },async(error,reference)=>String((error as {code?:string}).code).startsWith('SQLITE_CONSTRAINT')&&!!(await rows('SELECT id FROM registrations WHERE reference=?',[reference]))[0]);
       return reply({registration,accessToken:token},201);
@@ -189,6 +191,14 @@ async function handle(request:NextRequest,context:Context) {
       await audit(admin.id,'tracks.visibility','settings');return reply({ok:true});
     }
     if(route==='admin/registrations' && method==='GET') return reply({registrations:(await rows("SELECT * FROM registrations WHERE json_extract(content,'$.deletedAt') IS NULL ORDER BY created_at DESC")).map(parseRegistration)});
+    if(route==='admin/registrations/archive'&&method==='POST'){
+      const input=z.object({items:z.array(z.object({id:z.uuid(),expectedUpdatedAt:z.string().min(1).max(60)}).strict()).min(1).max(100).refine(items=>new Set(items.map(item=>item.id)).size===items.length),reason:z.string().trim().min(3).max(500)}).strict().parse(await request.json());
+      const tx=await db().transaction('write');try{
+        const result=await tx.execute({sql:`SELECT * FROM registrations WHERE id IN (${input.items.map(()=>'?').join(',')})`,args:input.items.map(item=>item.id)});let updated:Registration[];
+        try{updated=archiveRegistrationBatch(result.rows.map(parseRegistration),input.items,input.reason,new Date().toISOString());}catch(error){throw new HttpError(409,(error as Error).message);}
+        await tx.batch(updated.flatMap(record=>[{sql:'UPDATE registrations SET content=? WHERE id=?',args:[JSON.stringify(record),record.id]},{sql:'INSERT INTO audit_logs(id,admin_id,action,target) VALUES(?,?,?,?)',args:[randomUUID(),admin.id,'registration.archive',record.id]}]));await tx.commit();return reply({ok:true,count:updated.length});
+      }catch(error){if(!tx.closed)await tx.rollback();throw error;}finally{tx.close();}
+    }
     if(route==='admin/review' && method==='POST') {
       const input=z.object({id:z.uuid(),status:z.enum(['approved','rejected']),note:z.string().trim().max(2000)}).parse(await request.json());
       if(input.status==='rejected' && !input.note)throw new HttpError(400,'Sila nyatakan sebab resit ditolak.');
@@ -231,9 +241,16 @@ async function handle(request:NextRequest,context:Context) {
       await audit(admin.id,'settings.update','1');return reply({ok:true});
     }
     if(route==='admin/modules' && method==='PUT') {
-      const mod=moduleSchema.parse(await request.json());
+      const input=await request.json(),mod=moduleSchema.parse(input);
+      if(!Object.hasOwn(input,'sessions')){const current=(await rows('SELECT content FROM modules WHERE id=?',[mod.id]))[0];if(current)mod.sessions=moduleSessions(JSON.parse(current.content));}
       await db().execute('INSERT INTO modules (id,content) VALUES (?,?) ON CONFLICT(id) DO UPDATE SET content=excluded.content',[mod.id,JSON.stringify(mod)]);
       await audit(admin.id,'module.update',mod.id);return reply({ok:true});
+    }
+    if(route==='admin/module-sessions'&&method==='PUT'){
+      const input=z.object({moduleId:z.string().min(1).max(80),sessions:moduleSessionsSchema}).strict().parse(await request.json());
+      if(!(await rows('SELECT id FROM modules WHERE id=?',[input.moduleId]))[0])throw new HttpError(404,'Modul tidak ditemui.');
+      await db().execute("UPDATE modules SET content=json_set(content,'$.sessions',json(?)) WHERE id=?",[JSON.stringify(input.sessions),input.moduleId]);
+      await audit(admin.id,'module.sessions.update',input.moduleId);return reply({ok:true});
     }
     if(route==='admin/upload' && method==='POST') {
       const form=await request.formData();const file=form.get('file');
@@ -250,7 +267,7 @@ async function handle(request:NextRequest,context:Context) {
     if(route==='admin/export' && method==='GET') {
       const records=(await rows("SELECT * FROM registrations WHERE json_extract(content,'$.deletedAt') IS NULL ORDER BY created_at DESC")).map(parseRegistration);
       const escape=(v:unknown)=>`"${String(v??'').replace(/^[=+@\-\t\r]/,"'$&").replace(/"/g,'""')}"`;
-      const csv=[['Rujukan','Nama','E-mel','Telefon','Institusi','Umur','Penjaga','Telefon penjaga','Track','Modul','Jumlah (RM)','Diskaun (RM)','Status','Nombor resit pendaftaran','Tarikh hantar bukti','Tarikh pengesahan','Nota admin','Tarikh daftar'],...records.map(r=>[r.reference,r.fullName,r.email,r.phone,r.institution,r.age,r.guardianName,r.guardianPhone,r.track,r.modules.map(m=>m.title).join('; '),r.total,r.discount,r.status,r.paymentReceipt?.number||'',r.paymentSubmittedAt||'',r.paymentApprovedAt||'',r.adminNote,r.createdAt])].map(line=>line.map(escape).join(',')).join('\r\n');
+      const csv=[['Rujukan','Nama','E-mel','Telefon','Institusi','Umur','Penjaga','Telefon penjaga','Track','Modul','Sesi dipilih','Jumlah (RM)','Diskaun (RM)','Status','Nombor resit pendaftaran','Tarikh hantar bukti','Tarikh pengesahan','Nota admin','Tarikh daftar'],...records.map(r=>[r.reference,r.fullName,r.email,r.phone,r.institution,r.age,r.guardianName,r.guardianPhone,r.track,r.modules.map(m=>m.title).join('; '),r.modules.map(m=>m.title+': '+(m.session?sessionText(m.session):'Tiada sesi dipilih')).join('; '),r.total,r.discount,r.status,r.paymentReceipt?.number||'',r.paymentSubmittedAt||'',r.paymentApprovedAt||'',r.adminNote,r.createdAt])].map(line=>line.map(escape).join(',')).join('\r\n');
       return new NextResponse('\uFEFF'+csv,{headers:{'Content-Type':'text/csv; charset=utf-8','Content-Disposition':'attachment; filename="pakar-pendaftaran.csv"','Cache-Control':'no-store'}});
     }
   }

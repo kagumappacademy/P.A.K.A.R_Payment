@@ -132,7 +132,49 @@
         "Bina prototaip interaktif",
         "Eksperimen dengan bantuan AI"
       ],
-      "cover": "/images/modules/ai-game-builder-cover.svg"
+      "cover": "/images/modules/ai-game-builder-cover.svg",
+      "sessions": [
+        {
+          "id": "ai-game-builder-sesi-1",
+          "label": "Sesi 1",
+          "date": "2026-12-10",
+          "startTime": "09:00",
+          "endTime": "17:00",
+          "mode": "physical",
+          "location": "Lokasi akan dimaklumkan",
+          "active": true
+        },
+        {
+          "id": "ai-game-builder-sesi-2",
+          "label": "Sesi 2",
+          "date": "2026-12-16",
+          "startTime": "09:00",
+          "endTime": "17:00",
+          "mode": "physical",
+          "location": "Lokasi akan dimaklumkan",
+          "active": true
+        },
+        {
+          "id": "ai-game-builder-sesi-3",
+          "label": "Sesi 3",
+          "date": "2026-12-23",
+          "startTime": "09:00",
+          "endTime": "17:00",
+          "mode": "physical",
+          "location": "Lokasi akan dimaklumkan",
+          "active": true
+        },
+        {
+          "id": "ai-game-builder-sesi-4",
+          "label": "Sesi 4",
+          "date": "2026-12-29",
+          "startTime": "09:00",
+          "endTime": "17:00",
+          "mode": "physical",
+          "location": "Lokasi akan dimaklumkan",
+          "active": true
+        }
+      ]
     },
     {
       "id": "creative-visual",
@@ -152,7 +194,49 @@
         "Prompt untuk idea visual",
         "Hasilkan rekaan sendiri"
       ],
-      "cover": "/images/modules/creative-visual-cover.svg"
+      "cover": "/images/modules/creative-visual-cover.svg",
+      "sessions": [
+        {
+          "id": "creative-visual-sesi-1",
+          "label": "Sesi 1",
+          "date": "2026-12-05",
+          "startTime": "09:00",
+          "endTime": "17:00",
+          "mode": "online",
+          "location": "Pautan kelas akan dimaklumkan",
+          "active": true
+        },
+        {
+          "id": "creative-visual-sesi-2",
+          "label": "Sesi 2",
+          "date": "2026-12-11",
+          "startTime": "09:00",
+          "endTime": "17:00",
+          "mode": "online",
+          "location": "Pautan kelas akan dimaklumkan",
+          "active": true
+        },
+        {
+          "id": "creative-visual-sesi-3",
+          "label": "Sesi 3",
+          "date": "2026-12-18",
+          "startTime": "09:00",
+          "endTime": "17:00",
+          "mode": "online",
+          "location": "Pautan kelas akan dimaklumkan",
+          "active": true
+        },
+        {
+          "id": "creative-visual-sesi-4",
+          "label": "Sesi 4",
+          "date": "2026-12-28",
+          "startTime": "09:00",
+          "endTime": "17:00",
+          "mode": "online",
+          "location": "Pautan kelas akan dimaklumkan",
+          "active": true
+        }
+      ]
     },
     {
       "id": "smart-ulangkaji",
@@ -172,7 +256,49 @@
         "Bina latihan ulang kaji",
         "Semak ketepatan jawapan AI"
       ],
-      "cover": "/images/modules/smart-ulangkaji-cover.svg"
+      "cover": "/images/modules/smart-ulangkaji-cover.svg",
+      "sessions": [
+        {
+          "id": "smart-ulangkaji-sesi-1",
+          "label": "Sesi 1",
+          "date": "2026-12-09",
+          "startTime": "14:00",
+          "endTime": "17:00",
+          "mode": "online",
+          "location": "Pautan kelas akan dimaklumkan",
+          "active": true
+        },
+        {
+          "id": "smart-ulangkaji-sesi-2",
+          "label": "Sesi 2",
+          "date": "2026-12-15",
+          "startTime": "14:00",
+          "endTime": "17:00",
+          "mode": "online",
+          "location": "Pautan kelas akan dimaklumkan",
+          "active": true
+        },
+        {
+          "id": "smart-ulangkaji-sesi-3",
+          "label": "Sesi 3",
+          "date": "2026-12-22",
+          "startTime": "14:00",
+          "endTime": "17:00",
+          "mode": "online",
+          "location": "Pautan kelas akan dimaklumkan",
+          "active": true
+        },
+        {
+          "id": "smart-ulangkaji-sesi-4",
+          "label": "Sesi 4",
+          "date": "2026-12-24",
+          "startTime": "14:00",
+          "endTime": "17:00",
+          "mode": "online",
+          "location": "Pautan kelas akan dimaklumkan",
+          "active": true
+        }
+      ]
     },
     {
       "id": "video-basic",
@@ -192,7 +318,49 @@
         "Rancang papan cerita",
         "Bina konsep video ringkas"
       ],
-      "cover": "/images/modules/video-basic-cover.svg"
+      "cover": "/images/modules/video-basic-cover.svg",
+      "sessions": [
+        {
+          "id": "video-basic-sesi-1",
+          "label": "Sesi 1",
+          "date": "2026-12-08",
+          "startTime": "09:00",
+          "endTime": "13:00",
+          "mode": "online",
+          "location": "Pautan kelas akan dimaklumkan",
+          "active": true
+        },
+        {
+          "id": "video-basic-sesi-2",
+          "label": "Sesi 2",
+          "date": "2026-12-17",
+          "startTime": "09:00",
+          "endTime": "13:00",
+          "mode": "online",
+          "location": "Pautan kelas akan dimaklumkan",
+          "active": true
+        },
+        {
+          "id": "video-basic-sesi-3",
+          "label": "Sesi 3",
+          "date": "2026-12-19",
+          "startTime": "09:00",
+          "endTime": "13:00",
+          "mode": "online",
+          "location": "Pautan kelas akan dimaklumkan",
+          "active": true
+        },
+        {
+          "id": "video-basic-sesi-4",
+          "label": "Sesi 4",
+          "date": "2026-12-26",
+          "startTime": "09:00",
+          "endTime": "13:00",
+          "mode": "online",
+          "location": "Pautan kelas akan dimaklumkan",
+          "active": true
+        }
+      ]
     },
     {
       "id": "produktiviti",
@@ -213,7 +381,49 @@
         "Bina projek website sendiri"
       ],
       "cover": "/images/modules/website-menengah-cover.svg",
-      "poster": "/images/modules/website-menengah.svg"
+      "poster": "/images/modules/website-menengah.svg",
+      "sessions": [
+        {
+          "id": "produktiviti-sesi-1",
+          "label": "Sesi 1",
+          "date": "2026-12-12",
+          "startTime": "09:00",
+          "endTime": "13:00",
+          "mode": "physical",
+          "location": "Lokasi akan dimaklumkan",
+          "active": true
+        },
+        {
+          "id": "produktiviti-sesi-2",
+          "label": "Sesi 2",
+          "date": "2026-12-17",
+          "startTime": "14:00",
+          "endTime": "17:00",
+          "mode": "physical",
+          "location": "Lokasi akan dimaklumkan",
+          "active": true
+        },
+        {
+          "id": "produktiviti-sesi-3",
+          "label": "Sesi 3",
+          "date": "2026-12-19",
+          "startTime": "14:00",
+          "endTime": "17:00",
+          "mode": "physical",
+          "location": "Lokasi akan dimaklumkan",
+          "active": true
+        },
+        {
+          "id": "produktiviti-sesi-4",
+          "label": "Sesi 4",
+          "date": "2026-12-24",
+          "startTime": "09:00",
+          "endTime": "13:00",
+          "mode": "physical",
+          "location": "Lokasi akan dimaklumkan",
+          "active": true
+        }
+      ]
     },
     {
       "id": "slaid",
@@ -233,7 +443,49 @@
         "Reka bentuk slaid",
         "Teroka idea dengan Gemini"
       ],
-      "cover": "/images/modules/slaid-cover.svg"
+      "cover": "/images/modules/slaid-cover.svg",
+      "sessions": [
+        {
+          "id": "slaid-sesi-1",
+          "label": "Sesi 1",
+          "date": "2026-12-09",
+          "startTime": "09:00",
+          "endTime": "13:00",
+          "mode": "online",
+          "location": "Pautan kelas akan dimaklumkan",
+          "active": true
+        },
+        {
+          "id": "slaid-sesi-2",
+          "label": "Sesi 2",
+          "date": "2026-12-15",
+          "startTime": "09:00",
+          "endTime": "13:00",
+          "mode": "online",
+          "location": "Pautan kelas akan dimaklumkan",
+          "active": true
+        },
+        {
+          "id": "slaid-sesi-3",
+          "label": "Sesi 3",
+          "date": "2026-12-22",
+          "startTime": "09:00",
+          "endTime": "13:00",
+          "mode": "online",
+          "location": "Pautan kelas akan dimaklumkan",
+          "active": true
+        },
+        {
+          "id": "slaid-sesi-4",
+          "label": "Sesi 4",
+          "date": "2026-12-30",
+          "startTime": "09:00",
+          "endTime": "13:00",
+          "mode": "online",
+          "location": "Pautan kelas akan dimaklumkan",
+          "active": true
+        }
+      ]
     },
     {
       "id": "research",

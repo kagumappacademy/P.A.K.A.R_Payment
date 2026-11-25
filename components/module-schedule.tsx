@@ -1,0 +1,23 @@
+'use client';
+import {useState,type CSSProperties} from 'react';
+import Link from 'next/link';
+import {CalendarDays,ChevronLeft,ChevronRight,List,MapPin} from 'lucide-react';
+import {activeSessions,sessionOrder,sessionText} from '@/lib/module-sessions';
+import type {Module,SessionSnapshot} from '@/lib/types';
+import {Localized,usePreferences} from './preferences';
+export function SessionSummary({session,location=false}:{session?:SessionSnapshot;location?:boolean}){
+ const {language}=usePreferences();
+ return <Localized><small className="session-summary">{session?<><span>{sessionText(session,language)}</span>{location&&session.location&&<span><MapPin size={13}/>{session.location}</span>}</>:'Tiada sesi dipilih'}</small></Localized>;
+}
+export function ModuleSchedule({modules}:{modules:Module[]}){
+ const {language}=usePreferences(),entries=modules.flatMap(module=>activeSessions(module).map(session=>({module,session}))).sort((a,b)=>sessionOrder(a.session,b.session));
+ const [month,setMonth]=useState(entries[0]?.session.date.slice(0,7)||'2026-12'),[view,setView]=useState<'calendar'|'list'>('calendar');
+ const [year,number]=month.split('-').map(Number),days=new Date(Date.UTC(year,number,0)).getUTCDate(),offset=new Date(Date.UTC(year,number-1,1)).getUTCDay(),cells=Math.ceil((days+offset)/7)*7;
+ const monthTitle=new Intl.DateTimeFormat(language==='en'?'en-GB':'ms-MY',{month:'long',year:'numeric',timeZone:'Asia/Kuala_Lumpur'}).format(new Date(month+'-01T00:00:00+08:00'));
+ const move=(delta:number)=>{const date=new Date(Date.UTC(year,number-1+delta,1));setMonth(date.toISOString().slice(0,7));};
+ const href=(module:Module,session:SessionSnapshot)=>`/daftar?track=${module.track}&modul=${module.id}&sesi=${session.id}`;
+ return <Localized><section className="module-schedule"><div className="schedule-heading"><div><span className="eyebrow">PILIH SESI ANDA</span><h3>Jadual sesi modul</h3><p>Satu sesi bagi setiap modul. Semua waktu mengikut Malaysia.</p></div><div className="schedule-view"><button type="button" aria-pressed={view==='calendar'} onClick={()=>setView('calendar')}><CalendarDays size={16}/>Kalendar</button><button type="button" aria-pressed={view==='list'} onClick={()=>setView('list')}><List size={16}/>Senarai</button></div></div>
+ {!entries.length?<p className="session-empty">Belum ada sesi yang dibuka. Jadual akan dimaklumkan.</p>:<><div className="schedule-month"><strong>{monthTitle}</strong><div><button type="button" className="icon-button" aria-label="Bulan sebelumnya" onClick={()=>move(-1)}><ChevronLeft size={17}/></button><button type="button" className="icon-button" aria-label="Bulan seterusnya" onClick={()=>move(1)}><ChevronRight size={17}/></button></div><div className="schedule-legend">{modules.filter(m=>activeSessions(m).length).map(m=><span key={m.id} style={{'--session-color':m.accent} as CSSProperties}><i/>{m.title}</span>)}</div></div>
+ {view==='calendar'?<div className="schedule-calendar-scroll"><table className="schedule-calendar" aria-label="Kalendar sesi modul"><thead><tr>{['Ahad','Isnin','Selasa','Rabu','Khamis','Jumaat','Sabtu'].map(day=><th key={day}>{day}</th>)}</tr></thead><tbody>{Array.from({length:cells/7},(_,week)=><tr key={week}>{Array.from({length:7},(_,weekday)=>{const day=week*7+weekday-offset+1,date=`${month}-${String(day).padStart(2,'0')}`,items=entries.filter(entry=>entry.session.date===date);return <td key={weekday} className={day<1||day>days?'schedule-outside':''}>{day>=1&&day<=days&&<><div className="schedule-day"><time dateTime={date} className={items.length?'has-sessions':''}>{day}</time>{items.length>0&&<span>{items.length} sesi</span>}</div>{items.map(({module,session})=><Link key={module.id+session.id} className="schedule-event" href={href(module,session)} style={{'--session-color':module.accent} as CSSProperties}><strong>{session.label}<em>{session.mode==='online'?'Online':'Fizikal'}</em></strong><span>{module.title}</span><small>{session.startTime} – {session.endTime}</small></Link>)}</>}</td>;})}</tr>)}</tbody></table></div>:<div className="schedule-session-list">{entries.filter(entry=>entry.session.date.startsWith(month)).map(({module,session})=><Link href={href(module,session)} key={module.id+session.id} style={{'--session-color':module.accent} as CSSProperties}><strong>{module.title} · {session.label}</strong><SessionSummary session={session} location/><span className="session-register">Pilih sesi ini</span></Link>)}{!entries.some(entry=>entry.session.date.startsWith(month))&&<p className="session-empty">Tiada sesi pada bulan ini.</p>}</div>}</>}
+ </section></Localized>;
+}

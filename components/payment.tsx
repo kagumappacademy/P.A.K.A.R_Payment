@@ -5,6 +5,7 @@ import { Check, CheckCircle2, Copy, Download, ExternalLink, FileCheck2, FileUp, 
 import Link from 'next/link';
 import { api, Notice, Status } from './ui';
 import { GeneratedReceipt } from './generated-receipt';
+import {SessionSummary} from './module-schedule';
 import { money } from '@/lib/pricing';
 import type { Registration, Settings } from '@/lib/types';
 
@@ -34,6 +35,7 @@ export function Payment({registration:r,accessToken,settings:s,onUpdate}:{regist
     <div className="reference-box"><div><span>NOMBOR PENDAFTARAN</span><strong>{r.reference}</strong></div><button className="icon-button" aria-label="Salin nombor pendaftaran" onClick={async()=>{try{await navigator.clipboard.writeText(r.reference);setCopied(true);}catch{setError('Salin nombor pendaftaran secara manual.');}}}>{copied?<Check size={18}/>:<Copy size={18}/>}</button></div>
     <div className="payment-status-row"><Status status={r.status}/><span><span data-no-translate="true">{r.email}</span></span></div>
     {r.adminNote&&<Notice error={r.status==='rejected'}><strong>Nota admin:</strong> {r.adminNote}</Notice>}
+    {r.modules.some(module=>module.session)&&<section className="payment-session-summary"><h3>Modul & sesi dipilih</h3>{r.modules.map(module=><div key={module.id}><strong>{module.title}</strong><SessionSummary session={module.session} location/></div>)}</section>}
     {sent?<>
       <GeneratedReceipt registration={r} accessToken={accessToken} revision={revision}/>
       <div className="form-actions"><button className="button button-secondary" disabled={busy} onClick={refresh}>{busy?<LoaderCircle className="spin" size={17}/>:<RefreshCw size={17}/>}Semak semula</button><Link className="button button-secondary" href="/">Kembali ke utama</Link></div>
