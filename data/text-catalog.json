@@ -1743,7 +1743,7 @@
   {
     "key": "Jadual semua sesi",
     "groups": [
-      "landing"
+      "general"
     ]
   },
   {
@@ -5065,6 +5065,12 @@
     ]
   },
   {
+    "key": "Semak tarikh dan pilih sesi anda di bawah.",
+    "groups": [
+      "landing"
+    ]
+  },
+  {
     "key": "Semakan bayaran",
     "groups": [
       "system"
@@ -5535,6 +5541,12 @@
     "key": "Skrip dan naratif lanjutan",
     "groups": [
       "general"
+    ]
+  },
+  {
+    "key": "Skrol untuk lihat jadual",
+    "groups": [
+      "landing"
     ]
   },
   {
