@@ -1759,6 +1759,12 @@
     ]
   },
   {
+    "key": "Jadual terletak di bawah poster dan maklumat modul. Pilih tarikh sesi yang sesuai.",
+    "groups": [
+      "landing"
+    ]
+  },
+  {
     "key": "Jarak antara item",
     "groups": [
       "system"
@@ -2355,6 +2361,12 @@
     "key": "Lihat butiran",
     "groups": [
       "system"
+    ]
+  },
+  {
+    "key": "Lihat jadual modul",
+    "groups": [
+      "landing"
     ]
   },
   {
@@ -5541,6 +5553,12 @@
     "key": "Skrip dan naratif lanjutan",
     "groups": [
       "general"
+    ]
+  },
+  {
+    "key": "Skrol ke bawah untuk lihat jadual sesi modul ini",
+    "groups": [
+      "landing"
     ]
   },
   {
