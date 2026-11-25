@@ -410,3 +410,12 @@ body{position:relative;isolation:isolate}
 .participant-whatsapp-phone:focus-visible{outline:2px solid var(--cyan);outline-offset:4px}
 .module-participant-panel .participant-details-button{display:flex;white-space:nowrap;font-size:13px;min-height:40px;margin-top:12px}
 .review-details dd .participant-whatsapp-phone{font-size:15px}
+.admin-registration-actions{display:flex;flex-direction:column;align-items:flex-start;gap:13px}
+.admin-archive-action{display:inline-flex;align-items:center;gap:7px;min-height:36px;padding:6px 9px;border:1px solid #e36b7b55;border-radius:7px;background:#e36b7b0b;color:#e36b7b;font-size:12px;white-space:nowrap}
+.admin-archive-action:hover{background:#e36b7b18;border-color:#e36b7b}
+.admin-participant-delete{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-top:24px;margin-top:28px;border-top:1px solid var(--border)}
+.admin-participant-delete p{font-size:13px;line-height:1.8}.admin-participant-delete>.button{flex-shrink:0}
+@media(max-width:600px){.admin-participant-delete{align-items:flex-start;flex-direction:column}.admin-participant-delete>.button{width:100%}}
+.module-selection .selection-module img{width:160px;height:auto;max-height:none;aspect-ratio:auto;object-fit:contain;object-position:center;align-self:center}
+@media(max-width:680px){.module-selection .selection-module img{width:100px}.module-selection .selection-module label{align-items:center}}
+@media(max-width:420px){.module-selection .selection-module img{width:82px}}

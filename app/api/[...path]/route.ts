@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { compare } from 'bcryptjs';
-import { createHash, createHmac, randomBytes, randomUUID, timingSafeEqual } from 'node:crypto';
+import { createHash, createHmac, randomUUID, timingSafeEqual } from 'node:crypto';
 import { z, ZodError } from 'zod';
 import { db, getConfiguration, parseRegistration, rows } from '@/lib/db';
 import { createSession, getAdmin, getStaff, credentialVersion, SESSION_COOKIE, FINANCE_COOKIE } from '@/lib/auth';
@@ -13,6 +13,7 @@ import {assertFinanceApproval,assertFinanceReopen,financeRecord,recordPaymentRev
 import {matchStaffCode} from '@/lib/staff-codes';
 import {trackVisible} from '@/lib/tracks';
 import {changeRegistrationArchive} from '@/lib/registration-records';
+import {withUniqueRegistrationReference} from '@/lib/registration-references';
 import type { Registration } from '@/lib/types';
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -109,17 +110,21 @@ async function handle(request:NextRequest,context:Context) {
     if(selected.length!==input.moduleIds.length)throw new HttpError(400,'Modul tidak tersedia atau tidak berada dalam track yang dipilih.');
     const price=calculatePrice(selected.map(m=>m.price),settings,available.length);
     if(Math.abs(input.expectedTotal-price.total)>0.005) throw new HttpError(409,'Harga modul telah dikemas kini. Muat semula halaman untuk melihat jumlah terkini.');
-    const id=input.idempotencyKey,reference=`PKR-${randomBytes(8).toString('hex').toUpperCase()}`;
+    const id=input.idempotencyKey;
     const {moduleIds: _moduleIds,consent:_consent,idempotencyKey:_key,expectedTotal:_total,...details}=input;
-    const registration={...details,id,reference,modules:selected.map(m=>({id:m.id,title:m.title,price:m.price})),...price,status:'awaiting_payment',receiptId:null,receiptName:null,adminNote:'',createdAt:new Date().toISOString(),updatedAt:new Date().toISOString()};
-    try { await db().execute('INSERT INTO registrations (id,reference,access_hash,email,status,content) VALUES (?,?,?,?,?,?)',[id,reference,hash(token),input.email,'awaiting_payment',JSON.stringify(registration)]); }
+    try {
+      const registration=await withUniqueRegistrationReference(async reference=>{
+        const record={...details,id,reference,modules:selected.map(m=>({id:m.id,title:m.title,price:m.price})),...price,status:'awaiting_payment',receiptId:null,receiptName:null,adminNote:'',createdAt:new Date().toISOString(),updatedAt:new Date().toISOString()};
+        await db().execute('INSERT INTO registrations (id,reference,access_hash,email,status,content) VALUES (?,?,?,?,?,?)',[id,reference,hash(token),input.email,'awaiting_payment',JSON.stringify(record)]);return record;
+      },async(error,reference)=>String((error as {code?:string}).code).startsWith('SQLITE_CONSTRAINT')&&!!(await rows('SELECT id FROM registrations WHERE reference=?',[reference]))[0]);
+      return reply({registration,accessToken:token},201);
+    }
     catch(error) {
       if(!String((error as {code?:string}).code).startsWith('SQLITE_CONSTRAINT')) throw error;
       const row=(await rows('SELECT * FROM registrations WHERE id=?',[id]))[0];
       if(!row || row.email!==input.email)throw new HttpError(409,'Sila cuba semula.');
       return reply({registration:parseRegistration(row),accessToken:token});
     }
-    return reply({registration,accessToken:token},201);
   }
   if(route==='registrations/lookup' && method==='POST') {
     await rateLimit(request,'lookup',20);

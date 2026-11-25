@@ -309,6 +309,7 @@
   {
     "key": "Batal",
     "groups": [
+      "admin",
       "system"
     ]
   },
@@ -514,7 +515,19 @@
     ]
   },
   {
+    "key": "Bina projek website sendiri",
+    "groups": [
+      "general"
+    ]
+  },
+  {
     "key": "Bina prototaip interaktif",
+    "groups": [
+      "general"
+    ]
+  },
+  {
+    "key": "Bina website pertama anda.",
     "groups": [
       "general"
     ]
@@ -564,12 +577,14 @@
   {
     "key": "Buang pendaftaran",
     "groups": [
+      "admin",
       "system"
     ]
   },
   {
     "key": "Buang pendaftaran tersalah dan pulihkan semula apabila diperlukan.",
     "groups": [
+      "admin",
       "system"
     ]
   },
@@ -1610,6 +1625,12 @@
   },
   {
     "key": "Isi cuti akhir tahun dengan kemahiran baharu. Bina game, hasilkan visual dan terokai AI bersama P.A.K.A.R — program praktikal untuk pelajar sekolah menengah. Pilih modul mengikut minat dan mulakan misi kreatif anda.",
+    "groups": [
+      "general"
+    ]
+  },
+  {
+    "key": "Isi cuti sekolah dengan membina website sendiri. Kenali asas struktur laman web, susun kandungan dan cipta reka bentuk responsif yang boleh dilihat pada komputer serta telefon.",
     "groups": [
       "general"
     ]
@@ -3272,6 +3293,7 @@
   {
     "key": "Pendaftaran akan disembunyikan daripada senarai aktif dan laporan bayaran. Resit serta maklumat asal disimpan untuk pemulihan.",
     "groups": [
+      "admin",
       "system"
     ]
   },
@@ -3308,6 +3330,7 @@
   {
     "key": "Pendaftaran dipindahkan ke Tong sampah. Anda boleh memulihkannya semula.",
     "groups": [
+      "admin",
       "system"
     ]
   },
@@ -3856,11 +3879,12 @@
   {
     "key": "Pindahkan ke Tong sampah",
     "groups": [
+      "admin",
       "system"
     ]
   },
   {
-    "key": "PKR-...",
+    "key": "PKR-A7K2M9",
     "groups": [
       "system"
     ]
@@ -4485,6 +4509,7 @@
   {
     "key": "Sebab buang pendaftaran",
     "groups": [
+      "admin",
       "system"
     ]
   },

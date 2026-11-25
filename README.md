@@ -58,6 +58,10 @@ Gaya hanya menerima sifat terpilih, nilai terhad dan selector yang berakar pada 
 4. Selepas bukti pembayaran dihantar, resit pendaftaran bernombor dijana secara automatik. Peserta boleh melihat atau memuat turun PDF, kemudian menekan butang menyertai kumpulan WhatsApp track mereka jika admin telah menyediakan pautan. Status resit kekal **Menunggu semakan** sehingga admin mengesahkan pembayaran.
 5. Semak status menggunakan nombor pendaftaran dan e-mel melalui `/semak`. Jika resit ditolak, nota admin dipaparkan dan peserta boleh memuat naik resit baharu.
 
+Nombor pendaftaran baharu menggunakan format ringkas **PKR-A7K2M9** (enam aksara selepas PKR), tanpa huruf I/O atau angka 0/1 yang mudah tertukar. Pangkalan data memastikan nombor unik dan percubaan baharu dibuat jika nombor rawak sudah digunakan. Nombor pendaftaran, pautan akses dan resit lama dikekalkan; tiada penomboran semula rekod terdahulu.
+
+Gambar dalam langkah pemilihan modul dipaparkan sepenuhnya mengikut nisbah asal, tanpa crop, pada desktop dan telefon. Modul Sekolah Menengah Pembangunan Website menggantikan Asas Produktiviti dengan penerangan, hasil pembelajaran dan poster sekolah yang sepadan; ID modul, harga dan snapshot pendaftaran terdahulu dikekalkan. Track Universiti disembunyikan daripada pelanggan dan pendaftaran baharu.
+
 Pembayaran **disemak secara manual** oleh admin. Tiada transaksi bank, debit automatik atau pengesahan terus dengan DuitNow dilakukan oleh aplikasi.
 
 ## Portal admin
@@ -149,6 +153,8 @@ Finance mempunyai tab Belum disahkan, Sudah disahkan dan Ditanda; kotak 30px di 
 Finance kini mempunyai empat langkah dengan progress bar: pilih bayaran, semak resit satu per satu, sahkan ringkasan dan selesai. Laporan Peserta berbayar tersedia pada Admin dan Finance, diasingkan mengikut modul/track dengan nama, telefon, e-mel, institusi dan rujukan. Peserta kombo dikira sekali dalam jumlah keseluruhan.
 
 Halaman `/staff/registrations` membolehkan Admin dan Finance memindahkan pendaftaran tersalah ke Tong sampah serta memulihkannya dengan status pembayaran asal. Jumlah/laporan aktif mengecualikan pendaftaran yang dibuang; bukti dan sejarah dikekalkan, tindakan diaudit, serta pemeriksaan versi mengelakkan perubahan terhadap rekod lapuk. Akses peserta kepada pendaftaran/resit yang dibuang disekat sehingga dipulihkan.
+
+Admin juga boleh memilih **Buang pendaftaran** terus pada baris Pendaftaran peserta atau dalam Butiran pendaftaran, termasuk butiran yang dibuka daripada Peserta mengikut modul. Pengesahan memaparkan nama, nombor pendaftaran dan jumlah peserta yang dipilih serta meminta sebab. Selepas dihantar, rekod dikeluarkan daripada statistik dan senarai aktif; pemulihan tersedia melalui Urus & pulihkan pendaftaran → Tong sampah.
 
 Admin → Tetapan track menyediakan switch Paparkan track bagi Menengah dan Universiti. Hide hanya menutup paparan modul dan pendaftaran baharu bagi track tersebut; rekod peserta terdahulu dan laporan kekal tersedia kepada petugas. Kedua-dua track boleh disembunyikan. URL/API pendaftaran juga memeriksa tetapan ini.
 

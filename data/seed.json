@@ -27,7 +27,8 @@
       "universiti": {
         "name": "Universiti",
         "audience": "Pelajar universiti & kolej",
-        "description": "Naik taraf kemahiran untuk dunia sebenar. Dari penyelidikan akademik hingga portfolio profesional anda."
+        "description": "Naik taraf kemahiran untuk dunia sebenar. Dari penyelidikan akademik hingga portfolio profesional anda.",
+        "visible": false
       }
     },
     "comboTwo": 10,
@@ -196,22 +197,23 @@
     {
       "id": "produktiviti",
       "track": "menengah",
-      "title": "Asas Produktiviti",
-      "subtitle": "MS Office & Google Workspace",
-      "description": "Tambah kemahiran digital semasa cuti sekolah. Belajar menyediakan dokumen, mengenali hamparan elektronik dan bekerjasama dalam talian menggunakan alat harian.",
+      "title": "Pembangunan Website",
+      "subtitle": "Bina website pertama anda.",
+      "description": "Isi cuti sekolah dengan membina website sendiri. Kenali asas struktur laman web, susun kandungan dan cipta reka bentuk responsif yang boleh dilihat pada komputer serta telefon.",
       "price": 39,
       "accent": "#facc15",
-      "icon": "layers",
+      "icon": "code",
       "duration": "Bengkel praktikal",
       "schedule": "Jadual akan diumumkan",
       "active": true,
       "sortOrder": 5,
       "outcomes": [
-        "Dokumen lebih kemas",
-        "Asas hamparan elektronik",
-        "Kolaborasi dalam talian"
+        "Asas struktur laman web",
+        "Reka bentuk responsif",
+        "Bina projek website sendiri"
       ],
-      "cover": "/images/modules/produktiviti-cover.svg"
+      "cover": "/images/modules/website-menengah-cover.svg",
+      "poster": "/images/modules/website-menengah.svg"
     },
     {
       "id": "slaid",
