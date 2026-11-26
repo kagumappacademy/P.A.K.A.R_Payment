@@ -1,6 +1,6 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {defaultModuleSessions,moduleSessions,participantsBySession,selectModuleSessions,sessionKey,sessionText} from '../lib/module-sessions.ts';
+import {defaultModuleSessions,missingSessionModules,moduleSessions,participantsBySession,selectModuleSessions,sessionKey,sessionText} from '../lib/module-sessions.ts';
 import {moduleSessionsSchema,registrationSchema} from '../lib/validation.ts';
 import type {Module,Registration} from '../lib/types.ts';
 const make=(id:string)=>({id,title:id,track:'menengah',price:39,sessions:defaultModuleSessions(id)}) as Module;
@@ -31,8 +31,18 @@ test('malformed dates, time ranges and duplicate sessions are rejected',()=>{
  const sessions=defaultModuleSessions('ai-game-builder');for(const changes of [{date:'2026-02-31'},{startTime:'24:00'},{startTime:'18:00'},{endTime:'09:00'}])assert.equal(moduleSessionsSchema.safeParse([{...sessions[0],...changes}]).success,false);
  assert.equal(moduleSessionsSchema.safeParse([sessions[0],sessions[0]]).success,false);assert.equal(moduleSessionsSchema.safeParse([sessions[0],{...sessions[1],label:sessions[0].label}]).success,false);
 });
-test('legacy module metadata remains usable and an explicit empty schedule is respected',()=>{
- assert.equal(moduleSessions({id:'ai-game-builder',track:'menengah'}).length,4);assert.deepEqual(moduleSessions({id:'ai-game-builder',track:'menengah',sessions:[]}),[]);assert.deepEqual(selectModuleSessions([{...make('research'),track:'universiti',sessions:[]}],{}),[{id:'research',title:'research',price:39}]);
+test('legacy module metadata keeps defaults but new registrations cannot bypass an empty schedule',()=>{
+ assert.equal(moduleSessions({id:'ai-game-builder',track:'menengah'}).length,4);assert.deepEqual(moduleSessions({id:'ai-game-builder',track:'menengah',sessions:[]}),[]);assert.throws(()=>selectModuleSessions([{...make('research'),track:'universiti',sessions:[]}],{}),/Pilih satu sesi/);
+});
+
+test('every selected module needs its own available session before payment',()=>{
+ const game=make('ai-game-builder'),visual=make('creative-visual'),selections={[game.id]:game.sessions![0].id};
+ assert.deepEqual(missingSessionModules([game,visual],selections).map(module=>module.id),[visual.id]);
+ assert.throws(()=>selectModuleSessions([game,visual],selections),/creative-visual/);
+ const complete={...selections,[visual.id]:visual.sessions![0].id};assert.deepEqual(missingSessionModules([game,visual],complete),[]);assert.equal(selectModuleSessions([game,visual],complete).length,2);
+ assert.deepEqual(missingSessionModules([game,visual],{...complete,[visual.id]:game.sessions![0].id}).map(module=>module.id),[visual.id]);
+ visual.sessions![0].active=false;assert.deepEqual(missingSessionModules([game,visual],complete).map(module=>module.id),[visual.id]);
+ assert.deepEqual(missingSessionModules([game],complete),[]);assert.deepEqual(missingSessionModules([{...game,sessions:[]}],selections).map(module=>module.id),[game.id]);
 });
 test('session reports separate old registrations, preserve changed schedule snapshots and sort by date',()=>{
  const module=make('ai-game-builder'),snapshot=selectModuleSessions([module],{[module.id]:module.sessions![1].id})[0];

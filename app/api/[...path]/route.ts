@@ -5,7 +5,7 @@ import { z, ZodError } from 'zod';
 import { db, getConfiguration, parseRegistration, rows } from '@/lib/db';
 import { createSession, getAdmin, getStaff, credentialVersion, SESSION_COOKIE, FINANCE_COOKIE } from '@/lib/auth';
 import { sessionSecret } from '@/lib/session-secret';
-import { registrationSchema, moduleSchema, moduleSessionsSchema, settingsSchema, interfaceTextSchema, visualDesignSchema } from '@/lib/validation';
+import { registrationSchema, moduleSchema, moduleSessionsSchema, registrationAvailabilitySchema, settingsSchema, interfaceTextSchema, visualDesignSchema } from '@/lib/validation';
 import { calculatePrice } from '@/lib/pricing';
 import { readFile, saveFile } from '@/lib/files';
 import { participantGroup, receiptSnapshot } from '@/lib/receipts';
@@ -14,7 +14,8 @@ import {matchStaffCode} from '@/lib/staff-codes';
 import {trackVisible} from '@/lib/tracks';
 import {archiveRegistrationBatch,changeRegistrationArchive} from '@/lib/registration-records';
 import {withUniqueRegistrationReference} from '@/lib/registration-references';
-import {moduleSessions,selectModuleSessions,sessionText} from '@/lib/module-sessions';
+import {activeSessions,moduleSessions,selectModuleSessions,sessionText} from '@/lib/module-sessions';
+import {registrationIsOpen} from '@/lib/registration-availability';
 import type { Registration } from '@/lib/types';
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -104,13 +105,13 @@ async function handle(request:NextRequest,context:Context) {
       return reply({registration:parseRegistration(existing),accessToken:token});
     }
     const {settings,modules}=await getConfiguration();
-    if(!settings.registrationOpen)throw new HttpError(400,'Pendaftaran program ditutup buat sementara waktu.');
+    if(!registrationIsOpen(settings))throw new HttpError(400,'Pendaftaran program ditutup buat sementara waktu.');
     if(!trackVisible(settings,input.track))throw new HttpError(400,'Track ini tidak dibuka untuk pendaftaran.');
     const available=modules.filter(m=>m.track===input.track);
     const selected=available.filter(m=>input.moduleIds.includes(m.id));
     if(selected.length!==input.moduleIds.length)throw new HttpError(400,'Modul tidak tersedia atau tidak berada dalam track yang dipilih.');
     let moduleSnapshots:Registration['modules'];try{moduleSnapshots=selectModuleSessions(selected,input.sessionSelections);}catch(error){throw new HttpError(400,(error as Error).message);}
-    const price=calculatePrice(selected.map(m=>m.price),settings,available.length);
+    const price=calculatePrice(selected.map(m=>m.price),settings,available.filter(module=>activeSessions(module).length>0).length);
     if(Math.abs(input.expectedTotal-price.total)>0.005) throw new HttpError(409,'Harga modul telah dikemas kini. Muat semula halaman untuk melihat jumlah terkini.');
     const id=input.idempotencyKey;
     const {moduleIds: _moduleIds,sessionSelections:_sessions,consent:_consent,idempotencyKey:_key,expectedTotal:_total,...details}=input;
@@ -229,9 +230,14 @@ async function handle(request:NextRequest,context:Context) {
       ],'write');
       return reply({ok:true});
     }
+    if(route==='admin/registration-availability'&&method==='PUT'){
+      const value=registrationAvailabilitySchema.parse(await request.json());
+      await db().execute("UPDATE settings SET content=json_set(content,'$.registrationOpen',json(?),'$.registrationScheduled',json(?),'$.registrationOpensAt',?) WHERE id=1",[JSON.stringify(value.registrationOpen),JSON.stringify(value.registrationScheduled),value.registrationOpensAt]);
+      await audit(admin.id,'registration.availability','settings');return reply({ok:true});
+    }
     if(route==='admin/settings' && method==='PUT') {
       const input=await request.json(),settings=settingsSchema.parse(input);
-      const preserved=['visualDesign','interfaceText','collaborators','collaboratorTitle','collaboratorDescription'];
+      const preserved=['visualDesign','interfaceText','collaborators','collaboratorTitle','collaboratorDescription','registrationScheduled','registrationOpensAt'];
       if(preserved.some(key=>!Object.hasOwn(input,key))){
         const current=JSON.parse((await rows('SELECT content FROM settings WHERE id=1'))[0].content);
         for(const key of preserved)if(!Object.hasOwn(input,key)&&Object.hasOwn(current,key))Object.assign(settings,{[key]:current[key]});

@@ -11,6 +11,7 @@ export function defaultModuleSessions(id:string):ModuleSession[]{const data=temp
 export const sessionOrder=(a:SessionSnapshot,b:SessionSnapshot)=>`${a.date}T${a.startTime}`.localeCompare(`${b.date}T${b.startTime}`)||a.label.localeCompare(b.label,'ms',{numeric:true});
 export const moduleSessions=(module:Pick<Module,'id'|'track'|'sessions'>)=>[...(module.sessions??(module.track==='menengah'?defaultModuleSessions(module.id):[]))].sort(sessionOrder);
 export const activeSessions=(module:Pick<Module,'id'|'track'|'sessions'>)=>moduleSessions(module).filter(session=>session.active);
+export const missingSessionModules=(modules:Module[],selections:Record<string,string>)=>modules.filter(module=>!activeSessions(module).some(session=>session.id===selections[module.id]));
 export const sessionKey=(session?:SessionSnapshot)=>session?JSON.stringify([session.id,session.label,session.date,session.startTime,session.endTime,session.mode,session.location]):'unscheduled';
 export function sessionText(session:SessionSnapshot,language:'bm'|'en'='bm'){
  const date=new Intl.DateTimeFormat(language==='en'?'en-GB':'ms-MY',{day:'numeric',month:'short',year:'numeric',timeZone:'Asia/Kuala_Lumpur'}).format(new Date(session.date+'T00:00:00+08:00'));
@@ -22,7 +23,6 @@ export function selectModuleSessions(modules:Module[],selections:Record<string,s
  if(Object.keys(selections).some(id=>!modules.some(module=>module.id===id)))throw new Error('Pilihan sesi tidak sepadan dengan modul yang dipilih.');
  const result=modules.map(module=>{
   const configured=moduleSessions(module),id=selections[module.id];
-  if(!configured.length){if(id)throw new Error('Sesi yang dipilih tidak tersedia.');return {id:module.id,title:module.title,price:module.price};}
   const session=configured.find(item=>item.id===id&&item.active);if(!session)throw new Error(`Pilih satu sesi yang tersedia untuk ${module.title}.`);
   const {active:_active,...snapshot}=session;return {id:module.id,title:module.title,price:module.price,session:snapshot};
  });

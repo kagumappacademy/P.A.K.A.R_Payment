@@ -186,6 +186,12 @@
     ]
   },
   {
+    "key": "Anda masih boleh melihat modul dan jadual sesi yang tersedia.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "anda nak cipta apa?",
     "groups": [
       "landing"
@@ -643,7 +649,13 @@
   {
     "key": "Buka pendaftaran kepada peserta",
     "groups": [
-      "admin"
+      "general"
+    ]
+  },
+  {
+    "key": "Buka pendaftaran secara automatik pada tarikh dan masa ini",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -681,6 +693,12 @@
     "key": "Buka resit dahulu sebelum menandakan pembayaran untuk pengesahan.",
     "groups": [
       "general"
+    ]
+  },
+  {
+    "key": "Buka sekarang, tutup sementara atau tetapkan pembukaan automatik.",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -1749,7 +1767,7 @@
   {
     "key": "Jadual sesi akan dimaklumkan.",
     "groups": [
-      "system"
+      "general"
     ]
   },
   {
@@ -1810,6 +1828,12 @@
     "key": "Jeda slider logo",
     "groups": [
       "general"
+    ]
+  },
+  {
+    "key": "Jika pembukaan automatik dimatikan, pendaftaran kekal ditutup sehingga Admin memilih ON.",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -2006,6 +2030,12 @@
     "key": "Kawalan muzik latar",
     "groups": [
       "general"
+    ]
+  },
+  {
+    "key": "Kawalan pendaftaran",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -2377,6 +2407,12 @@
   },
   {
     "key": "Lihat modul",
+    "groups": [
+      "landing"
+    ]
+  },
+  {
+    "key": "Lihat modul & jadual",
     "groups": [
       "landing"
     ]
@@ -3259,6 +3295,18 @@
     ]
   },
   {
+    "key": "OFF · Tutup pendaftaran",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "ON · Buka sekarang",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Online",
     "groups": [
       "system"
@@ -3525,6 +3573,12 @@
     ]
   },
   {
+    "key": "Pendaftaran akan dibuka pada",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Pendaftaran akan disembunyikan daripada senarai aktif dan laporan bayaran. Resit serta maklumat asal disimpan untuk pemulihan.",
     "groups": [
       "system"
@@ -3561,6 +3615,12 @@
     ]
   },
   {
+    "key": "Pendaftaran dibuka. Pelanggan boleh mendaftar sekarang.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "pendaftaran dipilih",
     "groups": [
       "system"
@@ -3589,6 +3649,12 @@
     "key": "Pendaftaran ditutup",
     "groups": [
       "landing"
+    ]
+  },
+  {
+    "key": "Pendaftaran ditutup buat sementara waktu",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -3890,6 +3956,12 @@
     ]
   },
   {
+    "key": "Perubahan berkuat kuasa selepas menekan Simpan tetapan pendaftaran.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Perubahan jadual digunakan untuk pendaftaran baharu. Sesi yang dipilih dalam pendaftaran terdahulu kekal disimpan dalam rekod peserta.",
     "groups": [
       "system"
@@ -4092,6 +4164,12 @@
     "key": "Pilih satu sesi",
     "groups": [
       "system"
+    ]
+  },
+  {
+    "key": "Pilih satu sesi bagi setiap modul yang diambil. Lengkapkan semua pilihan sesi sebelum ke pembayaran.",
+    "groups": [
+      "registration"
     ]
   },
   {
@@ -4308,6 +4386,12 @@
   },
   {
     "key": "Pratonton langsung",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Pratonton makluman halaman hadapan",
     "groups": [
       "system"
     ]
@@ -4899,9 +4983,21 @@
     ]
   },
   {
+    "key": "Sedang dibuka",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Sedang dimainkan",
     "groups": [
       "general"
+    ]
+  },
+  {
+    "key": "Sedang ditutup",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -5319,6 +5415,12 @@
     ]
   },
   {
+    "key": "Sesi belum tersedia. Modul ini belum boleh didaftarkan.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "sesi dibuka",
     "groups": [
       "system"
@@ -5472,6 +5574,18 @@
     ]
   },
   {
+    "key": "Sila pilih sesi bagi modul berikut sebelum meneruskan pembayaran:",
+    "groups": [
+      "registration"
+    ]
+  },
+  {
+    "key": "Sila pilih sesi untuk modul ini sebelum meneruskan pembayaran.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Simpan & terbitkan",
     "groups": [
       "system"
@@ -5535,6 +5649,12 @@
     "key": "Simpan tetapan pembayaran",
     "groups": [
       "admin"
+    ]
+  },
+  {
+    "key": "Simpan tetapan pendaftaran",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -5888,6 +6008,18 @@
     ]
   },
   {
+    "key": "Tarikh & masa pembukaan",
+    "groups": [
+      "system"
+    ]
+  },
+  {
+    "key": "Tarikh & masa pembukaan (waktu Malaysia)",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Tarikh daftar",
     "groups": [
       "system"
@@ -5909,6 +6041,12 @@
     "key": "Tarikh paparan",
     "groups": [
       "admin"
+    ]
+  },
+  {
+    "key": "Tarikh pembukaan baharu akan dimaklumkan.",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -6150,6 +6288,18 @@
     ]
   },
   {
+    "key": "Tetapan pendaftaran",
+    "groups": [
+      "admin"
+    ]
+  },
+  {
+    "key": "Tetapan pendaftaran berjaya disimpan.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Tetapan track",
     "groups": [
       "admin"
@@ -6157,6 +6307,12 @@
   },
   {
     "key": "Tetapkan QR",
+    "groups": [
+      "general"
+    ]
+  },
+  {
+    "key": "Tetapkan tarikh pembukaan dan pilih OFF sebelum mengaktifkan pembukaan automatik.",
     "groups": [
       "general"
     ]
@@ -6444,6 +6600,12 @@
     ]
   },
   {
+    "key": "Urus buka / tutup pendaftaran",
+    "groups": [
+      "admin"
+    ]
+  },
+  {
     "key": "Urus kod akses",
     "groups": [
       "system"
@@ -6495,6 +6657,12 @@
     "key": "Volume muzik",
     "groups": [
       "general"
+    ]
+  },
+  {
+    "key": "Wajib",
+    "groups": [
+      "system"
     ]
   },
   {

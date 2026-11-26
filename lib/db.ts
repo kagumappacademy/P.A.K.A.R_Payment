@@ -4,6 +4,7 @@ import type { Settings, Module, Registration } from './types';
 import {defaultCollaborators,defaultCollaboratorTitle,defaultCollaboratorDescription} from './collaborators';
 import {trackVisible} from './tracks';
 import {moduleSessions} from './module-sessions';
+import {defaultRegistrationOpensAt} from './registration-availability';
 const globalDb = globalThis as unknown as { pakarTurso?: {url:string;client:Client} };
 export function db() {
   const url=process.env.TURSO_DATABASE_URL||'';
@@ -23,6 +24,7 @@ export async function getConfiguration(includeInactive = false, includePrivate =
   const [s, mods] = await Promise.all([rows('SELECT content FROM settings WHERE id=1'), rows('SELECT content FROM modules')]);
   if (!s[0]) throw new Error('Jalankan npm run db:setup dahulu.');
   const settings = JSON.parse(s[0].content) as Settings;
+  settings.registrationScheduled??=false;settings.registrationOpensAt??=defaultRegistrationOpensAt;
   settings.organizerLogo??='/images/brand/kagum-academy.png';
   settings.collaborators??=defaultCollaborators;
   settings.collaboratorTitle??=defaultCollaboratorTitle;

@@ -66,6 +66,10 @@ Setiap modul Sekolah Menengah mempunyai empat sesi mengikut kalendar Disember 20
 
 Admin → **Sesi & jadual** membolehkan admin menambah, menyunting atau menutup sesi, termasuk tarikh, masa, mod Online/Fizikal dan lokasi. Simpanan khusus hanya mengubah medan sesi modul; harga dan imej modul dikekalkan. Pilihan sesi disalin ke rekod pendaftaran serta dipaparkan dalam butiran Admin/Finance, laporan peserta mengikut sesi, semakan status, resit dan eksport CSV. Perubahan atau pembuangan sesi tidak mengubah jadual dalam pendaftaran yang telah disimpan. Pendaftaran lama tanpa sesi diletakkan dalam kumpulan **Tiada sesi dipilih**. Tidak perlu menukar struktur MySQL/Turso kerana data sesi disimpan dalam kandungan JSON sedia ada.
 
+Pendaftaran baharu memerlukan satu sesi aktif bagi setiap modul, termasuk modul tambahan. Jika pelanggan menekan teruskan tanpa melengkapkan sesi, borang menyenaraikan modul yang belum lengkap, menandakan medan berkenaan dan membawa fokus ke pilihan sesi pertama. Modul tanpa sesi dibuka tidak boleh dipilih. Pengesahan yang sama dibuat di server sebelum pendaftaran disimpan.
+
+Admin → **Tetapan pendaftaran** menyediakan ON, OFF, tarikh/masa pembukaan dalam waktu Malaysia dan pilihan buka automatik. Tarikh cadangan ialah 27 November 2026, 12:00 tengah hari. Menyimpan kawalan ini hanya mengubah tiga medan pendaftaran. OFF tanpa buka automatik kekal ditutup sehingga Admin memilih ON. Dengan buka automatik, website dan API menerima pendaftaran mulai tarikh ditetapkan tanpa memerlukan Admin membuka portal atau tugas cron. Makluman pembukaan dipaparkan pada halaman hadapan dan halaman daftar; pendaftaran sedia ada masih boleh meneruskan pembayaran.
+
 Pembayaran **disemak secara manual** oleh admin. Tiada transaksi bank, debit automatik atau pengesahan terus dengan DuitNow dilakukan oleh aplikasi.
 
 ## Portal admin

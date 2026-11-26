@@ -17,6 +17,7 @@ export type Settings = {
   delivery: string; organizer: string; organizerLogo: string; contactEmail: string; whatsapp: string;
   whatsappGroups: Record<Track, string>;
   heroImage: string; eventPoster: string; registrationOpen: boolean;
+  registrationScheduled?:boolean;registrationOpensAt?:string;
   tracks: Record<Track, { name: string; audience: string; description: string; visible?:boolean }>;
   comboTwo: number; comboThree: number; comboAll: number;
   paymentName: string; bankName: string; bankAccount: string; paymentQr: string;

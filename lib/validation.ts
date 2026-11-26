@@ -24,6 +24,7 @@ export const registrationSchema = z.object({
 });
 export const moduleSessionSchema=z.object({id:text(80).regex(/^[a-zA-Z0-9-]+$/),label:text(80),date:z.iso.date(),startTime:z.string().regex(/^([01]\d|2[0-3]):[0-5]\d$/),endTime:z.string().regex(/^([01]\d|2[0-3]):[0-5]\d$/),mode:z.enum(['online','physical']),location:optionalText(300),active:z.boolean()}).strict().refine(session=>session.startTime<session.endTime,'Masa tamat mesti selepas masa mula.');
 export const moduleSessionsSchema=z.array(moduleSessionSchema).max(60).refine(sessions=>new Set(sessions.map(s=>s.id)).size===sessions.length,'ID sesi mesti unik.').refine(sessions=>new Set(sessions.map(s=>s.label.toLowerCase())).size===sessions.length,'Nama sesi mesti unik dalam modul.');
+export const registrationAvailabilitySchema=z.object({registrationOpen:z.boolean(),registrationScheduled:z.boolean(),registrationOpensAt:z.union([z.literal(''),z.iso.datetime({offset:true})])}).strict().refine(value=>!value.registrationScheduled||(!value.registrationOpen&&!!value.registrationOpensAt),'Tetapkan tarikh pembukaan dan pilih OFF sebelum mengaktifkan pembukaan automatik.');
 export const moduleSchema = z.object({
   id: text(80).regex(/^[a-z0-9-]+$/), track: z.enum(['menengah','universiti']),
   title: text(150), subtitle: optionalText(200), description: text(2000),
@@ -47,6 +48,7 @@ export const settingsSchema = z.object({
   aboutTitle:text(200),aboutDescription:text(3000),dateLabel:text(100),startDate:z.iso.date(),endDate:z.iso.date(),
   location:text(300),delivery:text(100),organizer:text(200),organizerLogo:asset.default('/images/brand/kagum-academy.png'),contactEmail:z.union([z.literal(''),z.email()]),
   whatsapp:z.string().regex(/^$|^\d{8,16}$/),heroImage:asset,eventPoster:asset,registrationOpen:z.boolean(),
+  registrationScheduled:z.boolean().default(false),registrationOpensAt:z.union([z.literal(''),z.iso.datetime({offset:true})]).default(''),
   whatsappGroups:z.object({menengah:whatsappGroupSchema.default(''),universiti:whatsappGroupSchema.default('')}).default({menengah:'',universiti:''}),
   tracks:z.object({menengah:track,universiti:track}),
   comboTwo:z.number().min(0).max(90),comboThree:z.number().min(0).max(90),comboAll:z.number().min(0).max(90),
@@ -55,6 +57,7 @@ export const settingsSchema = z.object({
   benefits:z.array(z.object({title:text(150),description:text(1000),icon:text(30)})).min(1).max(6),
   faqs:z.array(z.object({question:text(300),answer:text(2000)})).min(1).max(15)
 }).superRefine((s,ctx)=>{
+  if(s.registrationScheduled&&(s.registrationOpen||!s.registrationOpensAt))ctx.addIssue({code:'custom',message:'Tetapkan tarikh pembukaan dan pilih OFF sebelum mengaktifkan pembukaan automatik.'});
   if(s.startDate>s.endDate) ctx.addIssue({code:'custom',message:'Tarikh tamat mesti selepas tarikh mula.'});
   if(s.comboThree<s.comboTwo || s.comboAll<s.comboThree) ctx.addIssue({code:'custom',message:'Diskaun kombo mesti meningkat mengikut jumlah modul.'});
 });
