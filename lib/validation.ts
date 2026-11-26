@@ -52,11 +52,12 @@ export const settingsSchema = z.object({
   whatsappGroups:z.object({menengah:whatsappGroupSchema.default(''),universiti:whatsappGroupSchema.default('')}).default({menengah:'',universiti:''}),
   tracks:z.object({menengah:track,universiti:track}),
   comboTwo:z.number().min(0).max(90),comboThree:z.number().min(0).max(90),comboAll:z.number().min(0).max(90),
-  paymentName:optionalText(200),bankName:optionalText(100),bankAccount:optionalText(60),paymentQr:asset,
+  paymentName:optionalText(200),bankName:optionalText(100),bankAccount:optionalText(60),paymentQr:asset,paymentQrEnabled:z.boolean().default(false),
   paymentInstructions:text(3000),privacyText:text(3000),
   benefits:z.array(z.object({title:text(150),description:text(1000),icon:text(30)})).min(1).max(6),
   faqs:z.array(z.object({question:text(300),answer:text(2000)})).min(1).max(15)
 }).superRefine((s,ctx)=>{
+  if(s.paymentQrEnabled&&(!s.paymentQr||!s.paymentName))ctx.addIssue({code:'custom',message:'Muat naik QR dan isi nama penerima sebelum mengaktifkan DuitNow QR.'});
   if(s.registrationScheduled&&(s.registrationOpen||!s.registrationOpensAt))ctx.addIssue({code:'custom',message:'Tetapkan tarikh pembukaan dan pilih OFF sebelum mengaktifkan pembukaan automatik.'});
   if(s.startDate>s.endDate) ctx.addIssue({code:'custom',message:'Tarikh tamat mesti selepas tarikh mula.'});
   if(s.comboThree<s.comboTwo || s.comboAll<s.comboThree) ctx.addIssue({code:'custom',message:'Diskaun kombo mesti meningkat mengikut jumlah modul.'});

@@ -15,6 +15,7 @@ import {trackVisible} from '@/lib/tracks';
 import {archiveRegistrationBatch,changeRegistrationArchive} from '@/lib/registration-records';
 import {withUniqueRegistrationReference} from '@/lib/registration-references';
 import {activeSessions,moduleSessions,selectModuleSessions,sessionText} from '@/lib/module-sessions';
+import {paymentAvailability} from '@/lib/payment-availability';
 import {registrationIsOpen} from '@/lib/registration-availability';
 import type { Registration } from '@/lib/types';
 export const runtime = 'nodejs';
@@ -145,7 +146,7 @@ async function handle(request:NextRequest,context:Context) {
     if(parseRegistration(row).deletedAt)throw new HttpError(410,'Pendaftaran ini telah dibuang. Sila hubungi penganjur.');
     if(!['awaiting_payment','rejected'].includes(row.status))throw new HttpError(409,'Resit telah dihantar dan sedang atau telah disahkan.');
     const {settings}=await getConfiguration();
-    if(!settings.paymentQr || !settings.paymentName)throw new HttpError(400,'QR pembayaran rasmi belum tersedia. Sila hubungi penganjur.');
+    if(!paymentAvailability(settings).paymentReady)throw new HttpError(400,'Maklumat pembayaran belum lengkap. Sila hubungi penganjur.');
     const file=form.get('file');if(!(file instanceof File))throw new HttpError(400,'Sila pilih fail resit.');
     const uploaded=await saveFile(file,true,id);
     const registration=parseRegistration(row);
@@ -237,12 +238,12 @@ async function handle(request:NextRequest,context:Context) {
     }
     if(route==='admin/settings' && method==='PUT') {
       const input=await request.json(),settings=settingsSchema.parse(input);
-      const preserved=['visualDesign','interfaceText','collaborators','collaboratorTitle','collaboratorDescription','registrationScheduled','registrationOpensAt'];
+      const preserved=['visualDesign','interfaceText','collaborators','collaboratorTitle','collaboratorDescription','registrationScheduled','registrationOpensAt','paymentQrEnabled'];
       if(preserved.some(key=>!Object.hasOwn(input,key))){
         const current=JSON.parse((await rows('SELECT content FROM settings WHERE id=1'))[0].content);
         for(const key of preserved)if(!Object.hasOwn(input,key)&&Object.hasOwn(current,key))Object.assign(settings,{[key]:current[key]});
       }
-      if(settings.paymentQr && !settings.paymentName)throw new HttpError(400,'Nama penerima diperlukan bersama QR pembayaran.');
+      if(settings.paymentQrEnabled&&(!settings.paymentQr||!settings.paymentName))throw new HttpError(400,'Muat naik QR dan isi nama penerima sebelum mengaktifkan DuitNow QR.');
       await db().execute('UPDATE settings SET content=? WHERE id=1',[JSON.stringify(settings)]);
       await audit(admin.id,'settings.update','1');return reply({ok:true});
     }

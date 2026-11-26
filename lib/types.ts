@@ -20,7 +20,7 @@ export type Settings = {
   registrationScheduled?:boolean;registrationOpensAt?:string;
   tracks: Record<Track, { name: string; audience: string; description: string; visible?:boolean }>;
   comboTwo: number; comboThree: number; comboAll: number;
-  paymentName: string; bankName: string; bankAccount: string; paymentQr: string;
+  paymentName: string; bankName: string; bankAccount: string; paymentQr: string;paymentQrEnabled?:boolean;
   paymentInstructions: string; privacyText: string;
   benefits: { title: string; description: string; icon: string }[];
   faqs: { question: string; answer: string }[];

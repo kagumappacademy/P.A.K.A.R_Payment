@@ -25,6 +25,7 @@ export async function getConfiguration(includeInactive = false, includePrivate =
   if (!s[0]) throw new Error('Jalankan npm run db:setup dahulu.');
   const settings = JSON.parse(s[0].content) as Settings;
   settings.registrationScheduled??=false;settings.registrationOpensAt??=defaultRegistrationOpensAt;
+  settings.paymentQrEnabled??=false;
   settings.organizerLogo??='/images/brand/kagum-academy.png';
   settings.collaborators??=defaultCollaborators;
   settings.collaboratorTitle??=defaultCollaboratorTitle;

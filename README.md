@@ -68,6 +68,8 @@ Admin → **Sesi & jadual** membolehkan admin menambah, menyunting atau menutup 
 
 Pendaftaran baharu memerlukan satu sesi aktif bagi setiap modul, termasuk modul tambahan. Jika pelanggan menekan teruskan tanpa melengkapkan sesi, borang menyenaraikan modul yang belum lengkap, menandakan medan berkenaan dan membawa fokus ke pilihan sesi pertama. Modul tanpa sesi dibuka tidak boleh dipilih. Pengesahan yang sama dibuat di server sebelum pendaftaran disimpan.
 
+Admin → **Tetapan pembayaran** menyediakan ON/OFF DuitNow QR. QR dimulakan dalam keadaan OFF dan hanya dipaparkan selepas imej dimuat naik, nama penerima diisi dan Admin menyimpan suis ON. Apabila OFF, imej QR disimpan untuk kegunaan semula tetapi pelanggan hanya melihat nama bank, nama penerima dan nombor akaun. Muat naik resit pindahan bank dibenarkan apabila ketiga-tiga butiran bank lengkap; tiada keperluan memuat naik QR untuk menerima resit bank. UI dan API menggunakan semakan kaedah bayaran yang sama. Tetapan lama yang tidak mempunyai medan `paymentQrEnabled` dianggap OFF.
+
 Admin → **Tetapan pendaftaran** menyediakan ON, OFF, tarikh/masa pembukaan dalam waktu Malaysia dan pilihan buka automatik. Tarikh cadangan ialah 27 November 2026, 12:00 tengah hari. Menyimpan kawalan ini hanya mengubah tiga medan pendaftaran. OFF tanpa buka automatik kekal ditutup sehingga Admin memilih ON. Dengan buka automatik, website dan API menerima pendaftaran mulai tarikh ditetapkan tanpa memerlukan Admin membuka portal atau tugas cron. Makluman pembukaan dipaparkan pada halaman hadapan dan halaman daftar; pendaftaran sedia ada masih boleh meneruskan pembayaran.
 
 Pembayaran **disemak secara manual** oleh admin. Tiada transaksi bank, debit automatik atau pengesahan terus dengan DuitNow dilakukan oleh aplikasi.

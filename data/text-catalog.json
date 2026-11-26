@@ -349,6 +349,12 @@
     ]
   },
   {
+    "key": "Bayar melalui pindahan bank",
+    "groups": [
+      "payment"
+    ]
+  },
+  {
     "key": "Bayaran akan kembali ke Belum disahkan. Jumlah disahkan Admin dan Finance akan dikira semula. Rekod pengesahan terdahulu kekal disimpan.",
     "groups": [
       "system"
@@ -623,6 +629,12 @@
     ]
   },
   {
+    "key": "Buat pindahan bank mengikut butiran di atas. Selepas pembayaran, muat naik resit untuk semakan.",
+    "groups": [
+      "payment"
+    ]
+  },
+  {
     "key": "Bucu bulat (px)",
     "groups": [
       "system"
@@ -760,6 +772,12 @@
     "key": "Bunyikan muzik",
     "groups": [
       "navigation"
+    ]
+  },
+  {
+    "key": "Butiran bank sedang dikemas kini. Sila hubungi penganjur sebelum membuat pembayaran.",
+    "groups": [
+      "payment"
     ]
   },
   {
@@ -1479,7 +1497,7 @@
   {
     "key": "Gunakan halaman",
     "groups": [
-      "payment"
+      "general"
     ]
   },
   {
@@ -1497,7 +1515,7 @@
   {
     "key": "Gunakan QR pembayaran milik penganjur. Peserta melihat QR ini pada langkah pembayaran.",
     "groups": [
-      "admin"
+      "general"
     ]
   },
   {
@@ -2629,6 +2647,12 @@
     ]
   },
   {
+    "key": "Maklumat pembayaran belum lengkap. Sila hubungi penganjur.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Maklumat penjaga · Peserta bawah 18 tahun",
     "groups": [
       "registration"
@@ -2997,6 +3021,18 @@
     ]
   },
   {
+    "key": "Muat naik QR dan isi nama penerima sebelum memilih ON. Tekan Simpan tetapan pembayaran untuk mengesahkan perubahan.",
+    "groups": [
+      "admin"
+    ]
+  },
+  {
+    "key": "Muat naik QR dan isi nama penerima sebelum mengaktifkan DuitNow QR.",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Muat naik QR DuitNow rasmi untuk membolehkan peserta membuat pembayaran.",
     "groups": [
       "general"
@@ -3088,6 +3124,12 @@
     ]
   },
   {
+    "key": "Nama bank",
+    "groups": [
+      "payment"
+    ]
+  },
+  {
     "key": "Nama bank / e-dompet",
     "groups": [
       "admin"
@@ -3118,6 +3160,12 @@
     ]
   },
   {
+    "key": "Nama penerima",
+    "groups": [
+      "payment"
+    ]
+  },
+  {
     "key": "Nama penerima bayaran",
     "groups": [
       "admin"
@@ -3126,7 +3174,7 @@
   {
     "key": "Nama penerima diperlukan bersama QR pembayaran.",
     "groups": [
-      "system"
+      "general"
     ]
   },
   {
@@ -3222,7 +3270,19 @@
     ]
   },
   {
+    "key": "Nombor akaun",
+    "groups": [
+      "payment"
+    ]
+  },
+  {
     "key": "Nombor akaun (pilihan)",
+    "groups": [
+      "general"
+    ]
+  },
+  {
+    "key": "Nombor akaun bank",
     "groups": [
       "admin"
     ]
@@ -3295,6 +3355,12 @@
     ]
   },
   {
+    "key": "OFF · Butiran bank sahaja",
+    "groups": [
+      "admin"
+    ]
+  },
+  {
     "key": "OFF · Tutup pendaftaran",
     "groups": [
       "system"
@@ -3304,6 +3370,12 @@
     "key": "ON · Buka sekarang",
     "groups": [
       "system"
+    ]
+  },
+  {
+    "key": "ON · Paparkan QR",
+    "groups": [
+      "admin"
     ]
   },
   {
@@ -3382,6 +3454,12 @@
     "key": "Paparan",
     "groups": [
       "system"
+    ]
+  },
+  {
+    "key": "Paparan DuitNow QR",
+    "groups": [
+      "admin"
     ]
   },
   {
@@ -3495,7 +3573,7 @@
   {
     "key": "Pembayaran belum dibuka. Peserta boleh menyimpan pendaftaran dan kembali selepas QR rasmi tersedia.",
     "groups": [
-      "admin"
+      "general"
     ]
   },
   {
@@ -3603,9 +3681,15 @@
     ]
   },
   {
-    "key": "Pendaftaran anda telah disimpan. Pembayaran akan dibuka selepas penganjur menyediakan QR DuitNow rasmi.",
+    "key": "Pendaftaran anda telah disimpan. Gunakan halaman",
     "groups": [
       "payment"
+    ]
+  },
+  {
+    "key": "Pendaftaran anda telah disimpan. Pembayaran akan dibuka selepas penganjur menyediakan QR DuitNow rasmi.",
+    "groups": [
+      "general"
     ]
   },
   {
@@ -4482,7 +4566,19 @@
     ]
   },
   {
+    "key": "QR dimatikan. Pastikan nama penerima, nama bank dan nombor akaun lengkap untuk pembayaran melalui pindahan bank.",
+    "groups": [
+      "admin"
+    ]
+  },
+  {
     "key": "QR DuitNow (PNG, JPG atau WEBP)",
+    "groups": [
+      "admin"
+    ]
+  },
+  {
+    "key": "QR hanya dipaparkan selepas imej dimuat naik dan suis ON diaktifkan. Apabila OFF, peserta melihat butiran bank sahaja.",
     "groups": [
       "admin"
     ]
@@ -4490,13 +4586,13 @@
   {
     "key": "QR pembayaran rasmi belum tersedia. Sila hubungi penganjur.",
     "groups": [
-      "system"
+      "general"
     ]
   },
   {
     "key": "QR rasmi sedang disediakan",
     "groups": [
-      "payment"
+      "general"
     ]
   },
   {
@@ -5511,6 +5607,12 @@
     "key": "Sijil penyertaan disediakan",
     "groups": [
       "general"
+    ]
+  },
+  {
+    "key": "Sila buat pembayaran ke akaun berikut.",
+    "groups": [
+      "payment"
     ]
   },
   {

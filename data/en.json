@@ -929,5 +929,22 @@
   "Anda masih boleh melihat modul dan jadual sesi yang tersedia.": "You can still browse the available modules and session schedules.",
   "Lihat modul & jadual": "Browse modules & schedules",
   "Urus buka / tutup pendaftaran": "Manage registration availability",
-  "Tetapkan tarikh pembukaan dan pilih OFF sebelum mengaktifkan pembukaan automatik.": "Set an opening date and select OFF before enabling automatic opening."
+  "Tetapkan tarikh pembukaan dan pilih OFF sebelum mengaktifkan pembukaan automatik.": "Set an opening date and select OFF before enabling automatic opening.",
+  "Bayar melalui pindahan bank": "Pay by bank transfer",
+  "Sila buat pembayaran ke akaun berikut.": "Please transfer your payment to the following account.",
+  "Nama bank": "Bank name",
+  "Nama penerima": "Account holder",
+  "Nombor akaun": "Account number",
+  "Nombor akaun bank": "Bank account number",
+  "Butiran bank sedang dikemas kini. Sila hubungi penganjur sebelum membuat pembayaran.": "Bank details are being updated. Please contact the organiser before making a payment.",
+  "Buat pindahan bank mengikut butiran di atas. Selepas pembayaran, muat naik resit untuk semakan.": "Transfer your payment using the bank details above, then upload your receipt for review.",
+  "Pendaftaran anda telah disimpan. Gunakan halaman": "Your registration has been saved. Use the",
+  "Maklumat pembayaran belum lengkap. Sila hubungi penganjur.": "Payment details are incomplete. Please contact the organiser.",
+  "Paparan DuitNow QR": "DuitNow QR visibility",
+  "ON · Paparkan QR": "ON · Show QR",
+  "OFF · Butiran bank sahaja": "OFF · Bank details only",
+  "QR hanya dipaparkan selepas imej dimuat naik dan suis ON diaktifkan. Apabila OFF, peserta melihat butiran bank sahaja.": "The QR is shown only after an image is uploaded and the switch is ON. When OFF, participants see bank details only.",
+  "Muat naik QR dan isi nama penerima sebelum memilih ON. Tekan Simpan tetapan pembayaran untuk mengesahkan perubahan.": "Upload a QR and enter the account holder before selecting ON. Press Save payment settings to apply your changes.",
+  "QR dimatikan. Pastikan nama penerima, nama bank dan nombor akaun lengkap untuk pembayaran melalui pindahan bank.": "QR is off. Complete the account holder, bank name and account number for bank transfer payments.",
+  "Muat naik QR dan isi nama penerima sebelum mengaktifkan DuitNow QR.": "Upload a QR and enter the account holder before enabling DuitNow QR."
 }

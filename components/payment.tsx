@@ -1,17 +1,18 @@
 'use client';
 import { Localized } from './preferences';
 import { useState } from 'react';
-import { Check, CheckCircle2, Copy, Download, ExternalLink, FileCheck2, FileUp, LoaderCircle, RefreshCw, ShieldCheck } from 'lucide-react';
+import { Check, CheckCircle2, Copy, Download, ExternalLink, FileCheck2, FileUp, Landmark, LoaderCircle, RefreshCw, ShieldCheck } from 'lucide-react';
 import Link from 'next/link';
 import { api, Notice, Status } from './ui';
 import { GeneratedReceipt } from './generated-receipt';
 import {SessionSummary} from './module-schedule';
 import { money } from '@/lib/pricing';
+import {paymentAvailability} from '@/lib/payment-availability';
 import type { Registration, Settings } from '@/lib/types';
 
 export function Payment({registration:r,accessToken,settings:s,onUpdate}:{registration:Registration;accessToken:string;settings:Settings;onUpdate:(r:Registration)=>void}) {
   const [file,setFile]=useState<File|null>(null),[busy,setBusy]=useState(false),[error,setError]=useState(''),[copied,setCopied]=useState(false),[revision,setRevision]=useState(0);
-  const sent=r.status==='pending'||r.status==='approved',paymentReady=Boolean(s.paymentQr&&s.paymentName);
+  const sent=r.status==='pending'||r.status==='approved',{qrReady,bankReady,paymentReady}=paymentAvailability(s);
   async function upload(e:React.FormEvent) {
     e.preventDefault();setError('');
     if(!file){setError('Sila pilih fail resit pembayaran.');return;}
@@ -40,11 +41,11 @@ export function Payment({registration:r,accessToken,settings:s,onUpdate}:{regist
       <GeneratedReceipt registration={r} accessToken={accessToken} revision={revision}/>
       <div className="form-actions"><button className="button button-secondary" disabled={busy} onClick={refresh}>{busy?<LoaderCircle className="spin" size={17}/>:<RefreshCw size={17}/>}Semak semula</button><Link className="button button-secondary" href="/">Kembali ke utama</Link></div>
     </>:<div className="payment-grid">
-      <div className="qr-panel"><h3>Bayar dengan DuitNow QR</h3>{paymentReady?<>
+      <div className="qr-panel"><h3>{qrReady?'Bayar dengan DuitNow QR':'Bayar melalui pindahan bank'}</h3>{qrReady?<>
         <div className="qr-image"><a href={s.paymentQr} target="_blank" rel="noopener noreferrer" aria-label="Buka QR DuitNow saiz penuh"><img src={s.paymentQr} alt={`QR DuitNow rasmi ${s.paymentName}`}/></a></div><div className="qr-actions"><a className="button button-secondary button-small" href={s.paymentQr} target="_blank" rel="noopener noreferrer"><ExternalLink size={16}/>Buka QR saiz penuh</a><a className="button button-secondary button-small" href={s.paymentQr} download><Download size={16}/>Muat turun QR</a></div><span className="payment-recipient">{s.paymentName}</span>
         {s.bankName&&<p>{s.bankName}{s.bankAccount&&<> · {s.bankAccount}</>}</p>}
-        <div className="payment-amount"><span>Jumlah perlu dibayar</span><strong>{money(r.total)}</strong></div><p className="payment-instructions">{s.paymentInstructions}</p>
-      </>:<div className="qr-unavailable"><ShieldCheck size={34}/><h4>QR rasmi sedang disediakan</h4><p>Pendaftaran anda telah disimpan. Pembayaran akan dibuka selepas penganjur menyediakan QR DuitNow rasmi.</p>{s.whatsapp&&<a className="text-link" href={`https://wa.me/${s.whatsapp}`}>Hubungi penganjur</a>}<p>Gunakan halaman <Link href="/semak">Semak status</Link> untuk kembali ke pembayaran.</p></div>}</div>
+      </>:<div className="bank-transfer-details"><span className="bank-transfer-icon"><Landmark size={28}/></span><p>Sila buat pembayaran ke akaun berikut.</p><dl>{s.bankName&&<div><dt>Nama bank</dt><dd data-no-translate="true">{s.bankName}</dd></div>}{s.paymentName&&<div><dt>Nama penerima</dt><dd data-no-translate="true">{s.paymentName}</dd></div>}{s.bankAccount&&<div><dt>Nombor akaun</dt><dd className="bank-account-number" data-no-translate="true">{s.bankAccount}</dd></div>}</dl>{!bankReady&&<Notice>Butiran bank sedang dikemas kini. Sila hubungi penganjur sebelum membuat pembayaran.</Notice>}</div>}
+      <div className="payment-amount"><span>Jumlah perlu dibayar</span><strong>{money(r.total)}</strong></div>{paymentReady?<p className="payment-instructions">{qrReady?s.paymentInstructions:'Buat pindahan bank mengikut butiran di atas. Selepas pembayaran, muat naik resit untuk semakan.'}</p>:<div className="qr-unavailable"><p>Pendaftaran anda telah disimpan. Gunakan halaman <Link href="/semak">Semak status</Link> untuk kembali ke pembayaran.</p>{s.whatsapp&&<a className="text-link" href={`https://wa.me/${s.whatsapp}`}>Hubungi penganjur</a>}</div>}</div>
       <form onSubmit={upload} className="receipt-panel"><h3>Muat naik resit pembayaran</h3><p>Pastikan nama penerima, tarikh dan jumlah pembayaran jelas kelihatan.</p>
         <label className={`upload-area ${file?'has-file':''}`}><FileUp size={30}/><strong>{file?file.name:'Klik untuk pilih resit'}</strong><span>PNG, JPG, WEBP atau PDF · Maksimum 3MB</span><input aria-label="Fail resit pembayaran" type="file" accept="image/png,image/jpeg,image/webp,application/pdf" onChange={e=>setFile(e.target.files?.[0]||null)} disabled={!paymentReady||busy}/></label>
         <label className="checkbox-label"><input type="checkbox" required disabled={!paymentReady||busy}/><span>Saya mengesahkan resit ini adalah untuk pembayaran pendaftaran saya.</span></label>
