@@ -5,6 +5,7 @@ import {defaultCollaborators,defaultCollaboratorTitle,defaultCollaboratorDescrip
 import {trackVisible} from './tracks';
 import {moduleSessions} from './module-sessions';
 import {defaultRegistrationOpensAt} from './registration-availability';
+import {defaultOrganizerSecondaryPhone} from './organizer-contacts';
 const globalDb = globalThis as unknown as { pakarTurso?: {url:string;client:Client} };
 export function db() {
   const url=process.env.TURSO_DATABASE_URL||'';
@@ -26,6 +27,7 @@ export async function getConfiguration(includeInactive = false, includePrivate =
   const settings = JSON.parse(s[0].content) as Settings;
   settings.registrationScheduled??=false;settings.registrationOpensAt??=defaultRegistrationOpensAt;
   settings.paymentQrEnabled??=false;
+  settings.whatsappSecondary??=defaultOrganizerSecondaryPhone;
   settings.organizerLogo??='/images/brand/kagum-academy.png';
   settings.collaborators??=defaultCollaborators;
   settings.collaboratorTitle??=defaultCollaboratorTitle;

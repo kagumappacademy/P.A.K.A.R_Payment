@@ -1,6 +1,7 @@
 import { z } from 'zod';
 import {validDesignSelector,designSections} from './visual-design.ts';
 import {defaultCollaborators,defaultCollaboratorTitle,defaultCollaboratorDescription} from './collaborators.ts';
+import {defaultOrganizerSecondaryPhone} from './organizer-contacts.ts';
 const text = (max = 200) => z.string().trim().min(1).max(max);
 const optionalText = (max = 200) => z.string().trim().max(max).default('');
 const asset = z.string().max(250).regex(/^$|^\/images\/[a-zA-Z0-9_./-]+$|^\/api\/files\/[a-f0-9-]{36}$/);
@@ -48,6 +49,7 @@ export const settingsSchema = z.object({
   aboutTitle:text(200),aboutDescription:text(3000),dateLabel:text(100),startDate:z.iso.date(),endDate:z.iso.date(),
   location:text(300),delivery:text(100),organizer:text(200),organizerLogo:asset.default('/images/brand/kagum-academy.png'),contactEmail:z.union([z.literal(''),z.email()]),
   whatsapp:z.string().regex(/^$|^\d{8,16}$/),heroImage:asset,eventPoster:asset,registrationOpen:z.boolean(),
+  whatsappSecondary:z.string().trim().max(32).transform(value=>value.replace(/[\s()-]/g,'').replace(/^\+/,'' )).pipe(z.string().regex(/^$|^\d{8,16}$/)).default(defaultOrganizerSecondaryPhone),
   registrationScheduled:z.boolean().default(false),registrationOpensAt:z.union([z.literal(''),z.iso.datetime({offset:true})]).default(''),
   whatsappGroups:z.object({menengah:whatsappGroupSchema.default(''),universiti:whatsappGroupSchema.default('')}).default({menengah:'',universiti:''}),
   tracks:z.object({menengah:track,universiti:track}),

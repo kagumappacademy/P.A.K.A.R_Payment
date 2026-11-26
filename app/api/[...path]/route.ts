@@ -238,7 +238,7 @@ async function handle(request:NextRequest,context:Context) {
     }
     if(route==='admin/settings' && method==='PUT') {
       const input=await request.json(),settings=settingsSchema.parse(input);
-      const preserved=['visualDesign','interfaceText','collaborators','collaboratorTitle','collaboratorDescription','registrationScheduled','registrationOpensAt','paymentQrEnabled'];
+      const preserved=['visualDesign','interfaceText','collaborators','collaboratorTitle','collaboratorDescription','registrationScheduled','registrationOpensAt','paymentQrEnabled','whatsappSecondary'];
       if(preserved.some(key=>!Object.hasOwn(input,key))){
         const current=JSON.parse((await rows('SELECT content FROM settings WHERE id=1'))[0].content);
         for(const key of preserved)if(!Object.hasOwn(input,key)&&Object.hasOwn(current,key))Object.assign(settings,{[key]:current[key]});

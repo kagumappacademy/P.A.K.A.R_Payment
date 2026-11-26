@@ -90,6 +90,12 @@
     ]
   },
   {
+    "key": "Ada pertanyaan?",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Admin",
     "groups": [
       "system"
@@ -868,6 +874,12 @@
     "key": "Cerah",
     "groups": [
       "navigation"
+    ]
+  },
+  {
+    "key": "Chat di WhatsApp",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -1660,6 +1672,12 @@
     ]
   },
   {
+    "key": "Hubungi kami",
+    "groups": [
+      "navigation"
+    ]
+  },
+  {
     "key": "Hubungi melalui WhatsApp",
     "groups": [
       "system"
@@ -1670,6 +1688,12 @@
     "groups": [
       "landing",
       "payment"
+    ]
+  },
+  {
+    "key": "HUBUNGI PENGANJUR",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -1988,6 +2012,12 @@
     "key": "Kami bantu.",
     "groups": [
       "landing"
+    ]
+  },
+  {
+    "key": "Kami sedia membantu.",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -3439,6 +3469,12 @@
     ]
   },
   {
+    "key": "Panggilan telefon",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Pantau jumlah peserta, bayaran dan resit yang menunggu tindakan.",
     "groups": [
       "system"
@@ -3982,6 +4018,12 @@
     "key": "Perhalusi idea kandungan, strategi skrip dan aliran produksi video menggunakan Claude AI.",
     "groups": [
       "general"
+    ]
+  },
+  {
+    "key": "Perlu bantuan memilih modul, sesi atau urusan pembayaran? Hubungi pasukan penganjur P.A.K.A.R.",
+    "groups": [
+      "system"
     ]
   },
   {
@@ -6038,6 +6080,12 @@
     ]
   },
   {
+    "key": "Talian penganjur",
+    "groups": [
+      "system"
+    ]
+  },
+  {
     "key": "Tambah kemahiran digital semasa cuti sekolah. Belajar menyediakan dokumen, mengenali hamparan elektronik dan bekerjasama dalam talian menggunakan alat harian.",
     "groups": [
       "general"
@@ -6817,6 +6865,12 @@
   },
   {
     "key": "WhatsApp (contoh: 60123456789)",
+    "groups": [
+      "admin"
+    ]
+  },
+  {
+    "key": "WhatsApp tambahan (contoh: 601128511241)",
     "groups": [
       "admin"
     ]
